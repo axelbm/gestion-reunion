@@ -1,10 +1,14 @@
-<?
+<?php
 
 // va etre le premier controleur qui etre appelé par le rooter
 // Il va appeler le controleur correspondant a la requete
 
-namespace app
+namespace app;
 
 class Controleur extends \Controleur {
-
+    function __construct($action, $params) {
+        $controleurClass = __NAMESPACE__."\\controleurs\\" . ucfirst($action);
+        
+        $controleur = new $controleurClass();
+    }
 }

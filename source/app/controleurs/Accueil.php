@@ -1,7 +1,7 @@
 <?php
 
-namespace app\controleur;
+namespace app\controleurs;
 
 class Accueil extends \Controleur {
-
+    
 }
