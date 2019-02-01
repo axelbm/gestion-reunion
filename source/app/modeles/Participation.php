@@ -10,4 +10,12 @@ class Participation extends Modele {
     protected $reunionid;
     protected $courriel;
     protected $statusid;
+
+    public function accepter (){
+
+    }
+
+    public function refuser (){
+        
+    }
 }
