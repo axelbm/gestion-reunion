@@ -6500,7 +6500,7 @@
 									"font": "Arial;13;1",
 									"left": 88,
 									"top": 237,
-									"width": 227.67236328125,
+									"width": 228.63720703125,
 									"height": 13,
 									"text": "Utilisateurs"
 								},
@@ -6526,7 +6526,7 @@
 											"font": "Arial;13;0",
 											"left": 93,
 											"top": 260,
-											"width": 217.67236328125,
+											"width": 218.63720703125,
 											"height": 13
 										},
 										{
@@ -6541,7 +6541,7 @@
 											"font": "Arial;13;0",
 											"left": 93,
 											"top": 275,
-											"width": 217.67236328125,
+											"width": 218.63720703125,
 											"height": 13
 										},
 										{
@@ -6556,7 +6556,7 @@
 											"font": "Arial;13;0",
 											"left": 93,
 											"top": 290,
-											"width": 217.67236328125,
+											"width": 218.63720703125,
 											"height": 13
 										},
 										{
@@ -6571,7 +6571,7 @@
 											"font": "Arial;13;0",
 											"left": 93,
 											"top": 305,
-											"width": 217.67236328125,
+											"width": 218.63720703125,
 											"height": 13
 										},
 										{
@@ -6586,21 +6586,21 @@
 											"font": "Arial;13;0",
 											"left": 93,
 											"top": 320,
-											"width": 217.67236328125,
+											"width": 218.63720703125,
 											"height": 13
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 88,
 									"top": 255,
-									"width": 227.67236328125,
+									"width": 228.63720703125,
 									"height": 83
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 88,
 							"top": 232,
-							"width": 227.67236328125,
+							"width": 228.63720703125,
 							"height": 106,
 							"nameLabel": {
 								"$ref": "AAAAAAFnzm3ZLljX4jc="
@@ -7115,7 +7115,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 361,
+									"left": 362,
 									"top": 265,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -7149,7 +7149,7 @@
 										"$ref": "AAAAAAFnznxC11sf8JA="
 									},
 									"font": "Arial;13;0",
-									"left": 340,
+									"left": 341,
 									"top": 264,
 									"height": 13,
 									"alpha": -0.5235987755982988,
@@ -7167,7 +7167,7 @@
 								"$ref": "AAAAAAFnznAXY1lMQug="
 							},
 							"lineStyle": 2,
-							"points": "410:256;315:256",
+							"points": "410:256;316:256",
 							"nameLabel": {
 								"$ref": "AAAAAAFnznxC2Fsg2XU="
 							},
@@ -8031,8 +8031,8 @@
 								"$ref": "AAAAAAFnzm3ZLljUjso="
 							},
 							"name": "Administrateur",
-							"type": "VARCHAR",
-							"length": "64"
+							"type": "TINYINT",
+							"length": "1"
 						}
 					]
 				},
@@ -8092,7 +8092,7 @@
 								"$ref": "AAAAAAFnzm75U1kXtgM="
 							},
 							"name": "Date",
-							"type": "DATE",
+							"type": "DATETIME",
 							"length": 0
 						}
 					]
@@ -8136,33 +8136,6 @@
 					},
 					"name": "PointDordres",
 					"ownedElements": [
-						{
-							"_type": "ERDRelationship",
-							"_id": "AAAAAAFnzo8/DF3N040=",
-							"_parent": {
-								"$ref": "AAAAAAFnzm/vmlkxNFU="
-							},
-							"end1": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFnzo8/DF3OwgA=",
-								"_parent": {
-									"$ref": "AAAAAAFnzo8/DF3N040="
-								},
-								"reference": {
-									"$ref": "AAAAAAFnzm/vmlkxNFU="
-								}
-							},
-							"end2": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFnzo8/DF3P2O8=",
-								"_parent": {
-									"$ref": "AAAAAAFnzo8/DF3N040="
-								},
-								"reference": {
-									"$ref": "AAAAAAFnznA8l1lXEtA="
-								}
-							}
-						},
 						{
 							"_type": "ERDRelationship",
 							"_id": "AAAAAAFnzpX5Ll5C4GE=",
@@ -8262,75 +8235,6 @@
 							},
 							"name": "CompteRendu",
 							"type": "TEXT",
-							"length": 0
-						}
-					]
-				},
-				{
-					"_type": "ERDEntity",
-					"_id": "AAAAAAFnznAWsVk+0xY=",
-					"_parent": {
-						"$ref": "AAAAAAFnzm3MZljPoC0="
-					},
-					"name": "Roles",
-					"ownedElements": [
-						{
-							"_type": "ERDRelationship",
-							"_id": "AAAAAAFnzoCIW1vL0cs=",
-							"_parent": {
-								"$ref": "AAAAAAFnznAWsVk+0xY="
-							},
-							"end1": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFnzoCIW1vMZH8=",
-								"_parent": {
-									"$ref": "AAAAAAFnzoCIW1vL0cs="
-								},
-								"reference": {
-									"$ref": "AAAAAAFnznAWsVk+0xY="
-								},
-								"cardinality": "0..*"
-							},
-							"end2": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFnzoCIW1vNR94=",
-								"_parent": {
-									"$ref": "AAAAAAFnzoCIW1vL0cs="
-								},
-								"reference": {
-									"$ref": "AAAAAAFnzn/UtVu6rDU="
-								},
-								"cardinality": "0..*"
-							}
-						}
-					],
-					"columns": [
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFnzn9u4luj4Zg=",
-							"_parent": {
-								"$ref": "AAAAAAFnznAWsVk+0xY="
-							},
-							"name": "RoleID",
-							"length": 0,
-							"primaryKey": true
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFnzn95qluqolY=",
-							"_parent": {
-								"$ref": "AAAAAAFnznAWsVk+0xY="
-							},
-							"name": "Nom",
-							"length": 0
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFnzn+Mn1uxa0Q=",
-							"_parent": {
-								"$ref": "AAAAAAFnznAWsVk+0xY="
-							},
-							"name": "Description",
 							"length": 0
 						}
 					]
@@ -8472,429 +8376,6 @@
 							"referenceTo": {
 								"$ref": "AAAAAAFnzodFbFz9Vu4="
 							}
-						}
-					]
-				},
-				{
-					"_type": "ERDEntity",
-					"_id": "AAAAAAFnznA8l1lXEtA=",
-					"_parent": {
-						"$ref": "AAAAAAFnzm3MZljPoC0="
-					},
-					"name": "CompteRendus",
-					"ownedElements": [
-						{
-							"_type": "ERDRelationship",
-							"_id": "AAAAAAFnzn4YCVt/E6E=",
-							"_parent": {
-								"$ref": "AAAAAAFnznA8l1lXEtA="
-							},
-							"end1": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFnzn4YCVuA3/Y=",
-								"_parent": {
-									"$ref": "AAAAAAFnzn4YCVt/E6E="
-								},
-								"reference": {
-									"$ref": "AAAAAAFnznA8l1lXEtA="
-								}
-							},
-							"end2": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFnzn4YCVuBdYo=",
-								"_parent": {
-									"$ref": "AAAAAAFnzn4YCVt/E6E="
-								},
-								"reference": {
-									"$ref": "AAAAAAFnzm75U1kXtgM="
-								}
-							}
-						}
-					],
-					"columns": [
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFnzoMC91x3aw0=",
-							"_parent": {
-								"$ref": "AAAAAAFnznA8l1lXEtA="
-							},
-							"name": "PointDordreID",
-							"type": "VARCHAR",
-							"length": "8",
-							"foreignKey": true,
-							"referenceTo": {
-								"$ref": "AAAAAAFnzntUb1sMDSw="
-							}
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFnzomzAV1DyRQ=",
-							"_parent": {
-								"$ref": "AAAAAAFnznA8l1lXEtA="
-							},
-							"name": "Contenu",
-							"type": "TEXT",
-							"length": 0
-						}
-					]
-				},
-				{
-					"_type": "ERDEntity",
-					"_id": "AAAAAAFnznBsmVlkROA=",
-					"_parent": {
-						"$ref": "AAAAAAFnzm3MZljPoC0="
-					},
-					"name": "LiensDepartement",
-					"ownedElements": [
-						{
-							"_type": "ERDRelationship",
-							"_id": "AAAAAAFnznJ9aFnSJ68=",
-							"_parent": {
-								"$ref": "AAAAAAFnznBsmVlkROA="
-							},
-							"end1": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFnznJ9aFnTme8=",
-								"_parent": {
-									"$ref": "AAAAAAFnznJ9aFnSJ68="
-								},
-								"reference": {
-									"$ref": "AAAAAAFnznBsmVlkROA="
-								}
-							},
-							"end2": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFnznJ9aFnUBNQ=",
-								"_parent": {
-									"$ref": "AAAAAAFnznJ9aFnSJ68="
-								},
-								"reference": {
-									"$ref": "AAAAAAFnzm3ZLljUjso="
-								}
-							}
-						},
-						{
-							"_type": "ERDRelationship",
-							"_id": "AAAAAAFnznKSYFnuxkU=",
-							"_parent": {
-								"$ref": "AAAAAAFnznBsmVlkROA="
-							},
-							"end1": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFnznKSYFnveBU=",
-								"_parent": {
-									"$ref": "AAAAAAFnznKSYFnuxkU="
-								},
-								"reference": {
-									"$ref": "AAAAAAFnznBsmVlkROA="
-								}
-							},
-							"end2": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFnznKSYFnws1A=",
-								"_parent": {
-									"$ref": "AAAAAAFnznKSYFnuxkU="
-								},
-								"reference": {
-									"$ref": "AAAAAAFnzm3ZLljUjso="
-								},
-								"cardinality": "0..*"
-							}
-						},
-						{
-							"_type": "ERDRelationship",
-							"_id": "AAAAAAFnzoH0MVxDYB0=",
-							"_parent": {
-								"$ref": "AAAAAAFnznBsmVlkROA="
-							},
-							"end1": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFnzoH0MVxEDU0=",
-								"_parent": {
-									"$ref": "AAAAAAFnzoH0MVxDYB0="
-								},
-								"reference": {
-									"$ref": "AAAAAAFnznBsmVlkROA="
-								}
-							},
-							"end2": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFnzoH0MVxFNt8=",
-								"_parent": {
-									"$ref": "AAAAAAFnzoH0MVxDYB0="
-								},
-								"reference": {
-									"$ref": "AAAAAAFnznAWsVk+0xY="
-								},
-								"cardinality": "0..*"
-							}
-						}
-					],
-					"columns": [
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFnznLBPloH48A=",
-							"_parent": {
-								"$ref": "AAAAAAFnznBsmVlkROA="
-							},
-							"name": "UtilisateurID",
-							"length": 0,
-							"primaryKey": true,
-							"foreignKey": true
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFnznNQl1oOoCA=",
-							"_parent": {
-								"$ref": "AAAAAAFnznBsmVlkROA="
-							},
-							"name": "DepartementID",
-							"length": 0,
-							"primaryKey": true,
-							"foreignKey": true
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFnznUUpFo28uQ=",
-							"_parent": {
-								"$ref": "AAAAAAFnznBsmVlkROA="
-							},
-							"name": "RoleID",
-							"length": 0,
-							"foreignKey": true
-						}
-					]
-				},
-				{
-					"_type": "ERDEntity",
-					"_id": "AAAAAAFnzneqC1qG5ow=",
-					"_parent": {
-						"$ref": "AAAAAAFnzm3MZljPoC0="
-					},
-					"name": "TraitementDossier",
-					"ownedElements": [
-						{
-							"_type": "ERDRelationship",
-							"_id": "AAAAAAFnzngfaVqYoQU=",
-							"_parent": {
-								"$ref": "AAAAAAFnzneqC1qG5ow="
-							},
-							"end1": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFnzngfaVqZzR8=",
-								"_parent": {
-									"$ref": "AAAAAAFnzngfaVqYoQU="
-								},
-								"reference": {
-									"$ref": "AAAAAAFnzneqC1qG5ow="
-								}
-							},
-							"end2": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFnzngfaVqaSSE=",
-								"_parent": {
-									"$ref": "AAAAAAFnzngfaVqYoQU="
-								},
-								"reference": {
-									"$ref": "AAAAAAFnzm75U1kXtgM="
-								},
-								"cardinality": "0..*"
-							}
-						},
-						{
-							"_type": "ERDRelationship",
-							"_id": "AAAAAAFnzngxIVqsN8I=",
-							"_parent": {
-								"$ref": "AAAAAAFnzneqC1qG5ow="
-							},
-							"end1": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFnzngxIVqtvrU=",
-								"_parent": {
-									"$ref": "AAAAAAFnzngxIVqsN8I="
-								},
-								"reference": {
-									"$ref": "AAAAAAFnzneqC1qG5ow="
-								}
-							},
-							"end2": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFnzngxIVquHMU=",
-								"_parent": {
-									"$ref": "AAAAAAFnzngxIVqsN8I="
-								},
-								"reference": {
-									"$ref": "AAAAAAFnzm8UmlkkQdU="
-								},
-								"cardinality": "0..*"
-							}
-						}
-					],
-					"columns": [
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFnznllWVrQlQ8=",
-							"_parent": {
-								"$ref": "AAAAAAFnzneqC1qG5ow="
-							},
-							"name": "ReunionID",
-							"length": 0,
-							"primaryKey": true,
-							"foreignKey": true,
-							"referenceTo": {
-								"$ref": "AAAAAAFnzng/GVrAlss="
-							}
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFnznl0+1rXNAw=",
-							"_parent": {
-								"$ref": "AAAAAAFnzneqC1qG5ow="
-							},
-							"name": "DossierID",
-							"length": 0,
-							"primaryKey": true,
-							"foreignKey": true,
-							"referenceTo": {
-								"$ref": "AAAAAAFnznbKA1p9R8E="
-							}
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFnzot9511Zvmw=",
-							"_parent": {
-								"$ref": "AAAAAAFnzneqC1qG5ow="
-							},
-							"name": "Description",
-							"length": 0
-						}
-					]
-				},
-				{
-					"_type": "ERDEntity",
-					"_id": "AAAAAAFnzn/UtVu6rDU=",
-					"_parent": {
-						"$ref": "AAAAAAFnzm3MZljPoC0="
-					},
-					"name": "Privileges",
-					"columns": [
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFnzoFnmVwgSP8=",
-							"_parent": {
-								"$ref": "AAAAAAFnzn/UtVu6rDU="
-							},
-							"name": "PrivilegeID",
-							"length": 0,
-							"primaryKey": true
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFnzoGCfFwn+lg=",
-							"_parent": {
-								"$ref": "AAAAAAFnzn/UtVu6rDU="
-							},
-							"name": "Nom",
-							"length": 0
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFnzoGJJFwu1c0=",
-							"_parent": {
-								"$ref": "AAAAAAFnzn/UtVu6rDU="
-							},
-							"name": "Description",
-							"length": 0
-						}
-					]
-				},
-				{
-					"_type": "ERDEntity",
-					"_id": "AAAAAAFnzoDPOlvqluk=",
-					"_parent": {
-						"$ref": "AAAAAAFnzm3MZljPoC0="
-					},
-					"name": "Autorise",
-					"ownedElements": [
-						{
-							"_type": "ERDRelationship",
-							"_id": "AAAAAAFnzoFWilv4Rrs=",
-							"_parent": {
-								"$ref": "AAAAAAFnzoDPOlvqluk="
-							},
-							"end1": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFnzoFWilv5Jyk=",
-								"_parent": {
-									"$ref": "AAAAAAFnzoFWilv4Rrs="
-								},
-								"reference": {
-									"$ref": "AAAAAAFnzoDPOlvqluk="
-								}
-							},
-							"end2": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFnzoFWilv6qyk=",
-								"_parent": {
-									"$ref": "AAAAAAFnzoFWilv4Rrs="
-								},
-								"reference": {
-									"$ref": "AAAAAAFnznAWsVk+0xY="
-								},
-								"cardinality": "0..*"
-							}
-						},
-						{
-							"_type": "ERDRelationship",
-							"_id": "AAAAAAFnzoFe01wMna4=",
-							"_parent": {
-								"$ref": "AAAAAAFnzoDPOlvqluk="
-							},
-							"end1": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFnzoFe01wNt50=",
-								"_parent": {
-									"$ref": "AAAAAAFnzoFe01wMna4="
-								},
-								"reference": {
-									"$ref": "AAAAAAFnzoDPOlvqluk="
-								}
-							},
-							"end2": {
-								"_type": "ERDRelationshipEnd",
-								"_id": "AAAAAAFnzoFe01wOBJw=",
-								"_parent": {
-									"$ref": "AAAAAAFnzoFe01wMna4="
-								},
-								"reference": {
-									"$ref": "AAAAAAFnzn/UtVu6rDU="
-								},
-								"cardinality": "0..*"
-							}
-						}
-					],
-					"columns": [
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFnzoGgKVw1dx8=",
-							"_parent": {
-								"$ref": "AAAAAAFnzoDPOlvqluk="
-							},
-							"name": "RoleID",
-							"length": 0,
-							"primaryKey": true,
-							"foreignKey": true
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFnzoGo01w8wCs=",
-							"_parent": {
-								"$ref": "AAAAAAFnzoDPOlvqluk="
-							},
-							"name": "PrivilegeID",
-							"length": 0,
-							"primaryKey": true,
-							"foreignKey": true
 						}
 					]
 				},
@@ -9134,6 +8615,18 @@
 					]
 				}
 			]
+		}
+	],
+	"tags": [
+		{
+			"_type": "Tag",
+			"_id": "AAAAAAFoqdvwE4wYJG4=",
+			"_parent": {
+				"$ref": "AAAAAAFF+h6SjaM2Hec="
+			},
+			"name": "database",
+			"kind": "string",
+			"value": "untitled"
 		}
 	]
 }
