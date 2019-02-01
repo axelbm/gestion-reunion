@@ -1,3 +1,5 @@
+USE gestion_reunions;
+
 CREATE TABLE UTILISATEURS(
     courriel VARCHAR(64) NOT NULL,
     nom VARCHAR(64) NOT NULL,
