@@ -10,12 +10,6 @@ class Accueil extends \core\Controleur implements \core\iAction {
 
 		$vue = new \core\Vue("accueil");
 
-		$vue->setJSVar("user", array("nom" => "truc", "asd" => "qweqwe"));
-		$vue->setJSVar("num", 123);
-		$vue->setJSVar("str", "text");
-
-		$vue->set("truc", "idk");
-
 		$vue->afficher();
 
 		return null;
