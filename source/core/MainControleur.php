@@ -23,8 +23,10 @@ class MainControleur {
 				self::executerErreur($err);
 			}
 		} else {
-			self::executerErreur(new \Exception("", 404));
+			self::executerErreur(new \Exception("Page introuvable", 404));
 		}
+
+		exit();
 	}
 
 	static function exists(string $action) : bool {

@@ -11,7 +11,7 @@ class Database {
 		$dsn = 'mysql:host='.$hostname.';dbname='.$dbname;
 		
 		$db = new \PDO($dsn, $username, $password, $option);
-		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+		$db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_WARNING);
 		$db->exec("set names utf8");
 		
 		self::$instance = $db;

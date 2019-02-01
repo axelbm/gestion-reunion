@@ -10,6 +10,7 @@ class Erreur extends \core\Controleur {
         $vue = new \core\Vue("erreur");
 
         $vue->set("code", $err->getCode());
+        $vue->set("message", $err->getMessage());
 
         $vue->afficher();
 
