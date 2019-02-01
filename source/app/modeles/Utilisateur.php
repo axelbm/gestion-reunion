@@ -4,7 +4,7 @@ namespace app\modeles;
 
 use \app\dao\Utilisateur as dao;
 
-class Utilisateur extends Modele {
+class Utilisateur extends \core\Modele {
     protected $courriel;
     protected $nom;
     protected $prenom;

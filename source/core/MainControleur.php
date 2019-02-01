@@ -9,6 +9,13 @@ class MainControleur {
 
 	static private $instance = null;
 
+
+	/**
+	 * Execute le controleur lié a l'action demandé
+	 *
+	 * @param string $action
+	 * @param array $params
+	 */
 	static function executer(string $action, array $params) : void {
 		$controleurClass = "\\app\\controleurs\\" . ucfirst($action);
 
@@ -39,5 +46,9 @@ class MainControleur {
 		} else {
 			self::executer("Erreur", array($err));
 		}
+	}
+
+	static function getInstance() : Controleur {
+		return self::$instance;
 	}
 }
