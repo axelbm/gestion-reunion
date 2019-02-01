@@ -1,10 +1,5 @@
 <?php
 
-// "Courriel" => "courriel:string:PK",
-// "Nom" => "nom:string",
-// "Prenom" => "prenom:string",
-// "MotDePasse" => "motdepasse:string",
-// "Administrateur" => "administrateur:bool"
 $user = \app\dao\Utilisateur::create(array(
     "courriel" => "axel@gmail.com",
     "nom" => "Michaud",
@@ -13,4 +8,7 @@ $user = \app\dao\Utilisateur::create(array(
     "administrateur" => true
 ));
 
+$user->setNom("test");
+
 var_dump($user);
+$user->setNom(true);

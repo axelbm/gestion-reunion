@@ -2,9 +2,9 @@
 
 namespace app\modeles;
 
-use \app\dao\Utilisateur as UtilisateurDAO;
+use \app\dao\Utilisateur as dao;
 
-class Utilisateur extends \Modele {
+class Utilisateur extends Modele {
     protected $courriel;
     protected $nom;
     protected $prenom;

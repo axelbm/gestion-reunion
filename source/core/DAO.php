@@ -1,4 +1,7 @@
 <?php
+
+namespace core;
+
 class DAO {
     static protected $primaryKey;
     static protected $proprietes;
@@ -48,7 +51,7 @@ class DAO {
         $obj = new $className();
 
         foreach ($dao::$parsedProprietes as $key => $prop) {
-            $setter = "set$key";
+			$setter = "set$key";
             $obj->$setter($params[$prop["key"]]);
         }
 
@@ -92,6 +95,6 @@ class DAO {
     }
 
     static public function find(string $key) : object {
-        // return new 
+        return null; 
     }
 }

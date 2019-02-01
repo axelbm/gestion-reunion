@@ -1,5 +1,7 @@
 <?php
 
+namespace core;
+
 class Util {
 
     public static function className(string $class) : string {

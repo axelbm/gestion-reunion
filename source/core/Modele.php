@@ -1,5 +1,7 @@
 <?php
 
+namespace core;
+
 class Modele {
 
     public function __call(string $name, array $args) {
@@ -8,7 +10,7 @@ class Modele {
         if (substr($name, 0, 3) == "get") {
             $propNom = substr($name, 3);
 
-            if (array_key_exists($propNom, $dao::$proprietes)) {
+            if (array_key_exists($propNom, $dao::getProprietes())) {
                 $propCle = $dao::getPropriete($propNom)["key"];
 
                 return $this->$propCle;
@@ -17,7 +19,7 @@ class Modele {
         elseif (substr($name, 0, 3) == "set") {
             $propNom = substr($name, 3);
             
-            if (array_key_exists($propNom, $dao::$proprietes)) {
+            if (array_key_exists($propNom, $dao::getProprietes())) {
                 $prop = $dao::getPropriete($propNom);
                 $propCle = $prop["key"];
 
