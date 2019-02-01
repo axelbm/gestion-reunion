@@ -2,7 +2,7 @@
 
 namespace app\dao;
 
-class Utilisateur extends DAO {
+class Utilisateur extends \core\DAO {
     static protected $table = "utilisateurs";
 
     static protected $proprietes = array(

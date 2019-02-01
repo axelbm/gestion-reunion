@@ -19,7 +19,7 @@ class Vue {
         extract($this->vars);
 
         $vue = $this;
-        $controleur = $this;
+        $controleur = MainControleur::getInstance();
         $titre = $this->titre;
 
         ob_start();

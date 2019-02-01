@@ -18,18 +18,15 @@ $params = explode('/', $_GET['params']);
 $action = array_shift($params);
 
 if ($action == "") {
-    $action = "accueil";
+    $action = ACCUEIL;
 }
 elseif ($action == "_test") {
     $action = array_shift($params);
 
     require "test/$action.php";
 
-    return;
+    exit();
 }
 
 
 $ctrl = core\MainControleur::executer($action, $params);
-// $ctrl->action($params); 
-
-// echo $_SERVER['REQUEST_URI'];

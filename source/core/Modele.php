@@ -26,13 +26,13 @@ class Modele {
                 if (gettype($args[0]) == $prop["type"])
                     $this->$propCle = $args[0];
                 else
-                    throw(new TypeError("Argument 1 passed to ".get_class($this)."->$name() must be an ".$prop["type"].", ".gettype($args[0])." given"));
+                    throw(new \TypeError("Argument 1 passed to ".get_class($this)."->$name() must be an ".$prop["type"].", ".gettype($args[0])." given"));
 
                 return;
             }
         }
         
-        throw new Exception("Call to undefined method \"$name\"");
+        throw new \Exception("Call to undefined method \"$name\"");
     }
     
 }

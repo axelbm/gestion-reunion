@@ -12,7 +12,8 @@ class DAO {
 
         $dao::$parsedProprietes = array();
         
-        var_dump($dao::$proprietes);
+        \var_dump($dao::$proprietes);
+
         foreach ($dao::$proprietes as $key => $value) {
             $args = explode(":", $value);
             $options = array();
@@ -36,7 +37,7 @@ class DAO {
                 $dao::$primaryKey = $key;
         }
 
-        var_dump($dao::$parsedProprietes);
+        \var_dump($dao::$parsedProprietes);
     }
 
     
