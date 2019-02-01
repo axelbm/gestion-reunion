@@ -2,7 +2,7 @@
 
 namespace app\controleurs;
 
-class Erreur extends \core\Controleur implements \core\iAction {
+class Erreur extends \core\Controleur {
 
     public function action(array $args) : ?\Exception {
         $err = $args[0];

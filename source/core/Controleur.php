@@ -2,8 +2,10 @@
 
 namespace core;
 
-class Controleur {
+abstract class Controleur {
     function __construct (){
 
     }
+
+    public abstract function action(array $args) : ?\Exception; 
 }

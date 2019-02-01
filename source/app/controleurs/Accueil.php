@@ -2,7 +2,7 @@
 
 namespace app\controleurs;
 
-class Accueil extends \core\Controleur implements \core\iAction {
+class Accueil extends \core\Controleur {
 
 	public function action(array $args) : ?\Exception {
 		if (count($args) > 0)
