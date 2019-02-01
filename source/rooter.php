@@ -7,6 +7,9 @@ require COREROOT."AutoLoader.php";
 spl_autoload_register("core\AutoLoader::loader");
 
 
+core\Database::connect(DB_HOST, DB_NAME, DB_USER, DB_PASSWORD);
+
+
 $params = explode('/', $_GET['params']);
 $action = array_shift($params);
 
