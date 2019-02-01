@@ -2,6 +2,8 @@
 
 namespace app\modeles;
 
+use \core\Modele;
+
 use \app\dao\PointDordre as dao;
 
 class PointDordre extends Modele {

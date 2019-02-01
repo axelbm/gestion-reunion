@@ -2,6 +2,8 @@
 
 namespace app\dao;
 
+use \core\DAO;
+
 class Invitation extends DAO {
     static protected $table = "invitation";
 

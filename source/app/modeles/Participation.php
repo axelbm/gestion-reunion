@@ -2,6 +2,8 @@
 
 namespace app\modeles;
 
+use \core\Modele;
+
 use \app\dao\Participation as dao;
 
 class Participation extends Modele {

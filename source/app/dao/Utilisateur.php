@@ -2,7 +2,9 @@
 
 namespace app\dao;
 
-class Utilisateur extends \core\DAO {
+use \core\DAO;
+
+class Utilisateur extends DAO {
     static protected $table = "utilisateurs";
 
     static protected $proprietes = array(
@@ -12,4 +14,10 @@ class Utilisateur extends \core\DAO {
         "MotDePasse" => "motdepasse:string",
         "Administrateur" => "administrateur:boolean"
     );
+
+
+    static public function obtenirAdministrateur() : array {
+        throw(new \Exception("Pas implementé"));
+        // return self::executPase()->selectAll()->where("administrateur=1")->toList();
+    }
 }

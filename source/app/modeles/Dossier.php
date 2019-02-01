@@ -2,6 +2,8 @@
 
 namespace app\modeles;
 
+use \core\Modele;
+
 use \app\dao\Dossier as dao;
 
 class Dossier extends Modele {

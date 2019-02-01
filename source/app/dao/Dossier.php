@@ -2,11 +2,13 @@
 
 namespace app\dao;
 
+use \core\DAO;
+
 class Dossier extends DAO {
     static protected $table = "dossiers";
 
     static protected $proprietes = array(
-        "DossierID" => "dossierid:string:PK",
+        "ID" => "dossierid:string:PK",
         "Description" => "description:string"
     );
 }
