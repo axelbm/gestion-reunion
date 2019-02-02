@@ -12,10 +12,10 @@ class Participation extends Modele {
     protected $statusid;
 
     public function accepter (){
-
+        throw(new \Exception("Pas implementé"));
     }
 
     public function refuser (){
-        
+        throw(new \Exception("Pas implementé"));
     }
 }
