@@ -1,11 +1,11 @@
 <?php
 
-$user = \app\dao\Utilisateur::create(array(
+$user = \app\modeles\Utilisateur::toObject(array(
     "courriel" => "axel@gmail.com",
     "nom" => "Michaud",
     "prenom" => "Axel",
     "motdepasse" => "test",
-    "administrateur" => true
+    "administrateur" => 0
 ));
 
 // $user = \app\doa\Utilisateur::find("axel@gmail.com");
@@ -14,8 +14,8 @@ if(!is_null($user)) {
     
 }
 
-$user->setNom("test");
+// $user->setCourriel("test");
 
-var_dump($user);
+$user->setNom("CCCCCC");
+var_dump($user->getNomComplet());
 
-$user->setNom(true);

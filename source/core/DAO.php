@@ -7,7 +7,7 @@ class DAO {
     static protected $proprietes;
     static protected $parsedProprietes = null;
 
-    static private function parseProprietes() : void {
+    static private function parseProprietes() {
         $dao = get_called_class();
 
         $dao::$parsedProprietes = array();
@@ -41,23 +41,7 @@ class DAO {
     }
 
     
-    static public function create(array $params) : object {
-        $dao = get_called_class();
-
-        if ($dao::$parsedProprietes == null)
-            $dao::parseProprietes();
-
-        $className = "\\app\\modeles\\".Util::className(get_called_class());
-
-        $obj = new $className();
-
-        foreach ($dao::$parsedProprietes as $key => $prop) {
-			$setter = "set$key";
-            $obj->$setter($params[$prop["key"]]);
-        }
-
-        return $obj;
-    }
+    
 
     static public function getPropriete(string $nom) : array {
         $dao = get_called_class();
@@ -86,16 +70,24 @@ class DAO {
         return $dao::$primaryKey;
     }
 
-
-
-
     
+    static public function ajouter(object $obj) {
+        
+    }
 
-    static public function where(callable $condition) : array {
-        return array();
+    static public function sauvegarder(object $obj) {
+
+    }
+    
+    static public function supprimer($index) {
+        
     }
 
     static public function find(string $key) : object {
         return null; 
+    }
+
+    static public function where(string $condition, ?int $start, ?int $length, ?string $sort) : array {
+        return array();
     }
 }
