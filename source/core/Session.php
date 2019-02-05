@@ -16,17 +16,17 @@ class Session {
 
     }
 
-    static public function initSession() {
-        if (!sessionEstOuverte()){
+    static public function initialiser() {
+        if (!self::estOuverte()){
             session_start();
         }
     } 
 
-    static public function sessionEstOuverte() : boolval {
+    static public function estOuverte() : boolval {
         return isset($_SESSION);
     }
 
-    static public function detruireSession(){
+    static public function detruire(){
         session_destroy();
     }
 }
