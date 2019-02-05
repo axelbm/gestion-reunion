@@ -12,6 +12,7 @@ abstract class MainControleur {
 
 	/**
 	 * Execute le controleur lié a l'action demandé
+	 * 	Si un controleur retourne un erreur, la page va etre redirigé vers une page d'erreur
 	 *
 	 * @param string $action
 	 * @param array $params
@@ -36,6 +37,12 @@ abstract class MainControleur {
 		exit();
 	}
 
+	/**
+	 * Verifie si le controleur demandé existe
+	 *
+	 * @param string $action
+	 * @return boolean
+	 */
 	static function exists(string $action) : bool {
 		return \class_exists("\\app\\controleurs\\" . ucfirst($action));
 	}
@@ -48,6 +55,11 @@ abstract class MainControleur {
 		}
 	}
 
+	/**
+	 * Retourne le controleur utilisé
+	 *
+	 * @return Controleur
+	 */
 	static function getInstance() : Controleur {
 		return self::$instance;
 	}

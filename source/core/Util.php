@@ -13,8 +13,4 @@ class Util {
 
         return self::className($class);
     }
-
-    public static function parsProprietes(array $args) : array {
-        return $args;
-    }
 }

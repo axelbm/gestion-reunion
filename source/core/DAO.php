@@ -18,18 +18,35 @@ abstract class DAO {
         $dao::$parsedProprietes = array();
         $dao::$primaryKeys = array();
 
+        /**
+         * Exemples de propriétés :
+         *  <Nom> => "<colonne>:<type>:<options, ...>:?<colonne étrangère>"
+         * 
+         *  "Courriel" => "courriel:string:PK",
+         *  "Nom" => "nom:string",
+         *  "Participations" => "Courriel:Participation:FK:courriel"
+         * 
+         *  Pour la clé étrangère, il faut indiquer la clé interne, l'objet etranger et pour finir, la colonne de l'objet etranger
+         *      Il est possible d'ajouter l'option "S" pour obtenir un seul objet au lieu d'un array
+         */
+
         foreach ($dao::$proprietes as $key => $value) {
+            // Divide la propriété a chaque :
             $args = explode(":", $value);
             $options = array();
 
+            // Déclanche une exception si il y a pas le bon nombre de paramettres
             if (count($args) < 2 || count($args) > 4)
                 throw(new Exception());
 
+            // Divise le 3em paramettre en options
             if (count($args) > 2)
                 $options = explode(",", $args[2]);
 
+            // Detecte si il y a l'option PK pour la clé primère
             $is_primatry = \in_array("PK", $options);
 
+            // Construit la propriété a l'aide des paramettres
             $prop = array(
                 "key" => $args[0],
                 "type" => $args[1],
@@ -37,12 +54,14 @@ abstract class DAO {
                 "isPrimaryKey" => $is_primatry
             );
 
+            // Detecte si il y a une clé étrangère
             if (\in_array("FK", $options)) {
                 $prop["fkColonne"] = $args[3];
             }
 
             $dao::$parsedProprietes[$key] = $prop;
-
+            
+            // Si il y a le PK, ajoute la propriete au cles primere
             if ($is_primatry)
                 \array_push($dao::$primaryKeys, $key);
         }
@@ -120,21 +139,22 @@ abstract class DAO {
         $dao = get_called_class();
 
         $colonne = [];
-        $phValeur = [];
+        $colonneKey = [];
         $valeurs = [];
 
+        // fait la liste des clés primères, colonnes et de leurs valeurs 
         foreach ($obj->getProprietes() as $key => $prop) {
             \array_push($colonne, $prop["key"]);
-            \array_push($phValeur, ":".$prop["key"]);
+            \array_push($colonneKey, ":".$prop["key"]);
             $valeurs[":" . $prop["key"]] = Database::convertireVersDB($prop["value"], $prop["type"]);
         }
 
         $colonne = \implode(", ", $colonne);
-        $phValeur = \implode(", ", $phValeur);
+        $colonneKey = \implode(", ", $colonneKey);
         
 
         $table = $dao::$table;
-        $stendment = "INSERT INTO $table ($colonne) VALUES ($phValeur)";
+        $stendment = "INSERT INTO $table ($colonne) VALUES ($colonneKey)";
 
         $stmt = Database::prepare($stendment);
         $stmt->execute($valeurs);

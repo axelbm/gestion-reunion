@@ -6,7 +6,16 @@ abstract class Database {
 
 	static private $instance;
 
-
+	/**
+	 * Undocumented function
+	 *
+	 * @param string $hostname
+	 * @param string $dbname
+	 * @param string $username
+	 * @param string $password
+	 * @param string $option
+	 * @return void
+	 */
 	static public function connect(string $hostname, string $dbname=null, string $username=null, string $password=null, string $option=null){
 		$dsn = 'mysql:host='.$hostname.';dbname='.$dbname;
 		
@@ -17,6 +26,11 @@ abstract class Database {
 		self::$instance = $db;
 	}
 	
+	/**
+	 * Undocumented function
+	 *
+	 * @return \PDO
+	 */
 	static public function getInstance() : \PDO {
 		if (\is_null(self::$instance))
 			throw(new \Exception("La base de données n'est pas initialisé"));
@@ -24,6 +38,15 @@ abstract class Database {
 			return self::$instance;
 	}
 	
+	/**
+	 * Undocumented function
+	 *
+	 * @param string $statement
+	 * @param integer|null $opt1
+	 * @param [type] $opt2
+	 * @param array|null $opt3
+	 * @return \PDOStatement
+	 */
 	static public function query(string $statement, ?int $opt1, $opt2, ?array $opt3) : \PDOStatement {
 		if (\is_null(self::$instance))
 			throw(new \Exception("La base de données n'est pas initialisé"));
@@ -31,6 +54,13 @@ abstract class Database {
 			return self::$instance->query($statement, $opt1, $opt2, $opt3);
 	}
 	
+	/**
+	 * Undocumented function
+	 *
+	 * @param string $statement
+	 * @param array|null $options
+	 * @return \PDOStatement
+	 */
 	static public function prepare(string $statement, ?array $options=array()) : \PDOStatement {
 		if (\is_null(self::$instance))
 			throw(new \Exception("La base de données n'est pas initialisé"));

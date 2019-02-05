@@ -15,32 +15,39 @@ abstract class Modele {
     public function __call(string $name, array $args) {
         $dao = $this->dao();
 
+        // Si il y a un get
         if (substr($name, 0, 3) == "get") {
             $propNom = substr($name, 3);
             $prop = $dao::getPropriete($propNom);
+            
+            if (isset($prop)) {
+                // Si la propriete est une cle étrangère
+                if (isset($prop["fkColonne"])) {
+                    $methode = "get".$prop["key"];
 
-            if (isset($prop["fkColonne"])) {
-                $methode = "get".$prop["key"];
-                return $dao::getObjetEtranger($propNom, $this->$methode());
-            }
-            else {
-                if (array_key_exists($propNom, $dao::getProprietes())) {
+                    // Trouve les objets liés a l'aide de son DAO
+                    return $dao::getObjetEtranger($propNom, $this->$methode());
+                }
+                else {
                     $propCle = $prop["key"];
     
                     return $this->$propCle;
                 }
             }
         }
+        // Si il y a un set
         elseif (substr($name, 0, 3) == "set") {
             $propNom = substr($name, 3);
             
             if (array_key_exists($propNom, $dao::getProprietes())) {
                 $prop = $dao::getPropriete($propNom);
 
+                // Impossible de set sur une cle primère ou étrangère
                 if (!$prop["isPrimaryKey"] && !isset($prop["fkColonne"])) {
                     $propCle = $prop["key"];
                     $valeur = $args[0];
 
+                    // Verifie si il y a une methode onSet...
                     if (\method_exists($this, "onSet$propNom")) {
                         $methode = "onSet$propNom";
 
@@ -48,6 +55,7 @@ abstract class Modele {
                             $valeur = $nv;
                     }
 
+                    // Verifie le type de la nouvelle valeur
                     if (gettype($args[0]) == $prop["type"])
                         $this->$propCle = $valeur;
                     else

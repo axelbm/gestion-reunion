@@ -3,7 +3,14 @@
 namespace core;
 
 abstract class AutoLoader {
-    static public function loader($name) { 
+
+    /**
+     * Charge le fichier de la classe demandé
+     *
+     * @param string $name
+     * @return void
+     */
+    static public function loader(string $name) { 
         $args = explode("\\", $name);
         $classname = array_pop($args);
 
