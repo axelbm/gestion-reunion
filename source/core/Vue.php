@@ -28,7 +28,7 @@ class Vue {
         // Extrait les variables stockés dans le vue
         extract($this->vars);
 
-        // Définie des variables impotantes pour la vue
+        // Définie des variables impoooootantéés pour la vue
         $vue = $this;
         $controleur = MainControleur::getInstance();
         $titre = $this->titre;
