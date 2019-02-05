@@ -1,6 +1,7 @@
 <?php
 
 namespace app\forms;
+
 use app\dao;
 
 class Connexion extends \core\Form {
@@ -10,20 +11,24 @@ class Connexion extends \core\Form {
 
     public function valider (){
         $resultat = true;
-        if ($courriel == "") {
+
+        if ($this->courriel == "") {
             $this->ajouterErreur("courriel", "Courriel obligatoire");
             $resultat = false;
         }
-        if ($motDePasse == "") {
+
+        if ($this->motDePasse == "") {
             $this->ajouterErreur("motDePasse", "Mot de passe obligatoire");
             $resultat = false;
         }
+
         if ($resultat) {     
-            $u = dao\Utilisateur::find($courriel);
+            $u = dao\Utilisateur::find($this->courriel);
+
             if ($u == NULL) {  
                 $this->ajouterErreur("courriel", "Utilisateur inexistant");
             }
-            elseif (!$u->validerMotDePasse($motDePasse)) {
+            elseif (!$u->validerMotDePasse($this->motDePasse)) {
                 $this->ajouterErreur("motDePasse", "Mot de passe incorrect");
             }
         }
