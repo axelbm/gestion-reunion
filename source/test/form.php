@@ -1,16 +1,25 @@
-<form action="" method="post">
-  <input type="hidden" name="formid" value="<?= \core\MainForm::nouveauFormId("Connexion") ?>">
-  First name:<br>
-  <input type="text" name="firstname" value="Mickey">
-  <br>
-  Last name:<br>
-  <input type="text" name="lastname" value="Mouse">
-  <br><br>
-  <input type="submit" value="Submit">
-</form> 
-
 <?php
 
-var_dump($_POST);
+$form = core\MainForm::getInstance();
 
-new \app\forms\Connexion();
+
+if ($form) {
+	var_dump($form);
+	var_dump($form->succes());
+};
+
+?>
+
+<form action="" method="post">
+	<input type="hidden" name="formid" value="<?= \core\MainForm::nouveauFormId("Connexion") ?>">
+	First name:<br>
+	<input type="text" name="courriel" value="">
+	<br>
+	Last name:<br>
+	<input type="text" name="motDePasse" value="">
+	<br><br>
+	<input type="submit" value="Submit">
+</form> 
+
+
+

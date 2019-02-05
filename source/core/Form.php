@@ -3,11 +3,15 @@
 namespace core;
 
 abstract class Form {
-    protected $post = [];
+    protected $action;
     protected $erreurs = [];
 
-    public function __construct() {
-        echo "cc";
+    public function __construct(string $action) {
+        $this->action = $action;
+
+        foreach ($_POST as $key => $value)
+            if (\property_exists($this, $key))
+                $this->$key = $value;
     }
 
     /**
@@ -23,7 +27,7 @@ abstract class Form {
      * @return boolean
      */
     public function succes() : bool {
-        return count($erreur) > 0;
+        return count($this->erreurs) == 0;
     }
 
     /**
@@ -32,8 +36,8 @@ abstract class Form {
      * @param string $erreur
      * @return void
      */
-    public function ajouterErreur(string $cle,string $erreur) {
-        $erreus[$cle] = $erreur;
+    public function ajouterErreur(string $cle, string $erreur) {
+        $this->erreurs[$cle] = $erreur;
     }
 
     /**
@@ -42,7 +46,7 @@ abstract class Form {
      * @return array
      */
     public function getErreurs() : array {
-        return $erreurs;
+        return $this->erreurs;
     }
 
     /**

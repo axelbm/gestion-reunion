@@ -48,7 +48,6 @@ class Session extends \core\Session {
         // }
 
         if ($resultat){
-            self::initSession();
             $_SESSION["connecter"] = $c;	 
         }
 

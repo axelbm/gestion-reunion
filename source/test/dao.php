@@ -3,9 +3,13 @@
 use \app\modeles;
 use \app\dao;
 
-$user = \app\dao\Utilisateur::find("axel@gmail.com");
+$user = dao\Utilisateur::find("axel@gmail.com");
 
-$user->setNom("test");
+
+if ($user) {
+    echo "trouver";
+}
+
 
 // \app\dao\Utilisateur::select("ORDER BY nom");
 

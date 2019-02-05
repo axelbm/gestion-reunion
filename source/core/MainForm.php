@@ -17,18 +17,24 @@ class MainForm {
 		$formClass = "\\app\\forms\\" . ucfirst($action);
 
 		if (self::exists($action)) {
-			$form = new $formClass();
+			$form = new $formClass($action);
 
 			self::$instance = $form;
 
-			$err = $form->valider();
+			$form->valider();
+		}
+	}
 
-			if (!is_null($err)) {
-				self::executerErreur($err);
+	static function trouverForm() {
+		if (isset($_POST["formid"])) {
+			$formId = $_POST["formid"];
+
+			if ($action = Session::getFormAction($formId)) {
+				self::executer($action);
 			}
 		}
 
-		exit();
+		Session::viderFormAction();
 	}
 
 	/**
@@ -50,7 +56,7 @@ class MainForm {
     static function nouveauFormId(string $action) : string {
         $id = Util::randomKey();
 
-        Session::ajouterFormAction($action, $id);
+        Session::ajouterFormAction($id, $action);
 
         return $id;
     }
@@ -60,7 +66,7 @@ class MainForm {
 	 *
 	 * @return Form
 	 */
-	static function getInstance() : Form {
+	static function getInstance() : ?Form {
 		return self::$instance;
 	}
 }

@@ -15,7 +15,11 @@ try {
 }
 
 // Initialisation de la session
-core\Session::initialiser();
+session_start();
+core\Session::initializer();
+
+// Analyse du formulaire
+core\MainForm::trouverForm();
 
 // Extrait les paramettre du url
 $params = explode('/', $_GET['params']);
