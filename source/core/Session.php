@@ -17,7 +17,7 @@ class Session {
     }
 
     static public function initialiser() {
-        if (!estOuverte()){
+        if (!self::estOuverte()){
             session_start();
         }
     } 
