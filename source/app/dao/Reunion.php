@@ -17,4 +17,8 @@ abstract class Reunion extends DAO {
         "PointDordres" => "Id:PointDordre:FK:reunionid",
         "Participations" => "Id:Participation:FK:reunionid"
     );
+
+    static public function recherche(datetime $date) : array{
+        return self::select("WHERE date = $date");
+    }
 }

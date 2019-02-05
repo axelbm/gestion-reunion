@@ -24,4 +24,8 @@ abstract class Utilisateur extends DAO {
     static public function obtenirAdministrateurs() : array {
         return self::select("WHERE administateur = 1");
     }
+
+    static public function recherche(string $nom) : array{
+        return self::select("WHERE CONTAINS((nom + ' ' + prenom, prenom + ' ' + nom, courriel), '$nom')");
+    }
 }
