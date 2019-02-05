@@ -22,10 +22,7 @@ class Utilisateur extends Modele {
     }
 
     public function validerMotDePasse (string $pass) : bool {
-        if ($pass == $motdepasse){
-            return true;
-        }
-        return false;
+        return $pass == $motdepasse;
     }
 
     public function getNomComplet (int $format = 0) : string{
