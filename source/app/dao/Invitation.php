@@ -4,7 +4,10 @@ namespace app\dao;
 
 use \core\DAO;
 
-class Invitation extends DAO {
+abstract class Invitation extends DAO {
+    static protected $primaryKeys;
+    static protected $parsedProprietes = null;
+    
     static protected $table = "invitation";
 
     static protected $proprietes = array(

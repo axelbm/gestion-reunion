@@ -13,6 +13,14 @@ class Utilisateur extends Modele {
     protected $motdepasse;
     protected $administrateur;
 
+    public function __construct(string $courriel="", string $nom="", string $prenom="", string $motdepasse="", bool $administrateur=false) {
+        $this->courriel = $courriel;
+        $this->nom = $nom;
+        $this->prenom = $prenom;
+        $this->motdepasse = $motdepasse;
+        $this->administrateur = $administrateur;
+    }
+
     public function validerMotDePasse (string $pass) : bool {
         if ($pass == $motdepasse){
             return true;
@@ -32,5 +40,12 @@ class Utilisateur extends Modele {
                 return \substr($this->prenom,0,1)." ".\substr($this->nom,0,1);
                 break;
         }
+    }
+
+    public function onSetNom($old, $new) {
+        \var_dump($old);
+        \var_dump($new);
+
+        return $new;
     }
 }

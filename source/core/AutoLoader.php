@@ -2,7 +2,7 @@
 
 namespace core;
 
-class AutoLoader {
+abstract class AutoLoader {
     static public function loader($name) { 
         $args = explode("\\", $name);
         $classname = array_pop($args);

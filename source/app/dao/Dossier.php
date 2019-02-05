@@ -4,11 +4,16 @@ namespace app\dao;
 
 use \core\DAO;
 
-class Dossier extends DAO {
+abstract class Dossier extends DAO {
+    static protected $primaryKeys;
+    static protected $parsedProprietes = null;
+    
     static protected $table = "dossiers";
 
     static protected $proprietes = array(
-        "ID" => "dossierid:string:PK",
-        "Description" => "description:string"
+        "Id" => "dossierid:string:PK",
+        "Description" => "description:string",
+
+        "PointDordres" => "Id:PointDordre:FK:dossierid"
     );
 }

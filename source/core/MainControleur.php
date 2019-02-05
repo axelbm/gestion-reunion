@@ -5,7 +5,7 @@
 
 namespace core;
 
-class MainControleur {
+abstract class MainControleur {
 
 	static private $instance = null;
 

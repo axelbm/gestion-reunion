@@ -1,21 +1,17 @@
 <?php
 
-$user = \app\modeles\Utilisateur::toObject(array(
+use app\dao;
+use app\modeles;
+
+$part = modeles\Participation::toObject([
+    "reunionid" => 123,
     "courriel" => "axel@gmail.com",
-    "nom" => "Michaud",
-    "prenom" => "Axel",
-    "motdepasse" => "test",
-    "administrateur" => 0
-));
+    "statusid" => "idk"
+]);
 
-// $user = \app\doa\Utilisateur::find("axel@gmail.com");
+var_dump($part->getProprietes());
 
-if(!is_null($user)) {
-    
-}
 
-// $user->setCourriel("test");
 
-$user->setNom("CCCCCC");
-var_dump($user->getNomComplet());
+var_dump($part->getPrimaryKeys());
 
