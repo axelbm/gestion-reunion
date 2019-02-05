@@ -14,6 +14,8 @@ try {
     core\MainControleur::executerErreur(new \Exception("Base de données inaccessible...", 500));
 }
 
+// Initialisation de la session
+core\Session::initSession();
 
 // Extrait les paramettre du url
 $params = explode('/', $_GET['params']);
