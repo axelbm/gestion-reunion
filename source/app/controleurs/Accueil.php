@@ -11,12 +11,12 @@ class Accueil extends \core\Controleur {
 			return new \Exception("erreur 404", 404);
 
 		// tout est cool
+		$utilisateur = Session::getUtilisateur();
 		
 		$vue = new \core\Vue("accueil");
 
 		$vue->afficher();
 
-		$user = Session::getUtilisateur();
 
 		return null;
 	}
