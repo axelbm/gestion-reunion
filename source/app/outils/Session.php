@@ -15,37 +15,13 @@ class Session extends \core\Session {
         return null;
     } 
 
-    static public function connexion() : boolval {
+    static public function connexion() : bool {
         $c =$_REQUEST['courriel'];
         $m =$_REQUEST['motDePasse'];
 
         $resultat = true;
         //$resultat = FormConnexion::Vallider();
 
-
-        // if ($c == "") {
-        //     $_REQUEST["messages"]["courriel"] = "Courriel obligatoire";
-        //     $resultat = FALSE;
-        // }
-        // if ($m == "") {
-        //     $_REQUEST["messages"]["motDePasse"] = "Mot de passe obligatoire";
-        //     $resultat = FALSE;
-        // }
-        // if ($resultat) {            
-        //     $dao = new FavoriDAO();
-        //     $u = $dao->findUser($c);
-        //     if ($u == NULL) {                
-        //         $_REQUEST["messages"]["courriel"] = "Utilisateur inexistant";
-        //         $resultat = FALSE;
-        //     }
-        //     elseif ($u->getMotDePasse() != $m) {
-        //         $_REQUEST["messages"]["motDePasse"] = "Mot de passe incorrect";
-        //         $resultat = FALSE;
-        //     }
-        //     else {
-        //         return true;		
-        //     }
-        // }
 
         if ($resultat){
             self::initSession();
