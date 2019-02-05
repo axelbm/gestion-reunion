@@ -1,6 +1,8 @@
 <?php
 
-$utilisateur = new app\dao\Utilisateur();
+// $utilisateur = new app\dao\Utilisateur();
 
-
-echo Util::class_name($utilisateur);
+for ($i=0; $i < 100; $i++) { 
+    # code...
+    echo \core\Util::randomKey() . "<br>";
+}
