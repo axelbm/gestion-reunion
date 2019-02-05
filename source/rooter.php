@@ -15,7 +15,7 @@ try {
 }
 
 // Initialisation de la session
-core\Session::initSession();
+core\Session::initialiser();
 
 // Extrait les paramettre du url
 $params = explode('/', $_GET['params']);
