@@ -1,6 +1,6 @@
 <?php
 
-namespace app\controleurs\atrait;
+namespace app\controleurs\atraits;
 
 trait Utilisateur {
     protected $utilisateur;

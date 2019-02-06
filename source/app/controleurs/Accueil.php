@@ -5,7 +5,7 @@ namespace app\controleurs;
 use \app\outils\Session;
 
 class Accueil extends \core\Controleur {
-	use atrait\Utilisateur;
+	use atraits\Utilisateur;
 
 	public function action(array $args) : ?\Exception {
 		if (count($args) > 0)
