@@ -2,20 +2,20 @@
 
 namespace app\forms;
 
-class Inscription extends \core\Form {
+class AjouterPointDordre extends \core\Form {
     protected $reunionid;
     protected $titre;
     protected $description;
     protected $dossierid;
     
     public function valider () {
-        if ($reunionid == "") {
+        if ($this->reunionid == "") {
             $this->ajouterErreur("reunionid", "Réunion obligatoire");
         }
-        if ($titre == "") {
+        if ($this->titre == "") {
             $this->ajouterErreur("titre", "Titre obligatoire");
         }
-        if ($dossierid == "") {
+        if ($this->dossierid == "") {
             $this->ajouterErreur("dossierid", "Dossier obligatoire");
         }
     }

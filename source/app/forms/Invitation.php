@@ -2,14 +2,15 @@
 
 namespace app\forms;
 
-class Inscription extends \core\Form {
+class Invitation extends \core\Form {
     protected $courriel;
     
     public function valider () {
-        if ($courriel == "") {
+        if ($this->courriel == "") {
             $this->ajouterErreur("courriel", "Courriel obligatoire");
-        }elseif(\app\dao\Invitation::find($courriel)){
-            $this->ajouterErreur("courriel", "Ce courriel à déja reçu une invitation");
+        }
+        elseif(\app\dao\Invitation::find($this->courriel)){
+            $this->ajouterErreur("courriel", "Ce courriel a déjà reçu une invitation");
         }
     }
 }

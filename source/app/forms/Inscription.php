@@ -11,18 +11,21 @@ class Inscription extends \core\Form {
     protected $cleInvitation;
 
     public function valider () {
-        if ($courriel == "") {
+        if ($this->courriel == "") {
             $this->ajouterErreur("courriel", "Courriel obligatoire");
         }
 
-        if ($motDePasse == "") {
+        if ($this->motDePasse == "") {
             $this->ajouterErreur("motDePasse", "Mot de passe obligatoire");
-        }elseif ($motDePasse != $confirmMotDePasse) {
+        }
+        elseif ($this->motDePasse != $this->confirmMotDePasse) {
             $this->ajouterErreur("motDePasse", "Les deux mat de passe doivent être identique");
         }
         
-        $i = \app\dao\Invitation::find($courriel);
-        if ($i->validerCle(cleInvitation)){
+
+        $invitation = \app\dao\Invitation::find($courriel);
+
+        if ($invitation->validerCle($this->cleInvitation)){
             $this->ajouterErreur("cleInvitation", "Clé d'invitation incorrecte");
         }
     }

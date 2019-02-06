@@ -2,15 +2,15 @@
 
 namespace app\forms;
 
-class Inscription extends \core\Form {
+class AjouterParticipation extends \core\Form {
     protected $reunionid;
     protected $courriel;
     
     public function valider () {
-        if ($courriel == "") {
+        if ($this->courriel == "") {
             $this->ajouterErreur("courriel", "Courriel obligatoire");
         }
-        if ($reunionid == "") {
+        if ($this->reunionid == "") {
             $this->ajouterErreur("reunionid", "Réunion obligatoire");
         }
     }

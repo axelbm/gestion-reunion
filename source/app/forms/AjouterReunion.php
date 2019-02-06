@@ -2,11 +2,11 @@
 
 namespace app\forms;
 
-class Inscription extends \core\Form {
+class AjouterReunion extends \core\Form {
     protected $date;
     
     public function valider () {
-        if ($date == "") {
+        if ($this->date == "") {
             $this->ajouterErreur("date", "Date obligatoire");
         }
     }
