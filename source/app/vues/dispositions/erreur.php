@@ -27,7 +27,7 @@
 		</script>
 	</head>
 
-	<body class="bg-light">
+	<body class="bg-light noselect">
 		<center id="container">
 			
 			<div id="content" class="container">
