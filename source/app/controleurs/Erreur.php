@@ -9,6 +9,9 @@ class Erreur extends \core\Controleur {
 
         $vue = new \core\Vue("erreur");
 
+        $vue->setDisposition("erreur");
+
+        $vue->set("erreur", $err);
         $vue->set("code", $err->getCode());
         $vue->set("message", $err->getMessage());
 
