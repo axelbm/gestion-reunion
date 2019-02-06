@@ -22,6 +22,19 @@ Un département tient des réunions et gère différents dossiers. Lors des réu
 * Il est important de commenter son code lorsque "le code ne parle pas de lui même", donc quant c'est plus complex, il vaut mieux commenter!
 
 
+# Note
+Le façon d'appeler un DAO a changé. Les dao utilise le principle de singleton.
+Maintenent :
+``` php
+\core\DAO::Utilisateur()->find("exemple@gmail.com");
+Model->dao()->find(...);
+```
+Avant :
+``` php
+\app\dao\Utilisateur::find("exemple@gmail.com");
+```
+
+
 # Schema
 
 ### La Session
