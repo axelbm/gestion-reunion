@@ -1,1 +1,1 @@
-<h1>Entete</h1>
+<h1 class="text-center mt-2">Gestion de réunions</h1>

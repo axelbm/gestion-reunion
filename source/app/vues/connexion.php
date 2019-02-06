@@ -1,10 +1,9 @@
 <div class="bg-dark">
    <div class="container mt-4">
         <div class="row">
-            <div class="col-lg-4 offset-lg-4" id="alert">
-                <strong id="result">Salut les copains</strong>
-            </div>
+        <strong id="result">Coucou</strong>
         </div>
+   </div>
    </div>
    <div class="col-lg-4 offset-lg-4 bg-light rounded" id="login-box">
         <h2 class="text-center mt-2">Se connecter</h2>
@@ -19,22 +18,16 @@
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" name="rem" class="custom-control-input" id="customCheck">
                     <label for="customCheck" class="custom-control-label">Se souvenir de moi</label>
-                    <a href="#" id="forgot-btn" class="float-right">Oublié votre mot de passe ?</a>
+                    <a href="#" id="forgot-btn" class="float-right">Mot de passe oublié ?</a>
                 </div>
             </div>
             <div class="form-group">
                 <input type="submit" name="login" id="login" value="Login" class="btn btn-primary btn-block">
             </div>
             <div class="form-group">
-                <p class="text-center">Nouvel utilisateur ? <a href="#" id="register-btn">S'inscrire ici</a></p>
+                <p class="text-center">Première fois ? <a href="#" id="register-btn">S'inscrire ici</a></p>
             </div>
         </form>
-   </div>
-   <div class="row">
-            <div class="col-lg-4 offset-lg-4" id="alert">
-                <strong id="result">Salut les copains</strong>
-            </div>
-        </div>
    </div>
 
    <div class="col-lg-4 offset-lg-4 bg-light rounded" id="register-box">
@@ -75,6 +68,7 @@
            $("#login-btn").click(function(){
                $("#register-box").hide();
                $("#login-box").show();
+       });
        });
    </script>
 </div>
