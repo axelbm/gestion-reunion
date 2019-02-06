@@ -2,6 +2,8 @@
 
 namespace app\forms;
 
+use \core\DAO;
+
 class Inscription extends \core\Form {
     protected $courriel;
     protected $motDePasse;
@@ -23,7 +25,7 @@ class Inscription extends \core\Form {
         }
         
 
-        $invitation = \app\dao\Invitation::find($courriel);
+        $invitation = DAO::Invitation()->find($courriel);
 
         if ($invitation->validerCle($this->cleInvitation)){
             $this->ajouterErreur("cleInvitation", "Clé d'invitation incorrecte");

@@ -18,7 +18,7 @@ abstract class Modele {
         // Si il y a un get
         if (substr($name, 0, 3) == "get") {
             $propNom = substr($name, 3);
-            $prop = $dao::getPropriete($propNom);
+            $prop = $this->dao()->getPropriete($propNom);
             
             if (isset($prop)) {
                 // Si la propriete est une cle étrangère
@@ -26,7 +26,7 @@ abstract class Modele {
                     $methode = "get".$prop["key"];
 
                     // Trouve les objets liés a l'aide de son DAO
-                    return $dao::getObjetEtranger($propNom, $this->$methode());
+                    return $this->dao()->getObjetEtranger($propNom, $this->$methode());
                 }
                 else {
                     $propCle = $prop["key"];
@@ -39,8 +39,8 @@ abstract class Modele {
         elseif (substr($name, 0, 3) == "set") {
             $propNom = substr($name, 3);
             
-            if (array_key_exists($propNom, $dao::getProprietes())) {
-                $prop = $dao::getPropriete($propNom);
+            if (array_key_exists($propNom, $this->dao()->getProprietes())) {
+                $prop = $this->dao()->getPropriete($propNom);
 
                 // Impossible de set sur une cle primère ou étrangère
                 if (!$prop["isPrimaryKey"] && !isset($prop["fkColonne"])) {
@@ -76,13 +76,15 @@ abstract class Modele {
      * @return array
      */
     public function getPrimaryKeys() : array {
-        $dao = $this->dao();
-
         $pks = [];
 
-        foreach ($dao::getPrimaryKeys() as $id => $key) {
+        foreach ($this->dao()->getPrimaryKeys() as $id => $key) {
             $methode = "get$key";
-            $pks[$id] = ["key" => $dao::getPropriete($key)["key"], "value" => $this->$methode()];
+
+            $pks[$id] = [
+                "key" => $this->dao()->getPropriete($key)["key"], 
+                "value" => $this->$methode()
+            ];
         }
 
         return $pks;
@@ -96,9 +98,7 @@ abstract class Modele {
      * @return array
      */
     public function getPropriete(string $key) : array {
-        $dao = $this->dao();
-
-        $prop = $dao::getPropriete($key);
+        $prop = $this->dao()->getPropriete($key);
 
         $get = "get$key";
         $prop["value"] = $this->$get();
@@ -113,11 +113,9 @@ abstract class Modele {
      * @return array
      */
     public function getProprietes() : array {
-        $dao = $this->dao();
-
         $props = [];
         
-        foreach ($dao::getProprietes() as $key => $prop) {
+        foreach ($this->dao()->getProprietes() as $key => $prop) {
             $get = "get$key";
             $prop["value"] = $this->$get();
 
@@ -133,12 +131,10 @@ abstract class Modele {
      * @return void
      */
     public function sauvegarder() {
-        $dao = $this->dao();
-
         if ($this->surBD) {
-            $dao::sauvegarder($this);
+            $this->dao()->sauvegarder($this);
         } else {
-            $dao::ajouter($this);
+            $this->dao()->ajouter($this);
         }
     }
 
@@ -148,10 +144,8 @@ abstract class Modele {
      * @return void
      */
     public function supprimer() {
-        $dao = $this->dao();
-
         if ($this->surBD) {
-            $dao::supprimer($this);
+            $this->dao()->supprimer($this);
         }
     }
     
@@ -161,11 +155,9 @@ abstract class Modele {
      * @return array
      */
     public function toArray() : array {
-        $dao = $this->dao();
-
         $arr = array();
 
-        foreach ($dao::getProprietes() as $key => $prop) {
+        foreach ($this->dao()->getProprietes() as $key => $prop) {
             $propkey = $prop["key"];
             
             $value = $this->$propkey;
@@ -184,8 +176,10 @@ abstract class Modele {
      *
      * @return string
      */
-    public function dao() : string {
-        return "\\app\\dao\\".Util::objectName($this);
+    public function dao() : DAO {
+        $dao = Util::objectName($this);
+
+        return DAO::$dao();
     }
 
     /**
@@ -196,11 +190,12 @@ abstract class Modele {
      */
     static public function toObject(array $params, ?bool $depuisDB=false) : Modele {
         $modele = get_called_class();
-        $dao = "\\app\\dao\\".Util::className($modele);
+        $daoName = Util::className($modele);
+        $dao = DAO::$daoName();
 
         $obj = new $modele();
 
-        foreach ($dao::getProprietes() as $key => $prop) {
+        foreach ($dao->getProprietes() as $key => $prop) {
             if (!isset($prop["fkColonne"])) {
                 $propkey = $prop["key"];
                 $obj->$propkey = Database::convertireVersPHP($params[$prop["key"]], $prop["type"]);

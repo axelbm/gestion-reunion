@@ -4,13 +4,10 @@ namespace app\dao;
 
 use \core\DAO;
 
-abstract class Utilisateur extends DAO {
-    static protected $primaryKeys;
-    static protected $parsedProprietes = null;
-    
-    static protected $table = "utilisateurs";
+class Utilisateur extends DAO {
+    protected $table = "utilisateurs";
 
-    static protected $proprietes = array(
+    protected $proprietes = array(
         "Courriel" => "courriel:string:PK",
         "Nom" => "nom:string",
         "Prenom" => "prenom:string",
@@ -21,11 +18,11 @@ abstract class Utilisateur extends DAO {
     );
 
 
-    static public function obtenirAdministrateurs() : array {
-        return self::select("WHERE administateur = 1");
+    public function obtenirAdministrateurs() : array {
+        return $this->select("WHERE administateur = 1");
     }
 
-    static public function recherche(string $nom) : array{
-        return self::select("WHERE CONTAINS((nom + ' ' + prenom, prenom + ' ' + nom, courriel), '$nom')");
+    public function recherche(string $nom) : array{
+        return $this->select("WHERE CONTAINS((nom + ' ' + prenom, prenom + ' ' + nom, courriel), '$nom')");
     }
 }

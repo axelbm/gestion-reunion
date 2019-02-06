@@ -4,13 +4,10 @@ namespace app\dao;
 
 use \core\DAO;
 
-abstract class PointDordre extends DAO {
-    static protected $primaryKeys;
-    static protected $parsedProprietes = null;
-    
-    static protected $table = "pointdordres";
+class PointDordre extends DAO {
+    protected $table = "pointdordres";
 
-    static protected $proprietes = array(
+    protected $proprietes = array(
         "Id" => "pointdordreid:string:PK",
         "ReunionID" => "reunionid:string",
         "Titre" => "titre:string",

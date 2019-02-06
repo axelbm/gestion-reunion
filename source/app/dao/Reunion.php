@@ -4,13 +4,10 @@ namespace app\dao;
 
 use \core\DAO;
 
-abstract class Reunion extends DAO {
-    static protected $primaryKeys;
-    static protected $parsedProprietes = null;
-    
-    static protected $table = "reunions";
+class Reunion extends DAO {
+    protected $table = "reunions";
 
-    static protected $proprietes = array(
+    protected $proprietes = array(
         "Id" => "reunionid:string:PK",
         "Date" => "date:datetime",
 
@@ -18,7 +15,7 @@ abstract class Reunion extends DAO {
         "Participations" => "Id:Participation:FK:reunionid"
     );
 
-    static public function recherche(datetime $date) : array{
-        return self::select("WHERE date = $date");
+    public function recherche(datetime $date) : array{
+        return $this->select("WHERE date = $date");
     }
 }
