@@ -11,6 +11,6 @@ class Invitation extends Modele {
     protected $cle;
 
     public function validerCle (string $cleV) : bool {
-        return $cleV == $cle;
+        return $cleV == $this->$cle;
     }
 }
