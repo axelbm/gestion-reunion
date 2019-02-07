@@ -22,6 +22,9 @@ class MainForm {
 			self::$instance = $form;
 
 			$form->valider();
+
+			if ($form->succes())
+				$form->action();
 		}
 	}
 

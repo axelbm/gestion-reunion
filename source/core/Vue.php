@@ -33,6 +33,9 @@ class Vue {
         $this->addScript("$this->disposition.js");
         $this->addStyle("$this->disposition.css");
 
+        $this->addScript("scripts/$this->vueFile.js");
+        $this->addStyle("styles/$this->vueFile.css");
+
         // Extrait les variables stockés dans le vue
         extract($this->vars);
 
@@ -90,7 +93,7 @@ class Vue {
 
     public function addScript(string $fichier) : void {
         $fichier = "public/$fichier";
-
+        
         if (file_exists(APPROOT.$fichier)) {
             \array_push($this->jsFiles, $fichier);
         }

@@ -85,6 +85,13 @@ abstract class Form {
     /**
      * Undocumented function
      *
+     * @return void
+     */
+    public abstract function action();
+
+    /**
+     * Undocumented function
+     *
      * @param string $cle
      * @param mixed $valeur
      * @return boolean
@@ -147,5 +154,9 @@ abstract class Form {
 
     public function getPosition() : int {
         return $this->position;
+    }
+
+    public function getAction() : string {
+        return $this->action;
     }
 }

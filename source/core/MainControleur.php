@@ -63,4 +63,9 @@ abstract class MainControleur {
 	static function getInstance() : Controleur {
 		return self::$instance;
 	}
+
+
+	static function chargerPage(?string $action="", ?array $params=[]) {
+		header('Location: '. WEBROOT .$action . ($params ? "/".implode("/", $params) : ""));
+	}
 }

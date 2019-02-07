@@ -8,12 +8,11 @@ class Connexion extends \core\Form {
     public $courriel;
     public $motDePasse;
 
-
     public function valider (){
         $resultat = true;
 
         if (!$this->validerChamp("Courriel", $this->courriel)) {
-            $this->ajouterErreur("courriel", "Courriel invlide");
+            $this->ajouterErreur("courriel", "Courriel invalide");
             $resultat = false;
         }
 
@@ -23,14 +22,20 @@ class Connexion extends \core\Form {
         }
 
         if ($resultat) {     
-            $u = DAO::Utilisateur()->find($this->courriel);
+            $this->utilisateur = DAO::Utilisateur()->find($this->courriel);
 
-            if ($u == NULL) {  
+            if ($this->utilisateur == NULL) {  
                 $this->ajouterErreur("courriel", "Utilisateur inexistant");
             }
-            elseif (!$u->validerMotDePasse($this->motDePasse)) {
+            elseif (!$this->utilisateur->validerMotDePasse($this->motDePasse)) {
                 $this->ajouterErreur("motDePasse", "Mot de passe incorrect");
             }
         }
+    }
+
+    public function action() {
+        \app\outils\Session::connexion($this->utilisateur);
+
+        \core\MainControleur::chargerPage("accueil");
     }
 }
