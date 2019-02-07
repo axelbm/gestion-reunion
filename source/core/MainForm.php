@@ -13,11 +13,11 @@ class MainForm {
 	 * @param string $action
 	 * @param array $params
 	 */
-	static function executer(string $action) : void {
+	static function executer(string $action, int $pos) : void {
 		$formClass = "\\app\\forms\\" . ucfirst($action);
 
 		if (self::exists($action)) {
-			$form = new $formClass($action);
+			$form = new $formClass($action, $pos);
 
 			self::$instance = $form;
 
@@ -28,9 +28,10 @@ class MainForm {
 	static function trouverForm() {
 		if (isset($_POST["formid"])) {
 			$formId = $_POST["formid"];
+			
 
-			if ($action = Session::getFormAction($formId)) {
-				self::executer($action);
+			if ($info = Session::getFormAction($formId)) {
+				self::executer($info[0], $info[1]);
 			}
 		}
 
@@ -53,12 +54,12 @@ class MainForm {
      * @param string $action
      * @return string
      */
-    static function nouveauFormId(string $action) : string {
+    static function nouveauFormId(string $action) : array {
         $id = Util::randomKey();
 
-        Session::ajouterFormAction($id, $action);
+        $pos = Session::ajouterFormAction($id, $action);
 
-        return $id;
+        return [$id, $pos];
     }
 
 	/**

@@ -4,15 +4,19 @@ namespace core;
 
 class Session {
     
-    static public function getFormAction(string $formId) : ?string {
+    static public function getFormAction(string $formId) : ?array {
         if (isset($_SESSION["formsId"][$formId]))
             return $_SESSION["formsId"][$formId];
         else
             return null;
     }
 
-    static public function ajouterFormAction(string $formId, string $formAction) {
-        $_SESSION["formsId"][$formId] = $formAction;
+    static public function ajouterFormAction(string $formId, string $formAction) : int {
+        $pos = count($_SESSION["formsId"]);
+
+        $_SESSION["formsId"][$formId] = [$formAction, $pos];
+
+        return $pos;
     }
 
     static public function viderFormAction() {

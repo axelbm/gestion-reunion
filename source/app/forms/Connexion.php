@@ -5,16 +5,15 @@ namespace app\forms;
 use core\DAO;
 
 class Connexion extends \core\Form {
-    protected $proprietes = [
-        "courriel" => "Courriel",
-        "motDePasse" => "MotDePasse"
-    ];
+    public $courriel;
+    public $motDePasse;
+
 
     public function valider (){
         $resultat = true;
 
-        if ($this->courriel == "") {
-            $this->ajouterErreur("courriel", "Courriel obligatoire");
+        if (!$this->validerChamp("Courriel", $this->courriel)) {
+            $this->ajouterErreur("courriel", "Courriel invlide");
             $resultat = false;
         }
 
