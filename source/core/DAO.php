@@ -3,20 +3,34 @@
 namespace core;
 
 abstract class DAO {
-    static protected $proprietes;
-    static protected $primaryKeys;
-    static protected $parsedProprietes = null;
+    static private $instances = [];
+
+    protected $proprietes = [];
+    protected $primaryKeys = [];
+    protected $parsedProprietes = null;
+
+    static public function __callStatic($key, $args) {
+        $daoClass = "\\app\\dao\\$key";
+
+        if (\class_exists($daoClass)) {
+            if (!isset(self::$instances[$daoClass]))
+                self::$instances[$daoClass] = new $daoClass();
+
+            return self::$instances[$daoClass];
+        }
+    }
+
+    private function __construct() {
+        $this->parseProprietes();
+    }
 
     /**
      * Convertie les propriétés du DAO
      *
      * @return void
      */
-    static private function parseProprietes() {
-        $dao = get_called_class();
-
-        $dao::$parsedProprietes = array();
-        $dao::$primaryKeys = array();
+    private function parseProprietes() {
+        $proprietes = [];
 
         /**
          * Exemples de propriétés :
@@ -30,10 +44,10 @@ abstract class DAO {
          *      Il est possible d'ajouter l'option "S" pour obtenir un seul objet au lieu d'un array
          */
 
-        foreach ($dao::$proprietes as $key => $value) {
+        foreach ($this->proprietes as $key => $value) {
             // Divide la propriété a chaque :
             $args = explode(":", $value);
-            $options = array();
+            $options = [];
 
             // Déclanche une exception si il y a pas le bon nombre de paramettres
             if (count($args) < 2 || count($args) > 4)
@@ -59,16 +73,16 @@ abstract class DAO {
                 $prop["fkColonne"] = $args[3];
             }
 
-            $dao::$parsedProprietes[$key] = $prop;
+            $proprietes[$key] = $prop;
             
             // Si il y a le PK, ajoute la propriete au cles primere
             if ($is_primatry)
-                \array_push($dao::$primaryKeys, $key);
+                \array_push($this->primaryKeys, $key);
         }
+
+        $this->proprietes = $proprietes;
     }
 
-    
-    
     /**
      * Retourne la propriete demandé
      * [key, type, options[\.\.\.], isPrimaryKey]
@@ -76,13 +90,8 @@ abstract class DAO {
      * @param string $nom
      * @return array
      */
-    static public function getPropriete(string $nom) : array {
-        $dao = get_called_class();
-
-        if ($dao::$parsedProprietes == null)
-            $dao::parseProprietes();
-        
-        return $dao::$parsedProprietes[$nom];
+    public function getPropriete(string $nom) : array {
+        return $this->proprietes[$nom];
     }
 
     /**
@@ -91,13 +100,8 @@ abstract class DAO {
      * 
      * @return array
      */
-    static public function getProprietes() : array {
-        $dao = get_called_class();
-
-        if ($dao::$parsedProprietes == null)
-            $dao::parseProprietes();
-        
-        return $dao::$parsedProprietes;
+    public function getProprietes() : array {
+        return $this->proprietes;
     }
 
     /**
@@ -105,13 +109,8 @@ abstract class DAO {
      *
      * @return array
      */
-    static public function getPrimaryKeys() : array {
-        $dao = get_called_class();
-
-        if ($dao::$parsedProprietes == null)
-            $dao::parseProprietes();
-        
-        return $dao::$primaryKeys;
+    public function getPrimaryKeys() : array {
+        return $this->primaryKeys;
     }
 
     /**
@@ -120,13 +119,8 @@ abstract class DAO {
      * @param integer $id
      * @return string
      */
-    static public function getPrimaryKey(int $id=0) : string {
-        $dao = get_called_class();
-
-        if ($dao::$parsedProprietes == null)
-            $dao::parseProprietes();
-        
-        return $dao::$primaryKeys[$id];
+    public function getPrimaryKey(int $id=0) : string {
+        return $this->primaryKeys[$id];
     }
 
     /**
@@ -135,15 +129,16 @@ abstract class DAO {
      * @param Modele $obj
      * @return void
      */
-    static public function ajouter(Modele $obj) {
-        $dao = get_called_class();
-
+    public function ajouter(Modele $obj) {
         $colonne = [];
         $colonneKey = [];
         $valeurs = [];
 
         // fait la liste des clés primères, colonnes et de leurs valeurs 
         foreach ($obj->getProprietes() as $key => $prop) {
+            if (isset($prop["fkColonne"]))
+                continue;
+            
             \array_push($colonne, $prop["key"]);
             \array_push($colonneKey, ":".$prop["key"]);
             $valeurs[":" . $prop["key"]] = Database::convertireVersDB($prop["value"], $prop["type"]);
@@ -152,9 +147,7 @@ abstract class DAO {
         $colonne = \implode(", ", $colonne);
         $colonneKey = \implode(", ", $colonneKey);
         
-
-        $table = $dao::$table;
-        $stendment = "INSERT INTO $table ($colonne) VALUES ($colonneKey)";
+        $stendment = "INSERT INTO $this->table ($colonne) VALUES ($colonneKey)";
 
         $stmt = Database::prepare($stendment);
         $stmt->execute($valeurs);
@@ -166,14 +159,15 @@ abstract class DAO {
      * @param Modele $obj
      * @return void
      */
-    static public function sauvegarder(Modele $obj) {
-        $dao = get_called_class();
-
+    public function sauvegarder(Modele $obj) {
         $condition = [];
         $colonne = [];
         $valeurs = [];
 
         foreach ($obj->getProprietes() as $key => $prop) {
+            if (isset($prop["fkColonne"]))
+                continue;
+
             $valeurs[":" . $prop["key"]] = Database::convertireVersDB($prop["value"], $prop["type"]);
 
             if ($prop["isPrimaryKey"])
@@ -185,9 +179,7 @@ abstract class DAO {
         $condition = \implode(" AND ", $condition);
         $colonne = \implode(", ", $colonne);
         
-
-        $table = $dao::$table;
-        $stendment = "UPDATE $table SET $colonne WHERE $condition";
+        $stendment = "UPDATE $this->table SET $colonne WHERE $condition";
 
         $stmt = Database::prepare($stendment);
         $stmt->execute($valeurs);
@@ -199,9 +191,7 @@ abstract class DAO {
      * @param [type] ...$index
      * @return void
      */
-    static public function supprimer(...$index) {
-        $dao = get_called_class();
-
+    public function supprimer(...$index) {
         $conditions = [];
         $valeurs = [];
 
@@ -217,15 +207,15 @@ abstract class DAO {
                 break;
             }
 
-            $key = $dao::getPropriete($dao::getPrimaryKey($id))["key"];
+            $key = $this->getPropriete($this->getPrimaryKey($id))["key"];
 
             $valeurs[":$key"] = $valeur;
             \array_push($conditions, "$key = :$key");
         }
 
         $conditions = \implode(" AND ", $conditions);
-        $table = $dao::$table;
-        $stendment = "DELETE FROM $table WHERE $conditions";
+        
+        $stendment = "DELETE FROM $this->table WHERE $conditions";
 
         $stmt = Database::prepare($stendment);
         $stmt->execute($valeurs);
@@ -237,22 +227,22 @@ abstract class DAO {
      * @param mixed ...$keys
      * @return Modele|null
      */
-    static public function find(...$index) : ?Modele {
+    public function find(...$index) : ?Modele {
         $dao = get_called_class();
 
         $conditions = [];
         $valeurs = [];
 
         foreach ($index as $id => $valeur) {
-            $key = $dao::getPropriete($dao::getPrimaryKey($id))["key"];
+            $key = $this->getPropriete($this->getPrimaryKey($id))["key"];
 
             $valeurs[":$key"] = $valeur;
             \array_push($conditions, "$key = :$key");
         }
 
         $conditions = \implode(" AND ", $conditions);
-        $table = $dao::$table;
-        $stendment = "SELECT * FROM $table WHERE $conditions";
+        
+        $stendment = "SELECT * FROM $this->table WHERE $conditions";
 
         $stmt = Database::prepare($stendment);
         $stmt->execute($valeurs);
@@ -260,7 +250,7 @@ abstract class DAO {
         $result = $stmt->fetch(\PDO::FETCH_ASSOC);
 
         if ($result) {
-            return $dao::charger($result);
+            return $this->charger($result);
         }
 
         return null;
@@ -273,11 +263,8 @@ abstract class DAO {
      * @param array|null $input
      * @return array
      */
-    static public function select(?string $requete="", ?array $input=[]) : array {
-        $dao = get_called_class();
-
-        $table = $dao::$table;
-        $requete = "SELECT * FROM $table $requete";
+    public function select(?string $requete="", ?array $input=[]) : array {
+        $requete = "SELECT * FROM $this->table $requete";
 
         $stmt = Database::prepare($requete);
         $stmt->execute($input);
@@ -287,19 +274,17 @@ abstract class DAO {
         $objs = [];
 
         foreach ($result as $id => $params)
-            array_push($objs, $dao::charger($params));
+            array_push($objs, $this->charger($params));
 
         return $objs;
     }
 
-    static public function getObjetEtranger(string $colonne, $valeur, ?string $condition="") {
-        $dao = get_called_class();
+    public function getObjetEtranger(string $colonne, $valeur, ?string $condition="") {
+        $prop = $this->getPropriete($colonne);
 
-        $prop = $dao::getPropriete($colonne);
+        $fkDAO = $prop["type"];
 
-        $fkDAO = "\\app\\dao\\".$prop["type"];
-
-        $result = $fkDAO::select("WHERE ".$prop["fkColonne"]." = '$valeur'");
+        $result = self::$fkDAO()->select("WHERE ".$prop["fkColonne"]." = '$valeur'");
 
         if (in_array("S", $prop["options"]))
             return $result[0];
@@ -313,7 +298,7 @@ abstract class DAO {
      * @param array $params
      * @return Modele
      */
-    static public function charger(array $params) : Modele {
+    public function charger(array $params) : Modele {
         $modele = "\\app\\modeles\\".Util::className(get_called_class());
 
         return $modele::toObject($params, true);

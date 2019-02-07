@@ -15,8 +15,32 @@ Un département tient des réunions et gère différents dossiers. Lors des réu
   * À confirmer
 * ***À planifier...***
   * Commencer les DAO
-  * À voir samedi 
+  * À voir samedi
 
 ## Bonne pratique
 * Losque vous travailler sur le projet, esseyez de diviser vos *commit* par tache. C'est a dire, il faut faire un *commit* pour chaque objectife differant, meme si c'est dans la même session de developpement. (Ça permet une collaboration plus fluid)
 * Il est important de commenter son code lorsque "le code ne parle pas de lui même", donc quant c'est plus complex, il vaut mieux commenter!
+
+
+# Note
+Le façon d'appeler un DAO a changé. Les dao utilise le principle de singleton.
+Maintenent :
+``` php
+\core\DAO::Utilisateur()->find("exemple@gmail.com");
+Model->dao()->find(...);
+```
+Avant :
+``` php
+\app\dao\Utilisateur::find("exemple@gmail.com");
+```
+
+
+# Schema
+
+### La Session
+* gerer l'utilisateur
+
+
+### Controleur de connexion
+* accepter la connexion de l'utilsateur
+    * verifie si le courriel et le mot de passe

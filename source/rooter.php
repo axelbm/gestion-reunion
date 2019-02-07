@@ -14,6 +14,12 @@ try {
     core\MainControleur::executerErreur(new \Exception("Base de données inaccessible...", 500));
 }
 
+// Initialisation de la session
+session_start();
+core\Session::initializer();
+
+// Analyse du formulaire
+core\MainForm::trouverForm();
 
 // Extrait les paramettre du url
 $params = explode('/', $_GET['params']);

@@ -1,11 +1,19 @@
 <?php
 
-use \app\modeles;
-use \app\dao;
+use \core\DAO;
 
-$user = \app\dao\Utilisateur::find("axel@gmail.com");
+var_dump(DAO::Utilisateur());
 
-$user->setNom("test");
+
+$u = DAO::Utilisateur()->find("axel@gmail.com");
+
+$u->setNom("B Michaud");
+
+$u->sauvegarder();
+
+var_dump($u);
+
+
 
 // \app\dao\Utilisateur::select("ORDER BY nom");
 
@@ -30,4 +38,4 @@ $user->setNom("test");
 
 // dao\Utilisateur::supprimer("axel@gmail.com");
 
-var_dump($user);
+// var_dump($user);

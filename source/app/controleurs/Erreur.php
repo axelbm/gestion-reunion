@@ -9,8 +9,15 @@ class Erreur extends \core\Controleur {
 
         $vue = new \core\Vue("erreur");
 
+        $vue->setDisposition("erreur");
+
+        $vue->set("erreur", $err);
         $vue->set("code", $err->getCode());
         $vue->set("message", $err->getMessage());
+
+        if ($err->getCode() == 404) {
+            $vue->set("description", "La page que vous cherchez n'existe pas ou l'URL est incorrecte");
+        } 
 
         $vue->afficher();
 

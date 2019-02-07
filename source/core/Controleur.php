@@ -3,6 +3,8 @@
 namespace core;
 
 abstract class Controleur {
+    protected $vue;
+
     function __construct (){
 
     }
@@ -14,5 +16,12 @@ abstract class Controleur {
      * @param array $args
      * @return \Exception|null
      */
-    public abstract function action(array $args) : ?\Exception; 
+    public abstract function action(array $args) : ?\Exception;
+
+
+    public function genererVue(string $vueFile) : Vue {
+        $this->vue = new \core\Vue($vueFile);
+
+        return $this->vue;
+    }
 }

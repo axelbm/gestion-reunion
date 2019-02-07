@@ -13,4 +13,8 @@ class Util {
 
         return self::className($class);
     }
+
+    public static function randomKey(?int $length=16) : string {
+        return bin2hex(random_bytes($length));
+    }
 }

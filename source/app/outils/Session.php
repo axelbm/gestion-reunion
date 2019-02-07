@@ -7,12 +7,30 @@ use \app\modeles\Utilisateur as Utilisateur;
 
 class Session extends \core\Session {
 
+
     static public function getUtilisateur() : ?Utilisateur {
+        if (isset($_SESSION["connecter"])){
+            return $_SESSION["connecter"];
+        }
         return null;
     } 
 
-    static public function setUtilisateur(Utilisateur $user) {
-        // $_SESSION["user"]...
+    static public function connexion() : bool {
+        $c =$_REQUEST['courriel'];
+        $m =$_REQUEST['motDePasse'];
+
+        $resultat = true;
+        //$resultat = FormConnexion::Vallider();
+
+
+        if ($resultat){
+            $_SESSION["connecter"] = $c;	 
+        }
+
+        return $resultat;
     }
 
+    static public function deconnexion(){
+        self::detruireSession();
+    }
 }

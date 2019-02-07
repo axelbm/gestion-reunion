@@ -6,9 +6,12 @@ class Vue {
 
     private $titre = SITE_NOM;
     private $vueFile;
-    private $jsVars = array();
-    private $vars = array();
+    private $jsVars = [];
+    private $vars = [];
+    private $jsFiles = [];
+    private $cssFiles = [];
     private $contenue;
+    private $disposition = "index";
 
     /**
      * Constructeur de Vue avec le fichier de sa vue.
@@ -25,6 +28,11 @@ class Vue {
      * @return void
      */
     public function afficher() {
+        
+        
+        $this->addScript("$this->disposition.js");
+        $this->addStyle("$this->disposition.css");
+
         // Extrait les variables stockés dans le vue
         extract($this->vars);
 
@@ -38,7 +46,7 @@ class Vue {
 		require VUEROOT.$this->vueFile.'.php';
         $contenue = ob_get_clean();
 
-        require VUEROOT.'dispositions/index.php';
+        require VUEROOT."dispositions/".$this->disposition.".php";
     }
 
     /**
@@ -79,4 +87,33 @@ class Vue {
     public function setTitre(string $titre) : void {
         $this->titre = $titre;
     }
+
+    public function addScript(string $fichier) : void {
+        $fichier = "public/$fichier";
+
+        if (file_exists(APPROOT.$fichier)) {
+            \array_push($this->jsFiles, $fichier);
+        }
+    }
+
+    public function addStyle(string $fichier) : void {
+        $fichier = "public/$fichier";
+
+        if (file_exists(APPROOT.$fichier)) {
+            \array_push($this->cssFiles, $fichier);
+        }
+    }
+
+    
+    public function getScripts() : array {
+        return $this->jsFiles;
+    }
+    
+    public function getStyles() : array {
+        return $this->cssFiles;
+    }
+
+    public function setDisposition(string $fichier) {
+        $this->disposition = $fichier;
+    } 
 }
