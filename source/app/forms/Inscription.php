@@ -31,4 +31,11 @@ class Inscription extends \core\Form {
             $this->ajouterErreur("cleInvitation", "Clé d'invitation incorrecte");
         }
     }
+
+    public function action() {
+        $user = new \modeles\Utilisateur($courriel, $nom, $prenom, $motDePasse, false);
+        $user->sauvegarder();
+
+        \core\MainControleur::chargerPage("accueil");
+    }
 }

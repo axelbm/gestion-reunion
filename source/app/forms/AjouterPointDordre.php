@@ -19,4 +19,12 @@ class AjouterPointDordre extends \core\Form {
             $this->ajouterErreur("dossierid", "Dossier obligatoire");
         }
     }
+
+    public function action() {
+        $id = "PlaceHolder";
+        $pointdordre = new \modeles\PointDodre($id, $reunionid, $titre, $description, $dossierid, "");
+        $pointdordre->sauvegarder();
+
+        \core\MainControleur::chargerPage("accueil");
+    }
 }
