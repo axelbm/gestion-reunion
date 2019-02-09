@@ -1,6 +1,6 @@
 <div id="header" class="jumbotron">
     <div class="container">
-        <h1>Gestion de réunions</h1> 
-        <p>Le meilleur gestionnaire de réunions!</p>
+        <h1>AFH</h1> 
+        <p>Système de Gestion de réunions et de dossiers</p>
     </div>
 </div>
