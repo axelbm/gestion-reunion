@@ -13,4 +13,12 @@ class Invitation extends \core\Form {
             $this->ajouterErreur("courriel", "Ce courriel a déjà reçu une invitation");
         }
     }
+
+    public function action() {
+        $cle = "PlaceHolder";
+        $invitation = new \modeles\Invitation($courriel, $cle);
+        $invitation->sauvegarder();
+
+        \core\MainControleur::chargerPage("accueil");
+    }
 }

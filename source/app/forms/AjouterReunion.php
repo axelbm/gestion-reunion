@@ -10,4 +10,12 @@ class AjouterReunion extends \core\Form {
             $this->ajouterErreur("date", "Date obligatoire");
         }
     }
+
+    public function action() {
+        $id = "PlaceHolder";
+        $reunion = new \modeles\Reunion($id, $date);
+        $reunion->sauvegarder();
+
+        \core\MainControleur::chargerPage("accueil");
+    }
 }

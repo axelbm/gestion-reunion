@@ -14,4 +14,11 @@ class AjouterParticipation extends \core\Form {
             $this->ajouterErreur("reunionid", "Réunion obligatoire");
         }
     }
+
+    public function action() {
+        $participation = new \modeles\Participation($reunionid, $courriel, "EnAtente");
+        $participation->sauvegarder();
+
+        \core\MainControleur::chargerPage("accueil");
+    }
 }
