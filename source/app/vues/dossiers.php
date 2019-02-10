@@ -13,7 +13,7 @@
 
 
 <div class="container">
-    <h1 align="center"> - Mes dossiers - </h1>
+    <h1 align="center"> - Les dossiers - </h1>
   <div class="card">
     <div class="card-body">
       <h4 class="card-title">Nom du dossier</h4>

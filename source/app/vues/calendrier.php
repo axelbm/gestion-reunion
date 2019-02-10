@@ -54,7 +54,18 @@
       <a href="#" class="card-link">Consulter</a>
       <a href="#" class="card-link">Modifier</a>
       <a href="#" class="card-link">Supprimer</a>
-      <br><span class="badge badge-success">Présent</span>
+      <br><span class="badge badge-dark">Terminée</span>
+    </div>
+  </div>
+  <br>
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">27 Février 2019 - 14:30</h4>
+      <p class="card-text">#61 - Par (créateur de la réunion)</p>
+      <a href="#" class="card-link">Consulter</a>
+      <a href="#" class="card-link">Modifier</a>
+      <a href="#" class="card-link">Supprimer</a>
+      <br><span class="badge badge-info">En attente</span>
     </div>
   </div>
 </div>
