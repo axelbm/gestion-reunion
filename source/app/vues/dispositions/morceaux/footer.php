@@ -7,6 +7,6 @@
             <a href="https://github.com/h-ugues">Hugues</a>.
         </p>
 
-        <p>Accéder a la <a href="https://github.com/axelbm/gestion-reunion">source</a>.</p>
+        <p>Accéder à la <a href="https://github.com/axelbm/gestion-reunion">source</a>.</p>
     </div>
 </div>
