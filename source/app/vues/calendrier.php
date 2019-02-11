@@ -60,7 +60,7 @@
   <br>
   <div class="card">
     <div class="card-body">
-      <h4 class="card-title">27 Février 2019 - 14:30</h4>
+      <h4 class="card-title">28 Février 2019 - 10:30</h4>
       <p class="card-text">#61 - Par (créateur de la réunion)</p>
       <a href="#" class="card-link">Consulter</a>
       <a href="#" class="card-link">Modifier</a>
