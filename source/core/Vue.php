@@ -95,7 +95,7 @@ class Vue {
         $fichier = "public/$fichier";
         
         if (file_exists(APPROOT.$fichier)) {
-            \array_push($this->jsFiles, $fichier);
+            \array_push($this->jsFiles, WEBROOT.$fichier);
         }
     }
 
@@ -103,7 +103,7 @@ class Vue {
         $fichier = "public/$fichier";
 
         if (file_exists(APPROOT.$fichier)) {
-            \array_push($this->cssFiles, $fichier);
+            \array_push($this->cssFiles, WEBROOT.$fichier);
         }
     }
 
