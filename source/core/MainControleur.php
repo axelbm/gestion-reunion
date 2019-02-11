@@ -65,7 +65,7 @@ abstract class MainControleur {
 	}
 
 
-	static function chargerPage(?string $action="", ?array $params=[]) {
+	static function rediriger(?string $action="", ?array $params=[]) {
 		header('Location: '. WEBROOT .$action . ($params ? "/".implode("/", $params) : ""));
 	}
 }
