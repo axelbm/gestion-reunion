@@ -7,10 +7,10 @@
 				<a class="nav-link text-light" href="<?=WEBROOT?>">Accueil</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link text-light" href="#">Consulter le calendrier des réunions</a>
+				<a class="nav-link text-light" href="<?=WEBROOT?>calendrier">Calendrier</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link text-light" href="#">Consulter la liste des dossiers</a>
+				<a class="nav-link text-light" href="<?=WEBROOT?>dossiers">Liste des dossiers</a>
 			</li>
 		</ul>
 

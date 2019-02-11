@@ -19,9 +19,9 @@ html, body {
     padding-top: 30px;
     padding-bottom: 40px;
     text-align: center;
-    text-shadow: 
+    /* text-shadow: 
     4px 4px 0px #d5d5d5, 
-    7px 7px 0px rgba(0, 0, 0, 0.2);
+    7px 7px 0px rgba(0, 0, 0, 0.2); */
 }
 
 #footer {
@@ -32,16 +32,3 @@ html, body {
     height: 160px;
     text-align: center;
 }
-
-.navbar-nav {
-    float:none;
-    margin:0 auto;
-    display: block;
-    text-align: center;
-}
-
-.navbar-nav > li {
-    display: inline-block;
-    float:none;
-}
-
