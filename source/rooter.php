@@ -19,7 +19,7 @@ session_start();
 core\Session::initializer();
 
 // Analyse du formulaire
-core\MainForm::trouverForm();
+core\Form::trouverForm();
 
 // Extrait les paramettre du url
 $params = explode('/', $_GET['params']);

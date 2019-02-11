@@ -7,11 +7,11 @@ class FormView {
     public $form;
 
     public function __construct(string $action) {
-        $info = MainForm::nouveauFormId($action);
+        $info = Form::nouveauFormId($action);
         $this->id = $info[0];
         $pos = $info[1];
 
-        $form = MainForm::getInstance();
+        $form = Form::getInstance();
 
         if (isset($form) && $form->getPosition() == $pos) {
             $this->form = $form;

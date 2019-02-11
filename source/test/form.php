@@ -7,7 +7,7 @@
 
 <?php
 
-$form = core\MainForm::getInstance();
+$form = core\Form::getInstance();
 
 
 if ($form) {
