@@ -1,5 +1,5 @@
 body {
-    background-image: url("../images/68.jpg" );
+    background-image: url("../images/accueil.jpg" );
     background-color: white;
     background-repeat: no-repeat;
     background-position: top ;
@@ -12,5 +12,6 @@ body {
     color : white;
     text-align: center;
     padding-top: 130px;
-    text-shadow: 0 0 5px black, 0 0 5px black;
+    padding-bottom: 130px;
+    text-shadow: 0 0 15px #0000007a, 0 0 100px #000000;
 }
