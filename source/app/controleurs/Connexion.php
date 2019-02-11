@@ -2,18 +2,16 @@
 
 namespace app\controleurs;
 
-use \app\outils\Session;
-
 class Connexion extends \core\Controleur {
+	use atraits\Utilisateur;
 
 	public function action(array $args) : ?\Exception {
 		if (count($args) > 0)
 			return new \Exception("erreur 404", 404);
 
-		// tout est cool
-		$utilisateur = Session::getUtilisateur();
+		$vue = $this->genererVue("connexion");
 		
-		$vue = new \core\Vue("connexion");
+		$this->verifierUtilisateur();
 
 		$vue->afficher();
 

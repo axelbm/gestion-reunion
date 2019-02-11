@@ -2,18 +2,19 @@
 
 namespace app\controleurs;
 
-use \app\outils\Session;
-
 class Calendrier extends \core\Controleur {
+	use atraits\Utilisateur;
 
 	public function action(array $args) : ?\Exception {
 		if (count($args) > 0)
 			return new \Exception("erreur 404", 404);
 
-		// tout est cool
-		$utilisateur = Session::getUtilisateur();
+		$vue = $this->genererVue("calendrier");
 		
-		$vue = new \core\Vue("calendrier");
+		$this->verifierUtilisateur();
+
+		if (!$this->estConnecter())
+			\core\MainControleur::rediriger("connexion");
 
 		$vue->afficher();
 

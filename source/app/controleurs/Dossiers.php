@@ -2,18 +2,16 @@
 
 namespace app\controleurs;
 
-use \app\outils\Session;
-
 class Dossiers extends \core\Controleur {
+	use atraits\Utilisateur;
 
 	public function action(array $args) : ?\Exception {
 		if (count($args) > 0)
 			return new \Exception("erreur 404", 404);
 
-		// tout est cool
-		$utilisateur = Session::getUtilisateur();
+		$vue = $this->genererVue("dossiers");
 		
-		$vue = new \core\Vue("dossiers");
+		$this->verifierUtilisateur();
 
 		$vue->afficher();
 

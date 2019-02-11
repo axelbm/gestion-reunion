@@ -2,8 +2,6 @@
 
 namespace app\controleurs;
 
-use \app\outils\Session;
-
 class Accueil extends \core\Controleur {
 	use atraits\Utilisateur;
 
