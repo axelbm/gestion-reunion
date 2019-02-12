@@ -118,5 +118,15 @@ class Vue {
 
     public function setDisposition(string $fichier) {
         $this->disposition = $fichier;
-    } 
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param string $action
+     * @return FormView
+     */
+    public function newForm(string $action) : FormView {
+        return new FormView($action);
+    }
 }
