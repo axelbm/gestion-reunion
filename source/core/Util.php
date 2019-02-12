@@ -4,8 +4,9 @@ namespace core;
 
 class Util {
 
-    public static function className(string $class) : string {
+    public static function className(string $class) : ?string {
         if ($pos = strrpos($class, '\\')) return substr($class, $pos + 1);
+        return null;
     }
 
     public static function objectName(object $obj) : string {

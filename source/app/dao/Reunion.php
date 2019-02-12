@@ -15,28 +15,46 @@ class Reunion extends DAO {
         "Participations" => "Id:Participation:FK:reunionid"
     );
 
-    public function recherche(datetime $date) : array{
+    /**
+     * Undocumented function
+     *
+     * @param \DateTime $date
+     * @return array
+     */
+    public function recherche(\DateTime $date) : array {
         return $this->select("WHERE date = $date");
     }
 
-    public function getListe(?string $courriel, int $page, ?int $npp = 10) : array{
-        if ($courriel != null){
+    /**
+     * Undocumented function
+     *
+     * @param integer $page
+     * @param string|null $courriel
+     * @param integer|null $npp Nombre par fucking page
+     * @return array
+     */
+    public function getListe(int $page, ?string $courriel, ?int $npp = 10) : array{
+        $select = "";
+
+        if ($courriel != null)
             $select = "INNER JOIN participations
                 ON reunions.reunionid = participations.reunionid
-                WHERE participations.courriel = $courriel;";
-        }
-        $select += "LIMIT $page, $npp ORDER BY date";
+                WHERE participations.courriel = $courriel";
+
+        $select .= "LIMIT ".$page*$npp.", $npp ORDER BY date";
 
         return $this->select($select);
     }
 
-    public function getListeParDate(?string $courriel, int $page, ?int $npp = 10) : array{
-        if ($courriel != null){
+    public function getListeParDate(int $page, ?string $courriel, ?int $npp = 10) : array{
+        if ($courriel != null)
             $select = "INNER JOIN participations
                 ON reunions.reunionid = participations.reunionid
-                WHERE participations.courriel = $courriel;";
-        }
-        $select += "WHERE date > curdate() LIMIT $page, $npp ORDER BY date";
+                WHERE participations.courriel = $courriel AND ";
+        else 
+            $select = "WHERE ";
+
+        $select .= "date > CURDATE() LIMIT ".$page*$npp.", $npp ORDER BY date";
 
         return $this->select($select);
     }

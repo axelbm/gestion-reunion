@@ -2,6 +2,8 @@
 
 namespace app\forms;
 
+use app\modeles;
+
 class AjouterReunion extends \core\Form {
     protected $date;
     
@@ -13,9 +15,9 @@ class AjouterReunion extends \core\Form {
 
     public function action() {
         $id = "PlaceHolder";
-        $reunion = new \modeles\Reunion($id, $date);
+        $reunion = new modeles\Reunion($id, $this->date);
         $reunion->sauvegarder();
 
-        \core\MainControleur::chargerPage("accueil");
+        \core\MainControleur::rediriger("accueil");
     }
 }

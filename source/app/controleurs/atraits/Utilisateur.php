@@ -2,16 +2,24 @@
 
 namespace app\controleurs\atraits;
 
+use \app\modeles;
+use \app\outils;
+
 trait Utilisateur {
     protected $utilisateur;
 
+    /**
+     * Fait les verification pour obtenir l'utilisateur et l'injecter dans la vue
+     *
+     * @return void
+     */
     public function verifierUtilisateur() {
-        $this->utilisateur = \app\outils\Session::getUtilisateur();
+        $this->utilisateur = outils\Session::getUtilisateur();
 
         $this->vue->set("utilisateur", $this->utilisateur);
     }
 
-    public function getUtilisateur() : ?\app\modeles\Utilisateur {
+    public function getUtilisateur() : ?modeles\Utilisateur {
         return $this->utilisateur;
     }
 

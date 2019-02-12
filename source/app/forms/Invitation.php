@@ -2,6 +2,8 @@
 
 namespace app\forms;
 
+use app\modeles;
+
 class Invitation extends \core\Form {
     protected $courriel;
     
@@ -16,7 +18,7 @@ class Invitation extends \core\Form {
 
     public function action() {
         $cle = "PlaceHolder";
-        $invitation = new \modeles\Invitation($courriel, $cle);
+        $invitation = new modeles\Invitation($this->courriel, $cle);
         $invitation->sauvegarder();
 
         \core\MainControleur::chargerPage("accueil");

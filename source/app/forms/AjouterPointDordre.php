@@ -2,6 +2,8 @@
 
 namespace app\forms;
 
+use app\modeles;
+
 class AjouterPointDordre extends \core\Form {
     protected $reunionid;
     protected $titre;
@@ -22,7 +24,7 @@ class AjouterPointDordre extends \core\Form {
 
     public function action() {
         $id = "PlaceHolder";
-        $pointdordre = new \modeles\PointDodre($id, $reunionid, $titre, $description, $dossierid, "");
+        $pointdordre = new modeles\PointDordre($id, $this->reunionid, $this->titre, $this->description, $this->dossierid, "");
         $pointdordre->sauvegarder();
 
         \core\MainControleur::chargerPage("accueil");

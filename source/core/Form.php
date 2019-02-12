@@ -34,15 +34,15 @@ abstract class Form {
             $args = explode(":", $value);
             $options = [];
 
-            // Déclanche une exception si il y a pas le bon nombre de paramettres
+            // Déclenche une exception si il y a pas le bon nombre de paramètres
             if (count($args) < 1 || count($args) > 2)
-                throw(new Exception());
+                throw(new \Exception());
 
-            // Divise le 3em paramettre en options
+            // Divise le 3em paramètre en options
             if (count($args) > 1)
                 $options = explode(",", $args[1]);
 
-            // Construit la propriété a l'aide des paramettres
+            // Construit la propriété a l'aide des paramètres
             $prop = array(
                 "type" => $args[0],
                 "options" => $options
@@ -55,8 +55,8 @@ abstract class Form {
     }
 
     /**
-     * Retourne la propriete demandé
-     * [type, options[\.\.\.]]
+     * Retourne la propriété demandé
+     * [type, options[...]]
      *
      * @param string $nom
      * @return array
@@ -67,7 +67,7 @@ abstract class Form {
 
     /**
      * Retourne la liste des propriétés
-     *  [[type, options[\.\.\.], \.\.\.]
+     *  [[type, options[...], ...]
      * 
      * @return array
      */

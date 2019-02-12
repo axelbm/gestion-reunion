@@ -2,6 +2,8 @@
 
 namespace app\forms;
 
+use app\modeles;
+
 class AjouterParticipation extends \core\Form {
     protected $reunionid;
     protected $courriel;
@@ -16,7 +18,7 @@ class AjouterParticipation extends \core\Form {
     }
 
     public function action() {
-        $participation = new \modeles\Participation($reunionid, $courriel, "EnAtente");
+        $participation = new modeles\Participation($this->reunionid, $this->courriel, "EnAtente");
         $participation->sauvegarder();
 
         \core\MainControleur::chargerPage("accueil");

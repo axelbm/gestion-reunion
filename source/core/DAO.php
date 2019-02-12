@@ -18,6 +18,8 @@ abstract class DAO {
 
             return self::$instances[$daoClass];
         }
+
+        return null;
     }
 
     private function __construct() {
@@ -40,7 +42,7 @@ abstract class DAO {
          *  "Nom" => "nom:string",
          *  "Participations" => "Courriel:Participation:FK:courriel"
          * 
-         *  Pour la clé étrangère, il faut indiquer la clé interne, l'objet etranger et pour finir, la colonne de l'objet etranger
+         *  Pour la clé étrangère, il faut indiquer la clé interne, l'objet étranger et pour finir, la colonne de l'objet étranger
          *      Il est possible d'ajouter l'option "S" pour obtenir un seul objet au lieu d'un array
          */
 
@@ -49,18 +51,18 @@ abstract class DAO {
             $args = explode(":", $value);
             $options = [];
 
-            // Déclanche une exception si il y a pas le bon nombre de paramettres
+            // Déclenche une exception si il y a pas le bon nombre de paramètres
             if (count($args) < 2 || count($args) > 4)
-                throw(new Exception());
+                throw(new \Exception());
 
-            // Divise le 3em paramettre en options
+            // Divise le 3em paramètre en options
             if (count($args) > 2)
                 $options = explode(",", $args[2]);
 
-            // Detecte si il y a l'option PK pour la clé primère
+            // Détecte si il y a l'option PK pour la clé primaire
             $is_primatry = \in_array("PK", $options);
 
-            // Construit la propriété a l'aide des paramettres
+            // Construit la propriété a l'aide des paramètres
             $prop = array(
                 "key" => $args[0],
                 "type" => $args[1],
@@ -68,14 +70,14 @@ abstract class DAO {
                 "isPrimaryKey" => $is_primatry
             );
 
-            // Detecte si il y a une clé étrangère
+            // Détecte si il y a une clé étrangère
             if (\in_array("FK", $options)) {
                 $prop["fkColonne"] = $args[3];
             }
 
             $proprietes[$key] = $prop;
             
-            // Si il y a le PK, ajoute la propriete au cles primere
+            // Si il y a le PK, ajoute la propriété au clés primaire
             if ($is_primatry)
                 \array_push($this->primaryKeys, $key);
         }
@@ -84,7 +86,7 @@ abstract class DAO {
     }
 
     /**
-     * Retourne la propriete demandé
+     * Retourne la propriété demandé
      * [key, type, options[\.\.\.], isPrimaryKey]
      *
      * @param string $nom
@@ -134,8 +136,8 @@ abstract class DAO {
         $colonneKey = [];
         $valeurs = [];
 
-        // fait la liste des clés primères, colonnes et de leurs valeurs 
-        foreach ($obj->getProprietes() as $key => $prop) {
+        // fait la liste des clés primaires, colonnes et de leurs valeurs 
+        foreach ($obj->getProprietes() as $prop) {
             if (isset($prop["fkColonne"]))
                 continue;
             
@@ -164,7 +166,7 @@ abstract class DAO {
         $colonne = [];
         $valeurs = [];
 
-        foreach ($obj->getProprietes() as $key => $prop) {
+        foreach ($obj->getProprietes() as $prop) {
             if (isset($prop["fkColonne"]))
                 continue;
 
@@ -228,8 +230,6 @@ abstract class DAO {
      * @return Modele|null
      */
     public function find(...$index) : ?Modele {
-        $dao = get_called_class();
-
         $conditions = [];
         $valeurs = [];
 
@@ -257,9 +257,9 @@ abstract class DAO {
     }
 
     /**
-     * Fait une liste d'objets a partir d'une requete sql.
+     * Fait une liste d'objets a partir d'une requête sql.
      *
-     * @param string|null $requete
+     * @param string|null $requête
      * @param array|null $input
      * @return array
      */
@@ -273,7 +273,7 @@ abstract class DAO {
 
         $objs = [];
 
-        foreach ($result as $id => $params)
+        foreach ($result as $params)
             array_push($objs, $this->charger($params));
 
         return $objs;
@@ -293,7 +293,7 @@ abstract class DAO {
     }
 
     /**
-     * Créer un objet a partir de ses paramettres
+     * Créer un objet a partir de ses paramètres
      *
      * @param array $params
      * @return Modele

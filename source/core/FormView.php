@@ -18,19 +18,23 @@ class FormView {
         }
     }
 
-    public function get($cle) {
+    public function get($cle) : ?string {
         if (isset($this->form)) {
             if (\property_exists($this->form, $cle)) {
                 return $this->form->$cle;
             }
         }
+
+        return null;
     }
 
-    public function erreur($cle) {
+    public function erreur($cle) : ?string {
         if (isset($this->form)) {
             if (\property_exists($this->form, $cle)) {
                 return $this->form->getErreur($cle);
             }
         }
+
+        return null;
     }
 }

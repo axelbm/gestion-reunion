@@ -6,22 +6,20 @@ abstract class Modele {
     protected $surBD = false;
 
     /**
-     * Definie les setter et getter.
+     * Définie les setter et getter.
      *
      * @param string $name
      * @param array $args
      * @return void
      */
     public function __call(string $name, array $args) {
-        $dao = $this->dao();
-
         // Si il y a un get
         if (substr($name, 0, 3) == "get") {
             $propNom = substr($name, 3);
             $prop = $this->dao()->getPropriete($propNom);
             
             if (isset($prop)) {
-                // Si la propriete est une cle étrangère
+                // Si la propriété est une cle étrangère
                 if (isset($prop["fkColonne"])) {
                     $methode = "get".$prop["key"];
 
@@ -42,12 +40,12 @@ abstract class Modele {
             if (array_key_exists($propNom, $this->dao()->getProprietes())) {
                 $prop = $this->dao()->getPropriete($propNom);
 
-                // Impossible de set sur une cle primère ou étrangère
+                // Impossible de set sur une cle primaire ou étrangère
                 if (!$prop["isPrimaryKey"] && !isset($prop["fkColonne"])) {
                     $propCle = $prop["key"];
                     $valeur = $args[0];
 
-                    // Verifie si il y a une methode onSet...
+                    // Vérifie si il y a une méthode onSet...
                     if (\method_exists($this, "onSet$propNom")) {
                         $methode = "onSet$propNom";
 
@@ -55,7 +53,7 @@ abstract class Modele {
                             $valeur = $nv;
                     }
 
-                    // Verifie le type de la nouvelle valeur
+                    // Vérifie le type de la nouvelle valeur
                     if (gettype($args[0]) == $prop["type"])
                         $this->$propCle = $valeur;
                     else
@@ -71,7 +69,7 @@ abstract class Modele {
 
     /**
      * Retourne la liste de Primary Keys sous forme d'array.
-     * [[key, value], \.\.\.]
+     * [[key, value], ...]
      *
      * @return array
      */
@@ -91,7 +89,7 @@ abstract class Modele {
     }
 
     /**
-     * Retrourne la propriété demandé sous forme d'array.
+     * Retourne la propriété demandé sous forme d'array.
      *  [key, value, type, options, isPrimaryKey]
      * 
      * @param string $key
@@ -107,8 +105,8 @@ abstract class Modele {
     }
 
     /**
-     * Retrourne la liste propriétés sous forme d'array.
-     *  [key = [key, value, type, options, isPrimaryKey], \.\.\.]
+     * Retourne la liste propriétés sous forme d'array.
+     *  [key = [key, value, type, options, isPrimaryKey], ...]
      *
      * @return array
      */
@@ -126,7 +124,7 @@ abstract class Modele {
     }
 
     /**
-     * Ajouteur ou sauvegarde l'objet dans la base de données.
+     * Ajouter ou sauvegarde l'objet dans la base de données.
      *
      * @return void
      */
@@ -157,7 +155,7 @@ abstract class Modele {
     public function toArray() : array {
         $arr = array();
 
-        foreach ($this->dao()->getProprietes() as $key => $prop) {
+        foreach ($this->dao()->getProprietes() as $prop) {
             $propkey = $prop["key"];
             
             $value = $this->$propkey;
@@ -195,7 +193,7 @@ abstract class Modele {
 
         $obj = new $modele();
 
-        foreach ($dao->getProprietes() as $key => $prop) {
+        foreach ($dao->getProprietes() as $prop) {
             if (!isset($prop["fkColonne"])) {
                 $propkey = $prop["key"];
                 $obj->$propkey = Database::convertireVersPHP($params[$prop["key"]], $prop["type"]);

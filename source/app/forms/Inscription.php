@@ -3,6 +3,7 @@
 namespace app\forms;
 
 use \core\DAO;
+use \app\modeles;
 
 class Inscription extends \core\Form {
     protected $courriel;
@@ -25,7 +26,7 @@ class Inscription extends \core\Form {
         }
         
 
-        $invitation = DAO::Invitation()->find($courriel);
+        $invitation = DAO::Invitation()->find($this->courriel);
 
         if ($invitation->validerCle($this->cleInvitation)){
             $this->ajouterErreur("cleInvitation", "Clé d'invitation incorrecte");
@@ -33,7 +34,7 @@ class Inscription extends \core\Form {
     }
 
     public function action() {
-        $user = new \modeles\Utilisateur($courriel, $nom, $prenom, $motDePasse, false);
+        $user = new modeles\Utilisateur($this->courriel, $this->nom, $this->prenom, $this->motDePasse, false);
         $user->sauvegarder();
 
         \core\MainControleur::chargerPage("accueil");

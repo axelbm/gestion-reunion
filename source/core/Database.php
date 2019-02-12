@@ -16,7 +16,7 @@ abstract class Database {
 	 * @param string $option
 	 * @return void
 	 */
-	static public function connect(string $hostname, string $dbname=null, string $username=null, string $password=null, string $option=null){
+	static public function connect(string $hostname, string $dbname=null, string $username=null, string $password=null, ?array $option=[]){
 		$dsn = 'mysql:host='.$hostname.';dbname='.$dbname;
 		
 		$db = new \PDO($dsn, $username, $password, $option);
@@ -71,38 +71,34 @@ abstract class Database {
 	/**
 	 * Convertie une value d'une base de données pour PHP
 	 *
-	 * @param midex $var
+	 * @param mixed $var
 	 * @param string $type
-	 * @return void
+	 * @return mixed
 	 */
 	static public function convertireVersPHP($var, string $type) {
 		switch ($type) {
 			case 'boolean':
 				return $var == 1;
-				break;
 			
 			default:
 				return $var;
-				break;
 		}
 	}
 
 	/**
 	 * Convertie une value de PHP pour une basse de données
 	 *
-	 * @param midex $var
+	 * @param mixed $var
 	 * @param string $type
-	 * @return void
+	 * @return mixed
 	 */
 	static public function convertireVersDB($var, string $type) {
 		switch ($type) {
 			case 'boolean':
 				return $var ? 1 : 0;
-				break;
 			
 			default:
 				return $var;
-				break;
 		}
 	}
 }

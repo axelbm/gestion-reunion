@@ -39,12 +39,12 @@ class Vue {
         // Extrait les variables stockés dans le vue
         extract($this->vars);
 
-        // Définie des variables impoooootantéés pour la vue
+        // Définie des variables importantes pour la vue
         $vue = $this;
         $controleur = MainControleur::getInstance();
         $titre = $this->titre;
 
-        // Emmagazine le code html du fichier de la vue pour l'injecter dans l'index
+        // Emmagasine le code html du fichier de la vue pour l'injecter dans l'index
         ob_start();
 		require VUEROOT.$this->vueFile.'.php';
         $contenue = ob_get_clean();
@@ -85,7 +85,7 @@ class Vue {
     /**
      * Modifie le titre de la page
      *
-     * @return array
+     * @return void
      */
     public function setTitre(string $titre) : void {
         $this->titre = $titre;
