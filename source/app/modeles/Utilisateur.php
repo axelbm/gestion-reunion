@@ -42,4 +42,12 @@ class Utilisateur extends Modele {
 
         return $new;
     }
+
+    public function estAdministrateur() : bool {
+        return $this->administrateur >= 1;
+    }
+
+    public function estSuperAdministrateur() : bool {
+        return $this->administrateur == 2;
+    }
 }
