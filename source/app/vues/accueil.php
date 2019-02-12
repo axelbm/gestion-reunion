@@ -1,5 +1,5 @@
 <div>
-    <h4 class="text-center mt-2">À propos de ReunAFH</h4>
+    <h4 class="text-center mt-2">À propos de AFH</h4>
     <br>
     <h1 class="text-center mt-2 display-3">Qui nous sommes</h1>
     <br>
