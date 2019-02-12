@@ -12,14 +12,14 @@ class Utilisateur extends DAO {
         "Nom" => "nom:string",
         "Prenom" => "prenom:string",
         "MotDePasse" => "motdepasse:string",
-        "Administrateur" => "administrateur:boolean",
+        "Administrateur" => "administrateur:int",
         
         "Participations" => "Courriel:Participation:FK:courriel"
     );
 
 
     public function obtenirAdministrateurs() : array {
-        return $this->select("WHERE administateur = 1");
+        return $this->select("WHERE administateur >= 1");
     }
 
     public function recherche(string $nom) : array{

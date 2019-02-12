@@ -22,7 +22,7 @@ class Inscription extends \core\Form {
             $this->ajouterErreur("motDePasse", "Mot de passe obligatoire");
         }
         elseif ($this->motDePasse != $this->confirmMotDePasse) {
-            $this->ajouterErreur("motDePasse", "Les deux mat de passe doivent être identique");
+            $this->ajouterErreur("motDePasse", "Les deux mot de passe doivent être identique");
         }
         
 
@@ -34,7 +34,7 @@ class Inscription extends \core\Form {
     }
 
     public function action() {
-        $user = new modeles\Utilisateur($this->courriel, $this->nom, $this->prenom, $this->motDePasse, false);
+        $user = new modeles\Utilisateur($this->courriel, $this->nom, $this->prenom, $this->motDePasse);
         $user->sauvegarder();
 
         \core\MainControleur::chargerPage("accueil");

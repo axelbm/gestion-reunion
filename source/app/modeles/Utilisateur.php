@@ -13,7 +13,7 @@ class Utilisateur extends Modele {
     protected $motdepasse;
     protected $administrateur;
 
-    public function __construct(string $courriel="", string $nom="", string $prenom="", string $motdepasse="", bool $administrateur=false) {
+    public function __construct(string $courriel="", string $nom="", string $prenom="", string $motdepasse="", int $administrateur=0) {
         $this->courriel = $courriel;
         $this->nom = $nom;
         $this->prenom = $prenom;
