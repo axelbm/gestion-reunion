@@ -3,6 +3,7 @@
 namespace app\dao;
 
 use \core\DAO;
+use \core\Database;
 
 class Reunion extends DAO {
     protected $table = "reunions";
@@ -63,5 +64,12 @@ class Reunion extends DAO {
     public function getListeParDossier(int $page, Dossier $dossier, ?int $npp = 10) : array{
         return $this->select("INNER JOIN pointdordres ON reunions.reunionid = pointdordres.reunionid
                                 WHERE pointdordres.dossierid = ".$dossier->getId." LIMIT ".$page*$npp.", $npp ORDER BY date");
+    }
+
+    public function getPage(?int $npp = 10) : int{
+        $statement = Database::query("select count(reunionid) from reunions");
+        $result = $statement->fetch;
+        $nombre = $result[0];
+        return ceil($nombre / $npp);
     }
 }

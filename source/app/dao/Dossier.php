@@ -3,6 +3,7 @@
 namespace app\dao;
 
 use \core\DAO;
+use \core\Database;
 
 class Dossier extends DAO {
     protected $table = "dossiers";
@@ -26,5 +27,12 @@ class Dossier extends DAO {
 
     public function getListeParNom(int $page, string $nom, ?int $npp = 10) : array{
         return $this->select("WHERE nom = $nom LIMIT ".$page*$npp.", $npp ORDER BY nom");
+    }
+
+    public function getPage(?int $npp = 10) : int{
+        $statement = Database::query("select count(dossierid) from dossiers");
+        $result = $statement->fetch;
+        $nombre = $result[0];
+        return ceil($nombre / $npp);
     }
 }

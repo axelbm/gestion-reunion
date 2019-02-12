@@ -18,5 +18,4 @@ class Dossiers extends \core\Controleur {
 
 		return null;
 	}
-
 }

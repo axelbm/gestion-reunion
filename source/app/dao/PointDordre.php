@@ -3,6 +3,7 @@
 namespace app\dao;
 
 use \core\DAO;
+use \core\Database;
 
 class PointDordre extends DAO {
     protected $table = "pointdordres";
@@ -21,5 +22,12 @@ class PointDordre extends DAO {
 
     public function getListeParTitre(int $page, string $titre, ?int $npp = 10) : array{
         return $this->select("WHERE titre = $titre LIMIT ".$page*$npp.", $npp ORDER BY titre");
+    }
+
+    public function getPage(?int $npp = 10) : int{
+        $statement = Database::query("select count(pointdordreid) from pointdordres");
+        $result = $statement->fetch;
+        $nombre = $result[0];
+        return ceil($nombre / $npp);
     }
 }
