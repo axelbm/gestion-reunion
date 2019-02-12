@@ -281,6 +281,14 @@ abstract class DAO {
         return $objs;
     }
 
+    /**
+     * Récupère les objets étrangères d'un objet
+     *
+     * @param string $colonne
+     * @param mixed $valeur
+     * @param string|null $condition
+     * @return mixed
+     */
     public function getObjetEtranger(string $colonne, $valeur, ?string $condition="") {
         $prop = $this->getPropriete($colonne);
 

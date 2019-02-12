@@ -10,7 +10,7 @@ abstract class Controleur {
     }
 
     /**
-     * L'action du controleur qui permet d'afficher la vue
+     * L'action du contrôleur qui permet d'afficher la vue
      *  retourne un exception en cas d'erreur
      *
      * @param array $args

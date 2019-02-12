@@ -7,13 +7,13 @@ abstract class Database {
 	static private $instance;
 
 	/**
-	 * Undocumented function
+	 * Crée une connexion a un base de donnée.
 	 *
 	 * @param string $hostname
 	 * @param string $dbname
 	 * @param string $username
 	 * @param string $password
-	 * @param string $option
+	 * @param array|null $option
 	 * @return void
 	 */
 	static public function connect(string $hostname, string $dbname=null, string $username=null, string $password=null, ?array $option=[]){
@@ -27,7 +27,7 @@ abstract class Database {
 	}
 	
 	/**
-	 * Undocumented function
+	 * Retourne l'instance PDO connecté de la base de donnée.
 	 *
 	 * @return \PDO
 	 */
@@ -39,11 +39,11 @@ abstract class Database {
 	}
 	
 	/**
-	 * Undocumented function
+	 * Exécute une requête SQL et retourne un PDOStatement 
 	 *
 	 * @param string $statement
 	 * @param integer|null $opt1
-	 * @param [type] $opt2
+	 * @param mixed|null $opt2
 	 * @param array|null $opt3
 	 * @return \PDOStatement
 	 */
@@ -55,7 +55,7 @@ abstract class Database {
 	}
 	
 	/**
-	 * Undocumented function
+	 * Prépare une requête à l'exécution et retourne un PDOStatement
 	 *
 	 * @param string $statement
 	 * @param array|null $options
