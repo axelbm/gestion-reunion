@@ -18,4 +18,10 @@ class Participation extends Modele {
     public function refuser (){
         throw(new \Exception("Pas implementé"));
     }
+
+    public function __construct(string $reunionid="", string $courriel="", string $statusid="") {
+        $this->reunionid = $reunionid;
+        $this->courriel = $courriel;
+        $this->statusid = $statusid;
+    }
 }

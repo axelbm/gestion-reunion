@@ -13,4 +13,9 @@ class Invitation extends Modele {
     public function validerCle (string $cleV) : bool {
         return $cleV == $this->cle;
     }
+
+    public function __construct(string $courriel="", string $cle="") {
+        $this->courriel = $courriel;
+        $this->cle = $cle;
+    }
 }
