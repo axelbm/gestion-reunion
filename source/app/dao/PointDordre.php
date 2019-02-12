@@ -18,4 +18,8 @@ class PointDordre extends DAO {
         "Reunion" => "ReunionID:Reunion:FK,S:reunionid",
         "Dossier" => "DossierID:Dossier:FK,S:dossierid"
     );
+
+    public function getListeParTitre(int $page, string $titre, ?int $npp = 10) : array{
+        return $this->select("WHERE titre = $titre LIMIT ".$page*$npp.", $npp ORDER BY titre");
+    }
 }

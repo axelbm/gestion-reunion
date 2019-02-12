@@ -18,6 +18,7 @@ class Reunion extends DAO {
     /**
      * Undocumented function
      *
+     * A faire : un selecteur de date dans l'interface
      * @param \DateTime $date
      * @return array
      */
@@ -57,5 +58,10 @@ class Reunion extends DAO {
         $select .= "date > CURDATE() LIMIT ".$page*$npp.", $npp ORDER BY date";
 
         return $this->select($select);
+    }
+
+    public function getListeParDossier(int $page, Dossier $dossier, ?int $npp = 10) : array{
+        return $this->select("INNER JOIN pointdordres ON reunions.reunionid = pointdordres.reunionid
+                                WHERE pointdordres.dossierid = ".$dossier->getId." LIMIT ".$page*$npp.", $npp ORDER BY date");
     }
 }
