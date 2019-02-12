@@ -140,7 +140,9 @@ abstract class DAO {
         foreach ($obj->getProprietes() as $prop) {
             if (isset($prop["fkColonne"]))
                 continue;
-            
+            if (in_array("AI", $prop["options"]))
+                continue;
+             
             \array_push($colonne, $prop["key"]);
             \array_push($colonneKey, ":".$prop["key"]);
             $valeurs[":" . $prop["key"]] = Database::convertireVersDB($prop["value"], $prop["type"]);

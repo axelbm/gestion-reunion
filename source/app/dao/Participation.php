@@ -8,7 +8,7 @@ class Participation extends DAO {
     protected $table = "participations";
 
     protected $proprietes = array(
-        "ReunionID" => "reunionid:string:PK",
+        "ReunionID" => "reunionid:string:PK,AI",
         "Courriel" => "courriel:string:PK",
         "StatusID" => "statusid:string",
 

@@ -8,7 +8,7 @@ class Reunion extends DAO {
     protected $table = "reunions";
 
     protected $proprietes = array(
-        "Id" => "reunionid:string:PK",
+        "Id" => "reunionid:string:PK,AI",
         "Date" => "date:datetime",
 
         "PointDordres" => "Id:PointDordre:FK:reunionid",
