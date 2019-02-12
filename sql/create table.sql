@@ -5,14 +5,14 @@ CREATE TABLE UTILISATEURS(
     nom VARCHAR(64) NOT NULL,
     prenom VARCHAR(64) NOT NULL,
     motdepasse VARCHAR(64) NOT NULL,
-    administrateur TINYINT(1) NOT NULL,
+    administrateur TINYINT(2) NOT NULL,
     
     PRIMARY KEY(courriel)
 );
 
 
 CREATE TABLE REUNIONS(
-    reunionid VARCHAR(8) NOT NULL,
+    reunionid INT(8) NOT NULL AUTO_INCREMENT,
     date DATETIME NOT NULL,
     
     PRIMARY KEY(reunionid)
@@ -20,7 +20,8 @@ CREATE TABLE REUNIONS(
 
 
 CREATE TABLE DOSSIERS(
-    dossierid VARCHAR(8) NOT NULL,
+    dossierid INT(8) NOT NULL AUTO_INCREMENT,
+    nom VARCHAR(64) NOT NULL,
     description TEXT NOT NULL,
     
     PRIMARY KEY(dossierid)
@@ -28,11 +29,11 @@ CREATE TABLE DOSSIERS(
 
 
 CREATE TABLE POINTDORDRES(
-    pointdordreid VARCHAR(8) NOT NULL,
-    reunionid VARCHAR(8) NOT NULL,
+    pointdordreid INT(8) NOT NULL AUTO_INCREMENT,
+    reunionid INT(8) NOT NULL,
     titre VARCHAR(64) NOT NULL,
     description TEXT NOT NULL,
-    dossierid VARCHAR(8),
+    dossierid INT(8),
     compterendu TEXT NOT NULL,
     
     PRIMARY KEY(pointdordreid)
@@ -40,7 +41,7 @@ CREATE TABLE POINTDORDRES(
 
 
 CREATE TABLE PARTICIPATIONS(
-    reunionid VARCHAR(8) NOT NULL,
+    reunionid INT(8) NOT NULL,
     courriel VARCHAR(64) NOT NULL,
     statusid VARCHAR(4) NOT NULL,
     
@@ -49,9 +50,9 @@ CREATE TABLE PARTICIPATIONS(
 
 
 CREATE TABLE PARTICIPATIONSTATUS(
-    statusid VARCHAR(4) NOT NULL,
+    statusid INT(8) NOT NULL AUTO_INCREMENT,
     nom VARCHAR(64) NOT NULL,
-    description VARCHAR(512) NOT NULL,
+    description VARCHAR(512) NOT NULL,  
     
     PRIMARY KEY(statusid)
 );
