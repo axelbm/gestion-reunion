@@ -22,6 +22,10 @@ class Utilisateur extends DAO {
         return $this->select("WHERE administateur >= 1");
     }
 
+    public function obtenirSuperAdministrateurs() : array {
+        return $this->select("WHERE administateur = 2");
+    }
+
     public function recherche(string $nom) : array{
         return $this->select("WHERE CONTAINS((nom + ' ' + prenom, prenom + ' ' + nom, courriel), '$nom')");
     }
