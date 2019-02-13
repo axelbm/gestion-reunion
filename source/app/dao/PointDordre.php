@@ -20,12 +20,12 @@ class PointDordre extends DAO {
         "Dossier" => "DossierID:Dossier:FK,S:dossierid"
     );
 
-    public function getListeParTitre(int $page, string $titre, ?int $npp = 10) : array{
-        return $this->select("WHERE titre = $titre LIMIT ".$page*$npp.", $npp ORDER BY titre");
+    public function getListeParTitre(int $page, ?string $titre = "", ?int $npp = 10) : array{
+        return $this->select("WHERE CONTAINS(titre , '$titre') LIMIT ".$page*$npp.", $npp ORDER BY titre");
     }
 
-    public function getPage(?int $npp = 10) : int{
-        $statement = Database::query("select count(pointdordreid) from pointdordres");
+    public function getPage(?string $titre = "", ?int $npp = 10) : int{
+        $statement = Database::query("select count(pointdordreid) from pointdordres WHERE CONTAINS(titre , '$titre')");
         $result = $statement->fetch();
         $nombre = $result[0];
         return ceil($nombre / $npp);
