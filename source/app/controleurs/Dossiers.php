@@ -1,20 +1,48 @@
 <?php
 
 namespace app\controleurs;
+use \core\DAO;
 
 class Dossiers extends \core\Controleur {
 	use atraits\Utilisateur;
 
 	public function action(array $args) : ?\Exception {
-		if (count($args) > 0)
+		if (count($args) > 1)
 			return new \Exception("erreur 404", 404);
 
 		$vue = $this->genererVue("dossiers");
 		
 		$this->verifierUtilisateur();
 
-		$vue->afficher();
+		if (!$this->estConnecter())
+			\core\MainControleur::rediriger("connexion");
 
+		$page = isset(args[0]) ? args[0] : 0;
+		$nombre = isset($_GET["npp"]) && is_numeric($_GET["npp"]) ? $_GET["npp"] : null;
+		$dossiers = array();
+
+		if (is_numeric($page)){
+			$page = intval($page);
+		}else{
+			return new \Exception("Parametre de recherche invalide", 404);
+		}
+
+		if (isset($_GET["reunion"])) {
+			$reunion = DAO::Reunion()->find($_GET["reunion"]);
+			if (!$reunion){
+				return new \Exception("Parametre de recherche invalide", 404);
+			}
+			$dossiers = DAO::Dossier()->getListeParReunion(min(DAO::Dossier()->getPageParReunion($reunion, $nombre)-1, $page), $reunion, $nombre);
+		}elseif(isset($_GET["nom"])){
+			$dossiers = DAO::Dossier()->getListeParNom(min(DAO::Dossier()->getPageParNom($_GET["nom"], $nombre)-1, $page), $_GET["nom"], $nombre);
+		}else{
+			$dossiers = DAO::Dossier()->getListe(min(DAO::Dossier()->getPage()-1, $page), $nombre);
+		}
+			
+
+		$vue->set("dossiers", $dossiers);
+
+		$vue->afficher();
 
 		return null;
 	}

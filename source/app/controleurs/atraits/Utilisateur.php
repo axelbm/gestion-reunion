@@ -15,8 +15,8 @@ trait Utilisateur {
      */
     public function verifierUtilisateur() {
         $this->utilisateur = outils\Session::getUtilisateur();
-
-        $this->vue->set("utilisateur", $this->utilisateur);
+        if ($this->vue)
+            $this->vue->set("utilisateur", $this->utilisateur);
     }
 
     public function getUtilisateur() : ?modeles\Utilisateur {
