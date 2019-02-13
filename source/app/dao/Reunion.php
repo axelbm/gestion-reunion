@@ -68,7 +68,7 @@ class Reunion extends DAO {
 
     public function getPage(?int $npp = 10) : int{
         $statement = Database::query("select count(reunionid) from reunions");
-        $result = $statement->fetch;
+        $result = $statement->fetch();
         $nombre = $result[0];
         return ceil($nombre / $npp);
     }

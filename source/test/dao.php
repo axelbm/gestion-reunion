@@ -2,16 +2,18 @@
 
 use \core\DAO;
 
-var_dump(DAO::Utilisateur());
+var_dump(DAO::Reunion()->getPage());
+
+// var_dump(DAO::Utilisateur());
 
 
-$u = DAO::Utilisateur()->find("axel@gmail.com");
+// $u = DAO::Utilisateur()->find("axel@gmail.com");
 
-$u->setNom("B Michaud");
+// $u->setNom("B Michaud");
 
-$u->sauvegarder();
+// $u->sauvegarder();
 
-var_dump($u);
+// var_dump($u);
 
 // je sys asdf rqwe;
 

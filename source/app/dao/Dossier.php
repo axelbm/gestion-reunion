@@ -31,7 +31,7 @@ class Dossier extends DAO {
 
     public function getPage(?int $npp = 10) : int{
         $statement = Database::query("select count(dossierid) from dossiers");
-        $result = $statement->fetch;
+        $result = $statement->fetch();
         $nombre = $result[0];
         return ceil($nombre / $npp);
     }

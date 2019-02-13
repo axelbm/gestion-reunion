@@ -42,16 +42,13 @@ abstract class Database {
 	 * Exécute une requête SQL et retourne un PDOStatement 
 	 *
 	 * @param string $statement
-	 * @param integer|null $opt1
-	 * @param mixed|null $opt2
-	 * @param array|null $opt3
 	 * @return \PDOStatement
 	 */
-	static public function query(string $statement, ?int $opt1, $opt2, ?array $opt3) : \PDOStatement {
+	static public function query(string $statement) : \PDOStatement {
 		if (\is_null(self::$instance))
 			throw(new \Exception("La base de données n'est pas initialisé"));
 		else
-			return self::$instance->query($statement, $opt1, $opt2, $opt3);
+			return self::$instance->query($statement);
 	}
 	
 	/**
