@@ -14,8 +14,7 @@ class AjouterReunion extends \core\Form {
     }
 
     public function action() {
-        $id = "PlaceHolder";
-        $reunion = new modeles\Reunion($id, $this->date);
+        $reunion = new modeles\Reunion($this->date);
         $reunion->sauvegarder();
 
         \core\MainControleur::rediriger("accueil");

@@ -23,8 +23,7 @@ class AjouterPointDordre extends \core\Form {
     }
 
     public function action() {
-        $id = "PlaceHolder";
-        $pointdordre = new modeles\PointDordre($id, $this->reunionid, $this->titre, $this->description, $this->dossierid, "");
+        $pointdordre = new modeles\PointDordre($this->reunionid, $this->titre, $this->description, $this->dossierid, "");
         $pointdordre->sauvegarder();
 
         \core\MainControleur::chargerPage("accueil");
