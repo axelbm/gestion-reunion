@@ -4,6 +4,7 @@ namespace app\dao;
 
 use \core\DAO;
 use \core\Database;
+use \app\modeles;
 
 class Reunion extends DAO {
     protected $table = "reunions";
@@ -72,4 +73,18 @@ class Reunion extends DAO {
         $nombre = $result[0];
         return ceil($nombre / $npp);
     }
+
+    public function getPageParDossier(Dossier $dossier, ?int $npp = 10) : int{
+        $statement = Database::query("select count(reunionid) from reunions 
+                                    INNER JOIN pointdordres ON reunions.reunionid = pointdordres.reunionid
+                                    WHERE pointdordres.dossierid = ".$dossier->getId);
+        $result = $statement->fetch();
+        $nombre = $result[0];
+        return ceil($nombre / $npp);
+    }
+
+    // public function trouver($id) : ?modeles\Reunion {
+        
+    //     return $this;
+    // }
 }

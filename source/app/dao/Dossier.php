@@ -17,11 +17,11 @@ class Dossier extends DAO {
     );
 
     public function getListeParReunion(int $page, Reunion $reunion, ?int $npp = 10) : array{
-        return $this->select("INNER JOIN pointdordres ON dossier.reunionid = pointdordres.reunionid
+        return $this->select("INNER JOIN pointdordres ON dossiers.dossierid = pointdordres.dossierid
                                 WHERE pointdordres.reunionid = ".$reunion->getId." LIMIT ".$page*$npp.", $npp ORDER BY nom");
     }
 
-    public function getListe(int $page, Dossier $dossier, ?int $npp = 10) : array{
+    public function getListe(int $page, ?int $npp = 10) : array{
         return $this->select("LIMIT ".$page*$npp.", $npp ORDER BY nom");
     }
 
@@ -31,6 +31,22 @@ class Dossier extends DAO {
 
     public function getPage(?int $npp = 10) : int{
         $statement = Database::query("select count(dossierid) from dossiers");
+        $result = $statement->fetch();
+        $nombre = $result[0];
+        return ceil($nombre / $npp);
+    }
+
+    public function getPageParNom(?string $nom = "", ?int $npp = 10) : int{
+        $statement = Database::query("select count(dossierid) from dossiers WHERE CONTAINS(nom , '$nom')");
+        $result = $statement->fetch();
+        $nombre = $result[0];
+        return ceil($nombre / $npp);
+    }
+
+    public function getPageParReunion(Reunion $reunion, ?int $npp = 10) : int{
+        $statement = Database::query("select count(dossierid) from dossiers 
+                                    INNER JOIN pointdordres ON dossiers.dossierid = pointdordres.dossierid
+                                    WHERE pointdordres.reunionid = ".$reunion->getId);
         $result = $statement->fetch();
         $nombre = $result[0];
         return ceil($nombre / $npp);
