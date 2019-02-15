@@ -22,6 +22,15 @@ class Utilisateur extends Modele {
     /** @var int */
     protected $administrateur;
 
+    public function __construct(string $courriel="", string $nom="", string $prenom="", string $motdepasse="", int $administrateur=0) {
+        $this->courriel = $courriel;
+        $this->nom = $nom;
+        $this->prenom = $prenom;
+        $this->motdepasse = $motdepasse;
+        $this->administrateur = $administrateur;
+    }
+
+
     /**
      * Valide le mot de passe de l'utilisateur
      *
