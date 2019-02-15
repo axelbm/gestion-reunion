@@ -9,7 +9,7 @@ abstract class DAO {
     protected $primaryKeys = [];
     protected $parsedProprietes = null;
 
-    static public function __callStatic($key, $args) {
+    static public function __callStatic($key, $args) : DAO {
         $daoClass = "\\app\\dao\\$key";
 
         if (\class_exists($daoClass)) {
@@ -268,6 +268,7 @@ abstract class DAO {
     public function select(?string $requete="", ?array $input=[]) : array {
         $requete = "SELECT * FROM $this->table $requete";
 
+        // var_dump($requete);
         $stmt = Database::prepare($requete);
         $stmt->execute($input);
 
