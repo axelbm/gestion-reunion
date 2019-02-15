@@ -3,14 +3,14 @@
 namespace app\controleurs;
 use \core\DAO;
 
-class Calendrier extends \core\Controleur {
+class ReunionCreee extends \core\Controleur {
 	use atraits\Utilisateur;
 
 	public function action(array $args) : ?\Exception {
 		if (count($args) > 0)
 			return new \Exception("erreur 404", 404);
 
-		$vue = $this->genererVue("calendrier");
+		$vue = $this->genererVue("reunionCreee");
 		
 		$this->verifierUtilisateur();
 
@@ -27,21 +27,17 @@ class Calendrier extends \core\Controleur {
 			return new \Exception("Parametre de recherche invalide", 404);
 		}
 
-		$reunions = DAO::Reunion()->getListeParUtilisateur(min(DAO::Reunion()->getPageParUtilisateur($this->utilisateur, $nombre), $page), $this->utilisateur, $nombre);
-		
-		$participations = [];
-		foreach ($reunions as $reunion) {
-			$participations[$reunion->getId()] = DAO::Participations()->find($reunion->getId(), $this->utilisateur()->getCourriel());
-		}
+		$estadmin = $this->utilisateur->estAdministrateur();
+		if ($estadmin){
+			$reunions = DAO::Reunion()->getListeParCreateur(min(DAO::Reunion()->getPageParCreateur($this->utilisateur, $nombre), $page), $this->utilisateur, $nombre);
+		}else{
+            \core\MainControleur::rediriger();
+        }
 
 		$nombredepage = DAO::Reunion()->getPageParUtilisateur($this->utilisateur, $nombre);
 
-		$estadmin = $this->utilisateur->estAdministrateur();
-		
 		$vue->set("reunions", $reunions);
-		$vue->set("participations", $participations);
 		$vue->set("nombredepage", $nombredepage);
-		$vue->set("estadmin", $estadmin);
 
 		$vue->afficher();
 

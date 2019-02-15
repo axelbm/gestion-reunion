@@ -38,7 +38,7 @@ class Dossier extends DAO {
         if (is_null($npp))
             $npp = self::$nppDefaut;
             
-        return $this->select("WHERE nom = $nom LIMIT ".$page*$npp.", $npp ORDER BY nom");
+        return $this->select("WHERE nom = '$nom' LIMIT ".$page*$npp.", $npp ORDER BY nom");
     }
 
     public function getPage(?int $npp = null) : int{
