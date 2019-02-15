@@ -43,14 +43,14 @@ CREATE TABLE POINTDORDRES(
 CREATE TABLE PARTICIPATIONS(
     reunionid INT(8) NOT NULL,
     courriel VARCHAR(64) NOT NULL,
-    statusid VARCHAR(4) NOT NULL,
+    statusid VARCHAR(8) NOT NULL,
     
     PRIMARY KEY(reunionid, courriel)
 );
 
 
 CREATE TABLE PARTICIPATIONSTATUS(
-    statusid INT(8) NOT NULL AUTO_INCREMENT,
+    statusid VARCHAR(8) NOT NULL AUTO_INCREMENT,
     nom VARCHAR(64) NOT NULL,
     description VARCHAR(512) NOT NULL,  
     
