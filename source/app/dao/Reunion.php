@@ -123,6 +123,10 @@ class Reunion extends DAO {
     }
 
     public function getPageParCreateur(modeles\Utilisateur $utilisateur, ?int $npp = 10) : int{
+        if (is_null($npp))
+        $npp = self::$nppDefaut;
+
+
         $statement = Database::query("select count(reunionid) from reunions 
                                     WHERE createur = '".$utilisateur->getCourriel())."'";
         $result = $statement->fetch();

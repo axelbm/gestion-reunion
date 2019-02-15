@@ -28,11 +28,14 @@ class PointDordres extends \core\Controleur {
 		}
 
 		if (isset($_GET["reunion"]))
-            $pointdordres = DAO::PointDordre()->getListeParTitre(min(DAO::PointDordre()->getPage($_GET["titre"], $nombre)-1, $page), $_GET["titre"], $nombre);
+            $pointdordres = DAO::PointDordre()->getListeParTitre(min(DAO::PointDordre()->getPage($_GET["titre"], $nombre), $page), $_GET["titre"], $nombre);
 		else
-            return new \Exception("Parametre de recherche invalide", 404);
+			return new \Exception("Parametre de recherche invalide", 404);
+			
+		$nombredepage = DAO::Reunion()->getPageParUtilisateur($this->utilisateur, $nombre);
 
 		$vue->set("pointdordres", $pointdordres);
+		$vue->set("nombredepage", $nombredepage);
 
 		$vue->afficher();
 

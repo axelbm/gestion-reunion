@@ -32,15 +32,17 @@ class Dossiers extends \core\Controleur {
 			if (!$reunion){
 				return new \Exception("Parametre de recherche invalide", 404);
 			}
-			$dossiers = DAO::Dossier()->getListeParReunion(min(DAO::Dossier()->getPageParReunion($reunion, $nombre)-1, $page), $reunion, $nombre);
+			$dossiers = DAO::Dossier()->getListeParReunion(min(DAO::Dossier()->getPageParReunion($reunion, $nombre), $page), $reunion, $nombre);
 		}elseif(isset($_GET["nom"])){
-			$dossiers = DAO::Dossier()->getListeParNom(min(DAO::Dossier()->getPageParNom($_GET["nom"], $nombre)-1, $page), $_GET["nom"], $nombre);
+			$dossiers = DAO::Dossier()->getListeParNom(min(DAO::Dossier()->getPageParNom($_GET["nom"], $nombre), $page), $_GET["nom"], $nombre);
 		}else{
-			$dossiers = DAO::Dossier()->getListe(min(DAO::Dossier()->getPage()-1, $page), $nombre);
+			$dossiers = DAO::Dossier()->getListe(min(DAO::Dossier()->getPage(), $page), $nombre);
 		}
 			
+		$nombredepage = DAO::Reunion()->getPageParUtilisateur($this->utilisateur, $nombre);
 
 		$vue->set("dossiers", $dossiers);
+		$vue->set("nombredepage", $nombredepage);
 
 		$vue->afficher();
 

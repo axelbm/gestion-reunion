@@ -27,19 +27,25 @@ class Calendrier extends \core\Controleur {
 			return new \Exception("Parametre de recherche invalide", 404);
 		}
 
-		$reunions = DAO::Reunion()->getListeParUtilisateur(min(DAO::Reunion()->getPageParUtilisateur($this->utilisateur, $nombre)-1, $page), $this->utilisateur, $nombre);
+		$reunions = DAO::Reunion()->getListeParUtilisateur(min(DAO::Reunion()->getPageParUtilisateur($this->utilisateur, $nombre), $page), $this->utilisateur, $nombre);
 		
 		$participations = [];
 		foreach ($reunions as $reunion) {
 			$participations[$reunion->getId()] = DAO::Participations()->find($reunion->getId(), $this->utilisateur()->getCourriel());
 		}
 
-		$nombredepage = DAO::Reunion()->getPageParUtilisateur($this->utilisateur, $nombre-1, $page);
+		$nombredepage = DAO::Reunion()->getPageParUtilisateur($this->utilisateur, $nombre);
 
+		$estadmin = $this->utilisateur->estAdministrateur();
+		if ($estadmin){
+			$reunionsducreateur = DAO::Reunion()->getListeParCreateur(min(DAO::Reunion()->getPageParCreateur($this->utilisateur, $nombre), $page), $this->utilisateur, $nombre);
+		}
 
 		$vue->set("reunions", $reunions);
 		$vue->set("participations", $participations);
 		$vue->set("nombredepage", $nombredepage);
+		$vue->set("estadmin", $estadmin);
+		$vue->set("reunionsducreateur", $reunionsducreateur);
 
 		$vue->afficher();
 

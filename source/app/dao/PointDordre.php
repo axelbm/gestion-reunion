@@ -6,6 +6,8 @@ use \core\DAO;
 use \core\Database;
 
 class PointDordre extends DAO {
+    static private $nppDefaut = 10;
+
     protected $table = "pointdordres";
 
     protected $proprietes = array(
@@ -25,6 +27,9 @@ class PointDordre extends DAO {
     }
 
     public function getPage(?string $titre = "", ?int $npp = 10) : int{
+        if (is_null($npp))
+        $npp = self::$nppDefaut;
+
         $statement = Database::query("select count(pointdordreid) from pointdordres WHERE CONTAINS(titre , '$titre')");
         $result = $statement->fetch();
         $nombre = $result[0];
