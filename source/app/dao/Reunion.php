@@ -76,7 +76,7 @@ class Reunion extends DAO {
     }
 
     public function getPageParDossier(modeles\Dossier $dossier, ?int $npp = 10) : int{
-        $statement = Database::query("select count(reunionid) from reunions 
+        $statement = Database::query("select count(reunions.reunionid) from reunions 
                                     INNER JOIN pointdordres ON reunions.reunionid = pointdordres.reunionid
                                     WHERE pointdordres.dossierid = ".$dossier->getId());
         $result = $statement->fetch();
@@ -90,9 +90,9 @@ class Reunion extends DAO {
     }
 
     public function getPageParUtilisateur(modeles\Utilisateur $utilisateur, ?int $npp = 10) : int{
-        $statement = Database::query("select count(reunionid) from reunions 
+        $statement = Database::query("select count(reunions.reunionid) from reunions 
                                     INNER JOIN participations ON reunions.reunionid = participations.reunionid
-                                    WHERE participations.courriel = '".$utilisateur->getCourriel())."'";
+                                    WHERE participations.courriel = '".$utilisateur->getCourriel()."'");
         $result = $statement->fetch();
         $nombre = $result[0];
         return ceil($nombre / $npp);

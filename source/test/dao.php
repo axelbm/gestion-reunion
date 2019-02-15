@@ -2,12 +2,17 @@
 
 use \core\DAO;
 
-var_dump(DAO::Reunion()->getPage());
+// var_dump(DAO::Reunion()->getPage());
 
 // var_dump(DAO::Utilisateur());
 
 
-// $u = DAO::Utilisateur()->find("axel@gmail.com");
+$u = DAO::Utilisateur()->find("axel@gmail.com");
+
+
+DAO::Reunion()->getPageParUtilisateur($u);
+
+var_dump($u);
 
 // $u->setNom("B Michaud");
 
