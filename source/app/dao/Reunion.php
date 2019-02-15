@@ -92,14 +92,14 @@ class Reunion extends DAO {
     public function getPageParUtilisateur(modeles\Utilisateur $utilisateur, ?int $npp = 10) : int{
         $statement = Database::query("select count(reunionid) from reunions 
                                     INNER JOIN participations ON reunions.reunionid = participations.reunionid
-                                    WHERE participations.courriel = '".$utilisateur->getCourriel()).".";
+                                    WHERE participations.courriel = '".$utilisateur->getCourriel())."'";
         $result = $statement->fetch();
         $nombre = $result[0];
         return ceil($nombre / $npp);
     }
 
     public function getListeParCreateur(int $page, modeles\Utilisateur $utilisateur, ?int $npp = 10) : array{
-        return $this->select("WHERE createur = ".$utilisateur->getCourriel()." LIMIT ".$page*$npp.", $npp ORDER BY date");
+        return $this->select("WHERE createur = '".$utilisateur->getCourriel()."' LIMIT ".$page*$npp.", $npp ORDER BY date");
     }
 
     public function getPageParCreateur(modeles\Utilisateur $utilisateur, ?int $npp = 10) : int{
