@@ -27,18 +27,13 @@ class Calendrier extends \core\Controleur {
 			return new \Exception("Parametre de recherche invalide", 404);
 		}
 
-		if (isset($_GET["dossier"])) {
-			$dossier = DAO::Dossier()->find($_GET["dossier"]);
-			if (!$dossier){
-				return new \Exception("Parametre de recherche invalide", 404);
-			}
-			$reunions = DAO::Reunion()->getListeParDossier(min(DAO::Reunion()->getPageParDossier($dossier, $nombre)-1, $page), $dossier, $nombre);
-		}elseif(isset($_GET["date"])){
-			$reunions = DAO::Reunion()->getListeParDate(min(DAO::Reunion()->getPageParDate($_GET["date"], $nombre)-1, $page), $_GET["date"], $nombre);
-		}else{
-			$reunions = DAO::Reunion()->getListe(min(DAO::Reunion()->getPage()-1, $page), $nombre);
+		$reunions = DAO::Reunion()->getListeParUtilisateur(min(DAO::Reunion()->getPageParUtilisateur($this->utilisateur, $nombre)-1, $page), $this->utilisateur, $nombre);
+		
+		$participations = [];
+		foreach ($reunions as $reunion) {
+			$participations[$reunion->getId()] = DAO::Participations()->find($reunion->getId(), $this->utilisateur()->getCourriel());
 		}
-			
+
 
 		$vue->set("reunions", $reunions);
 	

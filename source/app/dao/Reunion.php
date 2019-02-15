@@ -12,6 +12,7 @@ class Reunion extends DAO {
     protected $proprietes = array(
         "Id" => "reunionid:string:PK,AI",
         "Date" => "date:datetime",
+        "Createur" => "createur:string"
 
         "PointDordres" => "Id:PointDordre:FK:reunionid",
         "Participations" => "Id:Participation:FK:reunionid"
@@ -78,6 +79,32 @@ class Reunion extends DAO {
         $statement = Database::query("select count(reunionid) from reunions 
                                     INNER JOIN pointdordres ON reunions.reunionid = pointdordres.reunionid
                                     WHERE pointdordres.dossierid = ".$dossier->getId);
+        $result = $statement->fetch();
+        $nombre = $result[0];
+        return ceil($nombre / $npp);
+    }
+
+    public function getListeParUtilisateur(int $page, Utilisateur $utilisateur, ?int $npp = 10) : array{
+        return $this->select("INNER JOIN participations ON reunions.reunionid = participations.reunionid
+                                WHERE participations.courriel = ".$utilisateur->getCourreil." LIMIT ".$page*$npp.", $npp ORDER BY date");
+    }
+
+    public function getPageParUtilisateur(Utilisateur $utilisateur, ?int $npp = 10) : int{
+        $statement = Database::query("select count(reunionid) from reunions 
+                                    INNER JOIN participations ON reunions.reunionid = participations.reunionid
+                                    WHERE participations.courriel = ".$utilisateur->getCourreil);
+        $result = $statement->fetch();
+        $nombre = $result[0];
+        return ceil($nombre / $npp);
+    }
+
+    public function getListeParCreateur(int $page, Utilisateur $utilisateur, ?int $npp = 10) : array{
+        return $this->select("WHERE createur = ".$utilisateur->getCourreil." LIMIT ".$page*$npp.", $npp ORDER BY date");
+    }
+
+    public function getPageParCreateur(Utilisateur $utilisateur, ?int $npp = 10) : int{
+        $statement = Database::query("select count(reunionid) from reunions 
+                                    WHERE createur = ".$utilisateur->getCourreil);
         $result = $statement->fetch();
         $nombre = $result[0];
         return ceil($nombre / $npp);

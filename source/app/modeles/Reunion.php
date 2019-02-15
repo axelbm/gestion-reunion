@@ -9,12 +9,16 @@ use \app\dao\Reunion as dao;
 class Reunion extends Modele {
     /** @var int */
     protected $reunionid;
-    
+
     /** @var \Datetime */
     protected $date;
 
-    public function __construct(\DateTime $date= new \DateTime()) {
+    /** @var string */
+    protected $createur;
+
+    public function __construct(\DateTime $date= new \DateTime(), string $createur) {
         $this->date = $date;
+        $this->createur =$createur;
     }
 
     /**

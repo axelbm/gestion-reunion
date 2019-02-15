@@ -17,7 +17,7 @@ class PointDordres extends \core\Controleur {
 		if (!$this->estConnecter())
 			\core\MainControleur::rediriger("connexion");
 
-		$page = isset(args[0]) ? args[0] : 0;
+		$page = isset($args[0]) ? $args[0] : 0;
 		$nombre = isset($_GET["npp"]) && is_numeric($_GET["npp"]) ? $_GET["npp"] : null;
 		$pointdordres = array();
 
