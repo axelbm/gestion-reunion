@@ -7,7 +7,10 @@ use \core\Modele;
 use \app\dao\Invitation as dao;
 
 class Invitation extends Modele {
+    /** @var string */
     protected $courriel;
+    
+    /** @var string */
     protected $cle;
 
     public function validerCle (string $cleV) : bool {

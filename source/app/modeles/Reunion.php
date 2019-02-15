@@ -7,18 +7,33 @@ use \core\Modele;
 use \app\dao\Reunion as dao;
 
 class Reunion extends Modele {
+    /** @var int */
     protected $reunionid;
+    
+    /** @var \Datetime */
     protected $date;
 
-    public function __construct(datetime $date= new DateTime()) {
+    public function __construct(\DateTime $date= new \DateTime()) {
         $this->date = $date;
     }
 
-    public function inviterUtilisateur(Utilisateur $user){
+    /**
+     * Undocumented function
+     *
+     * @param Utilisateur $user
+     * @return Invitation
+     */
+    public function inviterUtilisateur(Utilisateur $user) : Invitation {
         throw(new \Exception("Pas implementé"));
     }
 
-    public function ajouterPointDordre(PointDordre $point){
+    /**
+     * Undocumented function
+     *
+     * @param PointDordre $point
+     * @return void
+     */
+    public function ajouterPointDordre(PointDordre $point) {
         throw(new \Exception("Pas implementé"));
     }
 }

@@ -7,8 +7,13 @@ use \core\Modele;
 use \app\dao\Participation as dao;
 
 class Participation extends Modele {
+    /** @var int */
     protected $reunionid;
+    
+    /** @var string */
     protected $courriel;
+    
+    /** @var string */
     protected $statusid;
 
     public function accepter (){
@@ -19,8 +24,7 @@ class Participation extends Modele {
         throw(new \Exception("Pas implementé"));
     }
 
-    public function __construct(string $reunionid="", string $courriel="", string $statusid="") {
-        $this->reunionid = $reunionid;
+    public function __construct(string $courriel="", string $statusid="") {
         $this->courriel = $courriel;
         $this->statusid = $statusid;
     }
