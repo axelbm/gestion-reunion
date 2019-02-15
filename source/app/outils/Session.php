@@ -22,6 +22,6 @@ class Session extends \core\Session {
     }
 
     static public function deconnexion(){
-        self::detruireSession();
+        unset($_SESSION["utilisateur"]);
     }
 }
