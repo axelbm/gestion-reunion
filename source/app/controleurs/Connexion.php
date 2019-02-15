@@ -13,7 +13,7 @@ class Connexion extends \core\Controleur {
 		
 		$this->verifierUtilisateur();
 
-		if (!$this->estConnecter())
+		if ($this->estConnecter())
 			\core\MainControleur::rediriger();
 
 
