@@ -43,7 +43,7 @@ class Reunion extends DAO {
         if ($courriel != null)
             $select = "INNER JOIN participations
                 ON reunions.reunionid = participations.reunionid
-                WHERE participations.courriel = $courriel";
+                WHERE participations.courriel = '$courriel'";
 
         $select .= "LIMIT ".$page*$npp.", $npp ORDER BY date";
 
@@ -54,7 +54,7 @@ class Reunion extends DAO {
         if ($courriel != null)
             $select = "INNER JOIN participations
                 ON reunions.reunionid = participations.reunionid
-                WHERE participations.courriel = $courriel AND ";
+                WHERE participations.courriel = '$courriel' AND ";
         else 
             $select = "WHERE ";
 
@@ -86,13 +86,13 @@ class Reunion extends DAO {
 
     public function getListeParUtilisateur(int $page, modeles\Utilisateur $utilisateur, ?int $npp = 10) : array{
         return $this->select("INNER JOIN participations ON reunions.reunionid = participations.reunionid
-                                WHERE participations.courriel = ".$utilisateur->getCourriel()." LIMIT ".$page*$npp.", $npp ORDER BY date");
+                                WHERE participations.courriel = '".$utilisateur->getCourriel()."' LIMIT ".$page*$npp.", $npp ORDER BY date");
     }
 
     public function getPageParUtilisateur(modeles\Utilisateur $utilisateur, ?int $npp = 10) : int{
         $statement = Database::query("select count(reunionid) from reunions 
                                     INNER JOIN participations ON reunions.reunionid = participations.reunionid
-                                    WHERE participations.courriel = ".$utilisateur->getCourriel());
+                                    WHERE participations.courriel = '".$utilisateur->getCourriel()).".";
         $result = $statement->fetch();
         $nombre = $result[0];
         return ceil($nombre / $npp);
@@ -104,7 +104,7 @@ class Reunion extends DAO {
 
     public function getPageParCreateur(modeles\Utilisateur $utilisateur, ?int $npp = 10) : int{
         $statement = Database::query("select count(reunionid) from reunions 
-                                    WHERE createur = ".$utilisateur->getCourriel());
+                                    WHERE createur = '".$utilisateur->getCourriel())."'";
         $result = $statement->fetch();
         $nombre = $result[0];
         return ceil($nombre / $npp);
