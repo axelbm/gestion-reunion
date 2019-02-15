@@ -9,11 +9,11 @@ class PointDordre extends DAO {
     protected $table = "pointdordres";
 
     protected $proprietes = array(
-        "Id" => "pointdordreid:string:PK,AI",
-        "ReunionID" => "reunionid:string",
+        "Id" => "pointdordreid:int:PK,AI",
+        "ReunionID" => "reunionid:int",
         "Titre" => "titre:string",
         "Description" => "description:string",
-        "DossierID" => "dossierid:string",
+        "DossierID" => "dossierid:int",
         "CompteRendu" => "compterendu:string",
 
         "Reunion" => "ReunionID:Reunion:FK,S:reunionid",
