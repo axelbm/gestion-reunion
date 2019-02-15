@@ -7,6 +7,8 @@ use \core\Database;
 use \app\modeles;
 
 class Reunion extends DAO {
+    static private $nppDefaut = 10;
+
     protected $table = "reunions";
 
     protected $proprietes = array(
@@ -37,7 +39,10 @@ class Reunion extends DAO {
      * @param integer|null $npp Nombre par fucking page
      * @return array
      */
-    public function getListe(int $page, ?string $courriel, ?int $npp = 10) : array{
+    public function getListe(int $page, ?string $courriel, ?int $npp = null) : array{
+        if (is_null($npp))
+            $npp = self::$nppDefaut;
+
         $select = "";
 
         if ($courriel != null)
@@ -50,7 +55,10 @@ class Reunion extends DAO {
         return $this->select($select);
     }
 
-    public function getListeParDate(int $page, ?string $courriel, ?int $npp = 10) : array{
+    public function getListeParDate(int $page, ?string $courriel, ?int $npp = null) : array{
+        if (is_null($npp))
+            $npp = self::$nppDefaut;
+
         if ($courriel != null)
             $select = "INNER JOIN participations
                 ON reunions.reunionid = participations.reunionid
@@ -63,19 +71,25 @@ class Reunion extends DAO {
         return $this->select($select);
     }
 
-    public function getListeParDossier(int $page, modeles\Dossier $dossier, ?int $npp = 10) : array{
+    public function getListeParDossier(int $page, modeles\Dossier $dossier, ?int $npp = null) : array{
         return $this->select("INNER JOIN pointdordres ON reunions.reunionid = pointdordres.reunionid
                                 WHERE pointdordres.dossierid = ".$dossier->getId()." LIMIT ".$page*$npp.", $npp ORDER BY date");
     }
 
-    public function getPage(?int $npp = 10) : int{
+    public function getPage(?int $npp = null) : int{
+        if (is_null($npp))
+            $npp = self::$nppDefaut;
+
         $statement = Database::query("select count(reunionid) from reunions");
         $result = $statement->fetch();
         $nombre = $result[0];
         return ceil($nombre / $npp);
     }
 
-    public function getPageParDossier(modeles\Dossier $dossier, ?int $npp = 10) : int{
+    public function getPageParDossier(modeles\Dossier $dossier, ?int $npp = null) : int{
+        if (is_null($npp))
+            $npp = self::$nppDefaut;
+
         $statement = Database::query("select count(reunions.reunionid) from reunions 
                                     INNER JOIN pointdordres ON reunions.reunionid = pointdordres.reunionid
                                     WHERE pointdordres.dossierid = ".$dossier->getId());
@@ -84,12 +98,18 @@ class Reunion extends DAO {
         return ceil($nombre / $npp);
     }
 
-    public function getListeParUtilisateur(int $page, modeles\Utilisateur $utilisateur, ?int $npp = 10) : array{
+    public function getListeParUtilisateur(int $page, modeles\Utilisateur $utilisateur, ?int $npp = null) : array{
+        if (is_null($npp))
+            $npp = self::$nppDefaut;
+
         return $this->select("INNER JOIN participations ON reunions.reunionid = participations.reunionid
                                 WHERE participations.courriel = '".$utilisateur->getCourriel()."' LIMIT ".$page*$npp.", $npp ORDER BY date");
     }
 
-    public function getPageParUtilisateur(modeles\Utilisateur $utilisateur, ?int $npp = 10) : int{
+    public function getPageParUtilisateur(modeles\Utilisateur $utilisateur, ?int $npp = null) : int{
+        if (is_null($npp))
+            $npp = self::$nppDefaut;
+
         $statement = Database::query("select count(reunions.reunionid) from reunions 
                                     INNER JOIN participations ON reunions.reunionid = participations.reunionid
                                     WHERE participations.courriel = '".$utilisateur->getCourriel()."'");
