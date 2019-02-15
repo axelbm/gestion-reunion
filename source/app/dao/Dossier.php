@@ -4,6 +4,7 @@ namespace app\dao;
 
 use \core\DAO;
 use \core\Database;
+use \app\modeles;
 
 class Dossier extends DAO {
     protected $table = "dossiers";

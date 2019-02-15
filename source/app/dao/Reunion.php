@@ -65,7 +65,7 @@ class Reunion extends DAO {
 
     public function getListeParDossier(int $page, modeles\Dossier $dossier, ?int $npp = 10) : array{
         return $this->select("INNER JOIN pointdordres ON reunions.reunionid = pointdordres.reunionid
-                                WHERE pointdordres.dossierid = ".$dossier->getId." LIMIT ".$page*$npp.", $npp ORDER BY date");
+                                WHERE pointdordres.dossierid = ".$dossier->getId()." LIMIT ".$page*$npp.", $npp ORDER BY date");
     }
 
     public function getPage(?int $npp = 10) : int{
