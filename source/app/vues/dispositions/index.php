@@ -11,6 +11,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 
+		<link href="/open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
 		
 		<?php foreach($vue->getScripts() as $fichier): ?>
 			<script src="<?=$fichier?>"></script>
