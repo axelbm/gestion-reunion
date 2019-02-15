@@ -65,7 +65,7 @@ class Reunion extends DAO {
 
     public function getListeParDossier(int $page, modeles\Dossier $dossier, ?int $npp = 10) : array{
         return $this->select("INNER JOIN pointdordres ON reunions.reunionid = pointdordres.reunionid
-                                WHERE pointdordres.dossierid = ".$dossier->getId." LIMIT ".$page*$npp.", $npp ORDER BY date");
+                                WHERE pointdordres.dossierid = ".$dossier->getId()." LIMIT ".$page*$npp.", $npp ORDER BY date");
     }
 
     public function getPage(?int $npp = 10) : int{
@@ -78,7 +78,7 @@ class Reunion extends DAO {
     public function getPageParDossier(modeles\Dossier $dossier, ?int $npp = 10) : int{
         $statement = Database::query("select count(reunionid) from reunions 
                                     INNER JOIN pointdordres ON reunions.reunionid = pointdordres.reunionid
-                                    WHERE pointdordres.dossierid = ".$dossier->getId);
+                                    WHERE pointdordres.dossierid = ".$dossier->getId());
         $result = $statement->fetch();
         $nombre = $result[0];
         return ceil($nombre / $npp);
@@ -86,25 +86,25 @@ class Reunion extends DAO {
 
     public function getListeParUtilisateur(int $page, modeles\Utilisateur $utilisateur, ?int $npp = 10) : array{
         return $this->select("INNER JOIN participations ON reunions.reunionid = participations.reunionid
-                                WHERE participations.courriel = ".$utilisateur->getCourreil." LIMIT ".$page*$npp.", $npp ORDER BY date");
+                                WHERE participations.courriel = ".$utilisateur->getCourriel()." LIMIT ".$page*$npp.", $npp ORDER BY date");
     }
 
     public function getPageParUtilisateur(modeles\Utilisateur $utilisateur, ?int $npp = 10) : int{
         $statement = Database::query("select count(reunionid) from reunions 
                                     INNER JOIN participations ON reunions.reunionid = participations.reunionid
-                                    WHERE participations.courriel = ".$utilisateur->getCourreil);
+                                    WHERE participations.courriel = ".$utilisateur->getCourriel());
         $result = $statement->fetch();
         $nombre = $result[0];
         return ceil($nombre / $npp);
     }
 
     public function getListeParCreateur(int $page, modeles\Utilisateur $utilisateur, ?int $npp = 10) : array{
-        return $this->select("WHERE createur = ".$utilisateur->getCourreil." LIMIT ".$page*$npp.", $npp ORDER BY date");
+        return $this->select("WHERE createur = ".$utilisateur->getCourriel()." LIMIT ".$page*$npp.", $npp ORDER BY date");
     }
 
     public function getPageParCreateur(modeles\Utilisateur $utilisateur, ?int $npp = 10) : int{
         $statement = Database::query("select count(reunionid) from reunions 
-                                    WHERE createur = ".$utilisateur->getCourreil);
+                                    WHERE createur = ".$utilisateur->getCourriel());
         $result = $statement->fetch();
         $nombre = $result[0];
         return ceil($nombre / $npp);

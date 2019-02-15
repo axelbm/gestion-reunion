@@ -19,7 +19,7 @@ class Dossier extends DAO {
 
     public function getListeParReunion(int $page, modeles\Reunion $reunion, ?int $npp = 10) : array{
         return $this->select("INNER JOIN pointdordres ON dossiers.dossierid = pointdordres.dossierid
-                                WHERE pointdordres.reunionid = ".$reunion->getId." LIMIT ".$page*$npp.", $npp ORDER BY nom");
+                                WHERE pointdordres.reunionid = ".$reunion->getId()." LIMIT ".$page*$npp.", $npp ORDER BY nom");
     }
 
     public function getListe(int $page, ?int $npp = 10) : array{
@@ -47,7 +47,7 @@ class Dossier extends DAO {
     public function getPageParReunion(modeles\Reunion $reunion, ?int $npp = 10) : int{
         $statement = Database::query("select count(dossierid) from dossiers 
                                     INNER JOIN pointdordres ON dossiers.dossierid = pointdordres.dossierid
-                                    WHERE pointdordres.reunionid = ".$reunion->getId);
+                                    WHERE pointdordres.reunionid = ".$reunion->getId());
         $result = $statement->fetch();
         $nombre = $result[0];
         return ceil($nombre / $npp);
