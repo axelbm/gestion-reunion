@@ -26,6 +26,6 @@ class AjouterPointDordre extends \core\Form {
         $pointdordre = new modeles\PointDordre($this->reunionid, $this->titre, $this->description, $this->dossierid, "");
         $pointdordre->sauvegarder();
 
-        \core\MainControleur::chargerPage("accueil");
+        \core\MainControleur::rediriger("accueil");
     }
 }

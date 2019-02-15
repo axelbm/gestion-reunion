@@ -36,6 +36,6 @@ class Connexion extends \core\Form {
     public function action() {
         \app\outils\Session::connexion($this->utilisateur);
 
-        \core\MainControleur::chargerPage("accueil");
+        \core\MainControleur::rediriger("accueil");
     }
 }

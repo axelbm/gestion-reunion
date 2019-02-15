@@ -5,6 +5,8 @@ namespace core;
 class Session {
     
     static public function getFormAction(string $formId) : ?array {
+        var_dump($_SESSION["formsId"]);
+
         if (isset($_SESSION["formsId"][$formId]))
             return $_SESSION["formsId"][$formId];
         else
