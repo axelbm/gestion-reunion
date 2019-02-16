@@ -1,8 +1,9 @@
 <div>
-    <h4 class="text-center mt-2">Avec AFH,</h4>
+    <h4 class="text-center mt-2">À propos de AFH</h4>
     <br>
-    <h1 class="text-center mt-2 display-3">Votre gestion quotidienne,<br> simplifiée </h1>
+    <h1 class="text-center mt-2 display-3">Qui nous sommes</h1>
     <br>
-    <h4 class="text-center mt-2">--------------------<br>DEPUIS 1950<br>--------------------<h4>
+    <h4 class="text-center mt-2">AFH vous aide à planifier vos réunions et vos dossiers avec </h4> 
+    <h4 class="text-center mt-2"> simplicité tout en assurant une fiabilité inégalée depuis 1950.</h3>
     <br>
 </div>

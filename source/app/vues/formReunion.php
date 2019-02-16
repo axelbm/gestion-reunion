@@ -9,7 +9,7 @@
         <div class="form-group">
         <input type="date" name="name" class="form-control"  required>
         <input type="time" name="name" class="form-control"  required>
-        <input type="submit" name="ajouter" id="ajouter" value="Ajouter" class="btn btn-dark btn-block"><br><br>
+        <input type="submit" name="ajouter" id="ajouter" value="Ajouter" class="btn btn-primary btn-block"><br><br>
         </div>
     </form>
 </div>
