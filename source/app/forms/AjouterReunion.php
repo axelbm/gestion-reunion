@@ -6,6 +6,7 @@ use app\modeles;
 
 class AjouterReunion extends \core\Form {
     protected $date;
+    protected $createur;
     
     public function valider () {
         if ($this->date == "") {
@@ -14,7 +15,7 @@ class AjouterReunion extends \core\Form {
     }
 
     public function action() {
-        $reunion = new modeles\Reunion($this->date);
+        $reunion = new modeles\Reunion($this->date, $this->createur);
         $reunion->sauvegarder();
 
         \core\MainControleur::rediriger("accueil");
