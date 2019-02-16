@@ -21,8 +21,8 @@
 						<?=$utilisateur->getNomComplet();?>
 					</a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="#">Link 1</a>
-						<a class="dropdown-item" href="#">Link 2</a>
+						<a class="dropdown-item" href="#">Afficher mon profil</a>
+						<a class="dropdown-item" href="#">Aide</a>
 						<a class="dropdown-item" href="<?=WEBROOT?>deconnexion">Se déconnecter</a>
 					</div>
 				</div>

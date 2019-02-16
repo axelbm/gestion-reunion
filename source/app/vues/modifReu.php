@@ -1,19 +1,17 @@
 <div class="container">
-    <h1 align="center"> - Mes Réunions - </h1> 
+    <h1 align="center"> - Modifications - </h1> 
     <br>
     <h6 align="right"> * Administrateur </h6>
 
     <a href="calendrier" button type="button" class="btn btn-outline-dark float-right ">Revenir à mes invitations</a> 
-    <a href="formReunion" button type="button" class="btn btn-dark float-right">Ajouter une Réunion</a><br><br>
-    <div class="card">
+<div class="card">
 
     <div class="card-body">
       <h4 class="card-title">15 Février 2019 - 11:00</h4>
-      <p class="card-text">#36 - (0) invités</p>
-      <a href="#" class="card-link">Consulter</a>
-      <a href="#" class="card-link">Modifier</a>
+      <p class="card-text">#36 - Créée par (utilisateur)/(0) invité(s)</p>
+      <a href="#" class="card-link">Inviter des participants</a>
+      <a href="#" class="card-link">Point(s) d'ordre</a>
+      <a href="#" class="card-link">Supprimer</a>
       <br><span class="badge badge-success">Présent</span>
     </div>
   </div>
-
-  
