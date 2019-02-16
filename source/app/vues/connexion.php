@@ -27,14 +27,6 @@
         </div>
 
         <div class="form-group">
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" name="rem" class="custom-control-input" id="customCheck">
-                <label for="customCheck" class="custom-control-label">Se souvenir de moi</label>
-                <a href="#" id="forgot-btn" class="float-right">Mot de passe oublié ?</a>
-            </div>
-        </div>
-
-        <div class="form-group">
             <input type="submit" name="login" id="login" value="Login" class="btn btn-primary btn-block">
         </div>
 

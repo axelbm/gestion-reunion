@@ -7,10 +7,10 @@
 				<a class="nav-link text-light" href="<?=WEBROOT?>">Accueil</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link text-light" href="<?=WEBROOT?>calendrier">Calendrier</a>
+				<a class="nav-link text-light" href="<?=WEBROOT?>calendrier">Réunions</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link text-light" href="<?=WEBROOT?>dossiers">Liste des dossiers</a>
+				<a class="nav-link text-light" href="<?=WEBROOT?>dossiers">Dossiers</a>
 			</li>
 		</ul>
 
@@ -18,12 +18,12 @@
 			<?php if (isset($utilisateur)): ?>
 				<div class="dropdown">
 					<a class="dropdown-toggle text-light" data-toggle="dropdown">
-						Axel Michaud
+						<?=$utilisateur->getNomComplet();?>
 					</a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="#">Link 1</a>
 						<a class="dropdown-item" href="#">Link 2</a>
-						<a class="dropdown-item" href="#">Link 3</a>
+						<a class="dropdown-item" href="<?=WEBROOT?>deconnexion">Se déconnecter</a>
 					</div>
 				</div>
 			<?php else: ?>

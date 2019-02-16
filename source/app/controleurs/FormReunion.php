@@ -2,7 +2,7 @@
 
 namespace app\controleurs;
 
-class FormReuniom extends \core\Controleur {
+class FormReunion extends \core\Controleur {
 	use atraits\Utilisateur;
 
 	public function action(array $args) : ?\Exception {

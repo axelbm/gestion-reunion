@@ -9,35 +9,5 @@
       <a href="#" class="card-link">Modifier</a>
       <a href="#" class="card-link">Supprimer</a>
     </div>
-  </div>
-<br>
-  <div class="card">
-    <div class="card-body">
-      <h4 class="card-title">Nom du dossier</h4>
-      <p class="card-text">#40 - Par (créateur de la réunion)</p>
-      <a href="#" class="card-link">Consulter</a>
-      <a href="#" class="card-link">Modifier</a>
-      <a href="#" class="card-link">Supprimer</a>
-    </div>
-  </div>
-  <br>
-  <div class="card">
-    <div class="card-body">
-      <h4 class="card-title">Nom du dossier</h4>
-      <p class="card-text">#53 - Par (créateur de la réunion)</p>
-      <a href="#" class="card-link">Consulter</a>
-      <a href="#" class="card-link">Modifier</a>
-      <a href="#" class="card-link">Supprimer</a>
-    </div>
-  </div>
-  <br>
-  <div class="card">
-    <div class="card-body">
-      <h4 class="card-title">Nom du dossier</h4>
-      <p class="card-text">#61 - Par (créateur de la réunion)</p>
-      <a href="#" class="card-link">Consulter</a>
-      <a href="#" class="card-link">Modifier</a>
-      <a href="#" class="card-link">Supprimer</a>
-    </div>
-  </div>
+    <span class="oi oi-account-login"></span>
 </div>
