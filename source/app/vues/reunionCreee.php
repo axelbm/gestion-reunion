@@ -11,7 +11,7 @@
       <h4 class="card-title">15 Février 2019 - 11:00</h4>
       <p class="card-text">#36 - Créée par (utilisateur)<br>(0) invités</p>
       <a href="#" class="card-link">Consulter</a>
-      <a href="detailsReunion" class="card-link">Modifier</a>
+      <a href="detailsReunion?&reunion=1" class="card-link">Modifier</a>
       <br><span class="badge badge-success">Présent</span>
     </div>
   </div>
