@@ -19,7 +19,7 @@
 
   <div class="row">
   <div class="column" style="background-color:#aaa;">
-    <h5>Participants</h5>
+    <h5>Invité(s)</h5>
     <ul class="list-group">
   <li class="list-group-item d-flex justify-content-between align-items-center">
     Jhonas Brunet
@@ -53,4 +53,5 @@
   </li>
 </ol>
   </div>
+</div>
 </div>

@@ -4,7 +4,15 @@
 	<br>
 	<?php if ($estadmin):?> 
 		<h6 align="right"> * Administrateur </h6>
-		<a href="reunionCreee" button type="button" class="btn btn-outline-dark float-right">Mes Réunions</a><br>
+		<a href="reunionCreee" button type="button" class="btn btn-dark float-right">Mes Réunions</a><br>
+		<div class="pagination">
+  <a href="#">&laquo;</a>
+  <a href="#">1</a>
+  <a class="active" href="#">2</a>
+  <a href="#">3</a>
+  <a href="#">&raquo;</a>
+</div><br>
+
 	<?php endif?>
 	<br>
 	<div class="card border-dark mb-3" style="max-width: 25rem;">

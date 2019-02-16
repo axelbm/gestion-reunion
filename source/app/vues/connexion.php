@@ -27,7 +27,7 @@
         </div>
 
         <div class="form-group">
-            <input type="submit" name="login" id="login" value="Login" class="btn btn-primary btn-block">
+            <input type="submit" name="login" id="login" value="Se connecter" class="btn btn-dark btn-block">
         </div>
 
         <div class="form-group">
@@ -59,7 +59,7 @@
         <input type="text" name="name" class="form-control" placeholder="*No. d'Invitation" required>
         </div>
         <div class="form-group">
-            <input type="submit" name="register" id="register" value="Register" class="btn btn-primary btn-block">
+            <input type="submit" name="register" id="register" value="S'inscrire" class="btn btn-dark btn-block">
         </div>
         <div class="form-group">
             <p class="text-center">Déjà inscrit ? <a href="#" id="login-btn">Se connecter ici</a></p>
