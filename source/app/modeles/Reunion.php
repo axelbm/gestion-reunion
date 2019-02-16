@@ -40,4 +40,8 @@ class Reunion extends Modele {
     public function ajouterPointDordre(PointDordre $point) {
         throw(new \Exception("Pas implementé"));
     }
+
+    public function estCreateur(Utilisateur $utilisateur) : bool {
+        return $this->createur == $utilisateur->courriel;
+    }
 }
