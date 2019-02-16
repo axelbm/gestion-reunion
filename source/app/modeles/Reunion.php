@@ -16,9 +16,9 @@ class Reunion extends Modele {
     /** @var string */
     protected $createur;
 
-    public function __construct(\DateTime $date= new \DateTime(), string $createur) {
+    public function __construct(\DateTime $date=null, string $createur=null) {
         $this->date = $date;
-        $this->createur =$createur;
+        $this->createur = $createur;
     }
 
     /**

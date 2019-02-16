@@ -2,14 +2,14 @@
 
 use \core\DAO;
 
-$reunions = new \app\modeles\Reunion(new \DateTime(), "h-ugues@hotmail.com");
-$reunions->sauvegarder();
-$reunions = new \app\modeles\Reunion(new \DateTime(), "aléo@hotmail.com");
-$reunions->sauvegarder();
-$reunions = new \app\modeles\Reunion(new \DateTime(), "aalexia@gmail.com");
-$reunions->sauvegarder();
+// $reunions = new \app\modeles\Reunion(new \DateTime(), "axel@gmail.com");
+// $reunions->sauvegarder();
+// $reunions = new \app\modeles\Reunion(new \DateTime(), "aléo@hotmail.com");
+// $reunions->sauvegarder();
+// $reunions = new \app\modeles\Reunion(new \DateTime(), "aalexia@gmail.com");
+// $reunions->sauvegarder();
 
-// var_dump(DAO::Reunion()->getPage());
+var_dump(DAO::Reunion()->find(1));
 
 // var_dump(DAO::Utilisateur());
 
