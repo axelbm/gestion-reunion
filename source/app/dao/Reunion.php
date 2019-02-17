@@ -123,7 +123,7 @@ class Reunion extends DAO {
         if (is_null($npp))
             $npp = self::$nppDefaut;
 
-        return $this->select("WHERE createur = '?' ORDER BY date LIMIT ?, ?", $utilisateur->getCourriel(), $page*$npp, $npp);
+        return $this->select("WHERE createur = ? ORDER BY date LIMIT ?, ?", $utilisateur->getCourriel(), $page*$npp, $npp);
     }
 
     public function getPageParCreateur(modeles\Utilisateur $utilisateur, ?int $npp = 10) : int{
@@ -132,7 +132,7 @@ class Reunion extends DAO {
 
 
         $statement = Database::query("select count(reunionid) from reunions 
-            WHERE createur = '?'", [$utilisateur->getCourriel()]);
+            WHERE createur = ?", $utilisateur->getCourriel());
         $result = $statement->fetch();
         $nombre = $result[0];
         return ceil($nombre / $npp);
