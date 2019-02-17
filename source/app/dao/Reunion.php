@@ -13,7 +13,7 @@ class Reunion extends DAO {
 
     protected $proprietes = array(
         "Id" => "reunionid:int:PK,AI",
-        "Date" => "date:datetime",
+        "Date" => "date:DateTime",
         "Createur" => "createur:string",
 
         "PointDordres" => "Id:PointDordre:FK:reunionid",

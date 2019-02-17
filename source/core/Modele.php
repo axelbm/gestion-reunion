@@ -54,7 +54,7 @@ abstract class Modele {
                     }
 
                     // Vérifie le type de la nouvelle valeur
-                    if (gettype($args[0]) == $prop["type"])
+                    if (gettype($args[0]) == $prop["type"] || (gettype($args[0]) == "object" and get_class($args[0]) == $prop["type"]))
                         $this->$propCle = $valeur;
                     else
                         throw(new \TypeError("Argument 1 passed to ".get_class($this)."->$name() must be an ".$prop["type"].", ".gettype($args[0])." given"));
