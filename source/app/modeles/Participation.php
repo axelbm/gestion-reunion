@@ -16,15 +16,15 @@ class Participation extends Modele {
     /** @var string */
     protected $statutid;
 
-    public function accepter (){
+    public function accepter() {
         throw(new \Exception("Pas implementé"));
     }
 
-    public function refuser (){
+    public function refuser() {
         throw(new \Exception("Pas implementé"));
     }
 
-    public function __construct(int $reunionid=0, string $courriel="", string $statusid="") {
+    public function __construct(int $reunionid=0, string $courriel="", string $statutid="") {
         $this->reunionid = $reunionid;
         $this->courriel = $courriel;
         $this->statutid = $statutid;
