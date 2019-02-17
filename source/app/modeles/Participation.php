@@ -24,7 +24,8 @@ class Participation extends Modele {
         throw(new \Exception("Pas implementé"));
     }
 
-    public function __construct(string $courriel="", string $statusid="") {
+    public function __construct(string $reunionid="", string $courriel="", string $statusid="") {
+        $this->reunionid = $reunionid;
         $this->courriel = $courriel;
         $this->statusid = $statusid;
     }
