@@ -23,14 +23,14 @@ class PointDordre extends DAO {
     );
 
     public function getListeParTitre(int $page, ?string $titre = "", ?int $npp = 10) : array{
-        return $this->select("WHERE CONTAINS(titre , ?) LIMIT ?, ? ORDER BY titre", $titre, $page*$npp, $npp);
+        return $this->select("WHERE CONTAINS(titre , '$titre') LIMIT ".$page*$npp.", $npp ORDER BY titre");
     }
 
     public function getPage(?string $titre = "", ?int $npp = 10) : int{
         if (is_null($npp))
         $npp = self::$nppDefaut;
 
-        $statement = Database::query("select count(pointdordreid) from pointdordres WHERE CONTAINS(titre , ?)", $titre);
+        $statement = Database::query("select count(pointdordreid) from pointdordres WHERE CONTAINS(titre , '$titre')");
         $result = $statement->fetch();
         $nombre = $result[0];
         return ceil($nombre / $npp);

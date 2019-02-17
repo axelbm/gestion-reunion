@@ -24,21 +24,21 @@ class Dossier extends DAO {
             $npp = self::$nppDefaut;
 
         return $this->select("INNER JOIN pointdordres ON dossiers.dossierid = pointdordres.dossierid
-            WHERE pointdordres.reunionid = ? ORDER BY nom LIMIT ?, ?", $reunion->getId(), $page*$npp, $npp);
+                                WHERE pointdordres.reunionid = ".$reunion->getId()." ORDER BY nom LIMIT ".$page*$npp.", $npp");
     }
 
     public function getListe(int $page, ?int $npp = null) : array{
         if (is_null($npp))
             $npp = self::$nppDefaut;
             
-        return $this->select("ORDER BY nom LIMIT ?, ?", $page*$npp, $npp);
+        return $this->select("ORDER BY nom LIMIT ".$page*$npp.", $npp");
     }
 
     public function getListeParNom(int $page, string $nom, ?int $npp = null) : array{
         if (is_null($npp))
             $npp = self::$nppDefaut;
             
-        return $this->select("WHERE nom = ? ORDER BY nom LIMIT ?, ?", $nom, $page*$npp, $npp);
+        return $this->select("WHERE nom = '$nom' ORDER BY nom LIMIT ".$page*$npp.", $npp");
     }
 
     public function getPage(?int $npp = null) : int{
@@ -55,7 +55,7 @@ class Dossier extends DAO {
         if (is_null($npp))
             $npp = self::$nppDefaut;
             
-        $statement = Database::query("select count(dossierid) from dossiers WHERE CONTAINS(nom , ?)", $nom);
+        $statement = Database::query("select count(dossierid) from dossiers WHERE CONTAINS(nom , '$nom')");
         $result = $statement->fetch();
         $nombre = $result[0];
         return ceil($nombre / $npp);
@@ -66,8 +66,8 @@ class Dossier extends DAO {
             $npp = self::$nppDefaut;
             
         $statement = Database::query("select count(dossierid) from dossiers 
-            INNER JOIN pointdordres ON dossiers.dossierid = pointdordres.dossierid
-            WHERE pointdordres.reunionid = ?", $reunion->getId());
+                                    INNER JOIN pointdordres ON dossiers.dossierid = pointdordres.dossierid
+                                    WHERE pointdordres.reunionid = ".$reunion->getId());
         $result = $statement->fetch();
         $nombre = $result[0];
         return ceil($nombre / $npp);

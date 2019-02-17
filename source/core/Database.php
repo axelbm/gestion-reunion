@@ -44,50 +44,25 @@ abstract class Database {
 	 * @param string $statement
 	 * @return \PDOStatement
 	 */
-	static public function query(string $statement, ...$args) : \PDOStatement {
-		if (\is_null(self::$instance)) {
+	static public function query(string $statement) : \PDOStatement {
+		if (\is_null(self::$instance))
 			throw(new \Exception("La base de données n'est pas initialisé"));
-		}
-		else {
-			$stmt = self::prepare($statement, ...$args);
-			$stmt->execute();
-
-			return $stmt;
-		}
+		else
+			return self::$instance->query($statement);
 	}
 	
 	/**
 	 * Prépare une requête à l'exécution et retourne un PDOStatement
 	 *
 	 * @param string $statement
-	 * @param mixed ...$args
+	 * @param array|null $options
 	 * @return \PDOStatement
 	 */
-	static public function prepare(string $statement, ...$args) : \PDOStatement {
-		if (\is_null(self::$instance)) { 
+	static public function prepare(string $statement, ?array $options=array()) : \PDOStatement {
+		if (\is_null(self::$instance))
 			throw(new \Exception("La base de données n'est pas initialisé"));
-		}
-		else {
-			$stmt = self::$instance->prepare($statement);
-
-			if (isset($args) && count($args) > 0) {
-				if (is_array($args[0])) {
-					foreach ($args[0] as $key => $value) {
-						$key = is_int($key) ? $key + 1 : $key;
-						$type = is_int($value) ? \PDO::PARAM_INT : is_bool($value) ? \PDO::PARAM_BOOL : \PDO::PARAM_STR;
-						$stmt->bindParam($key, $value, $type);
-					}
-				}
-				else {
-					foreach ($args as $i => $value) {
-						$type = is_int($value) ? \PDO::PARAM_INT : is_bool($value) ? \PDO::PARAM_BOOL : \PDO::PARAM_STR;
-						$stmt->bindParam($i + 1, $value, $type);
-					}
-				}
-			}
-			
-			return $stmt;
-		}
+		else
+			return self::$instance->prepare($statement, $options);
 	}
 
 	/**
