@@ -6,10 +6,11 @@ use app\modeles;
 
 class AjouterParticipation extends \core\Form {
     protected $reunionid;
-    protected $courriel;
+    protected $courriels;
     
     public function valider () {
-        if ($this->courriel == "") {
+        var_dump($this->courriels);
+        if ($this->courriels == "") {
             $this->ajouterErreur("courriel", "Courriel obligatoire");
         }
         if ($this->reunionid == "") {

@@ -3,10 +3,11 @@
     <h6 class="text-center mt-2">à rejoindre la réunion</h6>
     <h2 class="text-center mt-2"><?= $reunion->getDate()->format('Y-F-d H:i') ?></h2><br>
 
+    <?php $f = new \core\FormView("AjouterParticipation"); ?>
     <form action="" method="post" role="form" class="p-2" id="register-frm">
-    <form action="/action_page.php">
+    <input type="hidden" name="formid" value="<?= $f->id ?>">
     <?php foreach ($utilisateurs as $utilisateur) { ?>
-      <input type="checkbox" name="courriel[]" value=""> <?= $utilisateur->getCourriet() ?><br>
+      <input type="checkbox" name="courriels[]" value="<?= $utilisateur->getCourriel() ?>"> <?= $utilisateur->getCourriel() ?><br>
     <?php } ?><br><br>
   <input type="submit" value="Inviter" class="btn btn-dark btn-block"> 
 

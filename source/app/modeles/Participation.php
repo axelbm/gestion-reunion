@@ -28,4 +28,6 @@ class Participation extends Modele {
         $this->courriel = $courriel;
         $this->statusid = $statusid;
     }
+
+    //methode badge
 }
