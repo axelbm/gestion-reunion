@@ -18,7 +18,12 @@
 				<li class="nav-item">
 					<a class="nav-link text-light" href="<?=WEBROOT?>invitation">Inviter</a>
 				</li>
-			<?php } endif ?>
+			<?php if ($utilisateur->estSuperAdministrateur()){ ?>
+				<li class="nav-item">
+					<a class="nav-link text-light" href="<?=WEBROOT?>superAdmin">Super Admin</a>
+				</li>
+			<?php	}
+			}endif ?>
 			
 			<li class="nav-item">
 				<a class="nav-link text-light" href="<?=WEBROOT?>nouscontacter">Nous contacter</a>
