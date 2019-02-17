@@ -5,7 +5,6 @@
     <form action="" method="post" role="form" class="p-2" id="dossier-frm">
 
         <input type="hidden" name="formid" value="<?= $f->id ?>">
-        <input type="hidden" name="createur" value="<?= $utilisateur->getCourriel() ?>">
         <div class="form-group">
         <div class="form-group">
         <input type="text" name="pass" class="form-control" placeholder="Titre" required>

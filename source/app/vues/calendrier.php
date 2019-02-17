@@ -20,10 +20,11 @@
 	<a href="<?=WEBROOT."calendrier/$nombredepage"?>">&raquo;</a>
 
 </div><br>
-	<?php } ?>
+	<?php } 
+	endif?>
 
-	<?php endif?>
 	<br>
+	<!--
 	<div class="card border-dark mb-3" style="max-width: 25rem;">
 		<div class="card-body">
 			<h4 class="card-title">15 Février 2019 - 11:00</h4>
@@ -35,10 +36,11 @@
   <input type="submit" value="Confirmer" class="btn btn-dark btn-block disabled"> 
 			<br><span class="badge badge-success">Présent</span>
 		</div>
-	</div>
+	</div>-->
 
 
-	<?php foreach ($reunions as $reunion) :?>
+	<?php  if(!empty($reunions)){
+   foreach ($reunions as $reunion) :?>
   <div class="card border-dark mb-3" style="max-width: 19rem;">
     <div class="card-body">
       <h4 class="card-title"><?= strftime($reunion->getDate()->format('Y-M-d H:i')) ?></h4>
@@ -47,7 +49,10 @@
       <a href="detailsReunion?&reunion=<?= $reunion->getId() ?>" class="card-link">Modifier</a>
     </div>
   </div>
-  <?php endforeach ?>
+  <?php endforeach; 
+  }else{ 
+    echo "<div>Vous n'avez pas été invité à réunion.</div>";
+  }  ?>
 	<br>
 </div>
 
