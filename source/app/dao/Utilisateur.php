@@ -3,6 +3,7 @@
 namespace app\dao;
 
 use \core\DAO;
+use \app\modeles;
 
 class Utilisateur extends DAO {
     protected $table = "utilisateurs";
@@ -28,5 +29,10 @@ class Utilisateur extends DAO {
 
     public function recherche(string $nom) : array{
         return $this->select("WHERE CONTAINS((nom + ' ' + prenom, prenom + ' ' + nom, courriel), '$nom')");
+    }
+
+    public function listeInvitation(modeles\Reunion $reunion) : array{
+        $utilisateur = \app\outils\Session::getUtilisateur();
+        return $this->select("WHERE courriel not in (select courriel in participation where reunionid = ?) and courriel not ?", $reunion->getId(), $utilisateur->getCourriel());
     }
 }

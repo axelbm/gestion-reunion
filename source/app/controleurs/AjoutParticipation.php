@@ -1,12 +1,13 @@
 <?php
 
 namespace app\controleurs;
+use \core\DAO;
 
 class AjoutParticipation extends \core\Controleur {
 	use atraits\Utilisateur;
 
 	public function action(array $args) : ?\Exception {
-		if (count($args) > 1)
+		if (count($args) > 0)
 			return new \Exception("erreur 404", 404);
 
 		$vue = $this->genererVue("ajoutParticipation");
@@ -16,8 +17,15 @@ class AjoutParticipation extends \core\Controleur {
 		if ($this->estConnecter() && !$this->utilisateur->estAdministrateur())
 			\core\MainControleur::rediriger();
 
-
+        $reunion = DAO::Reunion()->find($_GET["reunion"]);
+        if (!$reunion) {
+            return new \Exception("erreur 404", 404);
+        }
         
+        $utilisateurs = DAO::Utilisateur()->listeInvitation($reunion);
+
+        $vue->set("reunion", $reunion);
+		$vue->set("utilisateurs", $utilisateurs);
 
 		$vue->afficher();
 
