@@ -1,6 +1,7 @@
 
 <div class="container">
-	<h1 align="center"> - Invitation(s) - </h1> 
+	<h1 align="center"> - Réunion(s) - </h1> 
+	<h6 align="center"> (Auxquelles j'ai été invité) </h6> 
 	<br>
 	<?php if ($estadmin):?> 
 		<h6 align="right"> * Administrateur </h6>
@@ -24,7 +25,7 @@
 	endif?>
 
 	<br>
-	<!--
+
 	<div class="card border-dark mb-3" style="max-width: 25rem;">
 		<div class="card-body">
 			<h4 class="card-title">15 Février 2019 - 11:00</h4>
@@ -43,7 +44,7 @@
 			<a href="#" class="card-link">Consulter</a>
 </div>
 		</div>
-	</div>-->
+	</div>
 
 
 	<?php  if(!empty($reunions)){
@@ -53,7 +54,6 @@
       <h4 class="card-title"><?= strftime($reunion->getDate()->format('Y-M-d H:i')) ?></h4>
       <p class="card-text">#<?= $reunion->getId() ?> - Créée par (<?= $reunion->getCreateur() ?>)<br>(0) invités</p>
 			<form action="" method="post" role="form" class="p-2" id="register-frm">
-    <form action="/action_page.php">
 		<label for="sel1"><strong>Confirmer ma participation</strong></label>
      <div class="form-group"><select class="form-control" id="sel1" name="sellist1">
         <option>Je participe</option>
@@ -69,7 +69,7 @@
   </div>
   <?php endforeach; 
   }else{ 
-    echo "<div>Vous n'avez pas été invité à réunion.</div>";
+    echo "<div>Vous n'avez pas été invité à une réunion.</div>";
   }  ?>
 	<br>
 </div>
