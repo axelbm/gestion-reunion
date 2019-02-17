@@ -35,4 +35,9 @@ class Utilisateur extends DAO {
         $utilisateur = \app\outils\Session::getUtilisateur();
         return $this->select("WHERE courriel not in (select courriel in participation where reunionid = ?) and courriel not ?", $reunion->getId(), $utilisateur->getCourriel());
     }
+
+    public function getParCleDeConnexion(string $cle) : ?modeles\Utilisateur {
+        return $this->selectFirst("INNER JOIN connexions ON utilisateurs.courriel = connexions.courriel
+            WHERE connexions.cle = ?", $cle);
+    }
 }

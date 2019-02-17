@@ -5,8 +5,12 @@ namespace app\forms;
 use core\DAO;
 
 class Connexion extends \core\Form {
+    /** @var string */
     public $courriel;
+    /** @var string */
     public $motDePasse;
+    /** @var string */
+    public $resterConnecter = 'off';
 
     public function valider (){
         $resultat = true;
@@ -34,8 +38,8 @@ class Connexion extends \core\Form {
     }
 
     public function action() {
-        \app\outils\Session::connexion($this->utilisateur);
+        \app\outils\Session::connexion($this->utilisateur, $this->resterConnecter == 'on');
 
-        \core\MainControleur::rediriger("accueil");
+        // \core\MainControleur::rediriger("accueil");
     }
 }

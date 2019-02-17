@@ -26,12 +26,23 @@
             <?php endif ?>
         </div>
 
+        <div class="form-group">	
+            <div class="custom-control custom-checkbox">	
+                <input type="checkbox" name="resterConnecter" class="custom-control-input" id="customCheck" <?= $f->get("resterConnecter") == 'on' ? 'checked' : ''?>>	
+                <label for="customCheck" class="custom-control-label">Se souvenir de moi</label>
+            </div>	
+        </div>
+
         <div class="form-group">
             <input type="submit" name="login" id="login" value="Se connecter" class="btn btn-dark btn-block">
         </div>
 
         <div class="form-group">
-            <p class="text-center">Première fois ? <a href="inscription" id="register-btn">S'inscrire ici</a></p>
+            <p class="text-center">
+                Première fois ? <a href="inscription" id="register-btn">S'inscrire ici</a>
+                <br>
+                <a href="#" id="forgot-btn">Mot de passe oublié ?</a>
+            </p>
         </div>
     </form>
 </div>
