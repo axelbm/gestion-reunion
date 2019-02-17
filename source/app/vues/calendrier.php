@@ -20,10 +20,11 @@
 	<a href="<?=WEBROOT."calendrier/$nombredepage"?>">&raquo;</a>
 
 </div><br>
-	<?php } ?>
+	<?php } 
+	endif?>
 
-	<?php endif?>
 	<br>
+	<!--
 	<div class="card border-dark mb-3" style="max-width: 25rem;">
 		<div class="card-body">
 			<h4 class="card-title">15 Février 2019 - 11:00</h4>
@@ -42,10 +43,11 @@
 			<a href="#" class="card-link">Consulter</a>
 </div>
 		</div>
-	</div>
+	</div>-->
 
 
-	<?php foreach ($reunions as $reunion) :?>
+	<?php  if(!empty($reunions)){
+   foreach ($reunions as $reunion) :?>
   <div class="card border-dark mb-3" style="max-width: 19rem;">
     <div class="card-body">
       <h4 class="card-title"><?= strftime($reunion->getDate()->format('Y-M-d H:i')) ?></h4>
@@ -65,7 +67,10 @@
 			</div>
     </div>
   </div>
-  <?php endforeach ?>
+  <?php endforeach; 
+  }else{ 
+    echo "<div>Vous n'avez pas été invité à réunion.</div>";
+  }  ?>
 	<br>
 </div>
 

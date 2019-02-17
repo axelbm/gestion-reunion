@@ -7,7 +7,7 @@
 <div class="card border-dark mb-3" style="max-width: 26rem;">
 
     <div class="card-body">
-      <h4 class="card-title">Titre</h4>
+      <h4 class="card-title"><?= $dossier->getTitre() ?></h4>
       <p class="card-text">Description</p><br>
       <a href="#" class="card-link">Modifier </a>
       <a href="#" class="card-link">Supprimer</a><br>

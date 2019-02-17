@@ -23,7 +23,7 @@
   Recherche par Titre <input type="search" name="titre">
   <input type="submit"><br><br><br>
 </form>
-	<div class="card border-dark mb-3" style="max-width: 15rem;">
+	<!--<div class="card border-dark mb-3" style="max-width: 15rem;">
 		<div class="card-body">
 			<h4 class="card-title">Titre</h4>
 			<p class="card-text">Par (créateur du dossier)</p>
@@ -31,5 +31,18 @@
 			<a href="#" class="card-link">Supprimer</a>
 		</div>
 		<span class="oi oi-account-login"></span>
-	</div>
+	</div>-->
+
+	<?php if(!empty($reunions)){
+   foreach ($reunions as $reunion) :?>
+  <div class="card border-dark mb-3" style="max-width: 15rem;">
+    <div class="card-body">
+      <h4 class="card-title"><?= $dossier->getTitre() ?></h4>
+      <a href="detailsDossier?&dossier=<?= $dossier->getId() ?>" class="card-link">Consulter</a>
+    </div>
+  </div>
+  <?php endforeach;
+  }else{ 
+    echo "<div>Vous n'avez pas créé de réunion.</div>";
+  }  ?>
 </div>
