@@ -1,6 +1,5 @@
 <div class="container">
-	<h1 align="center"> - Les dossiers - </h1><br>
-	<h6 align="right"> * Administrateur </h6>
+	<h1 align="center"> - Les dossiers - </h1><br><br>
 	<a href="formDossier" button type="button" class="btn btn-dark float-right">Nouveau Dossier</a><br><br>
 
 	<?php if ($nombredepage > 1){ ?>

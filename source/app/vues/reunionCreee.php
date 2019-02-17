@@ -31,7 +31,7 @@
     </div>
   </div>-->
 
-  <?php if(empty($reunions)){
+  <?php if(!empty($reunions)){
    foreach ($reunions as $reunion) :?>
   <div class="card border-dark mb-3" style="max-width: 19rem;">
     <div class="card-body">
@@ -43,7 +43,7 @@
   </div>
   <?php endforeach;
   }else{ 
-    echo "<div>Vous n'avez pas crée de réunion.</div>";
+    echo "<div>Vous n'avez pas créé de réunion.</div>";
   }  ?>
 
 </div>
