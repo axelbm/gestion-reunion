@@ -11,9 +11,9 @@
       <p class="card-text">Réunion #36 - Créée par (utilisateur)<br>(0) invité(s)</p>
       <span class="badge badge-success">Présent</span><br><br>
       <a href="#" class="card-link">Inviter des participants </a>
-      <a href="#" class="card-link">  Supprimer une invitation</a><br>
+      <a href="#" class="card-link">Supprimer une invitation</a><br>
       <a href="#" class="card-link">Ajouter un point d'ordre</a>
-      <a href="#" class="card-link">Supprimer la réunion</a>
+      <a href="#" class="card-link">Annuler la réunion</a>
     </div>
   </div><br>
 

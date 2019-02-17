@@ -17,20 +17,20 @@ class DetailsDossier extends \core\Controleur {
 		if (!$this->estConnecter())
 			\core\MainControleur::rediriger("connexion");
 
-        $dossier = DAO::Dossier()->find($_GET["dossier"]);
-       	if (!$dossier) {
-           	return new \Exception("erreur 404", 404);
-       	}
-       	$pointdordres = array();
+        // $dossier = DAO::Dossier()->find($_GET["dossier"]);
+       	// if (!$dossier) {
+        //    	return new \Exception("erreur 404", 404);
+       	// }
+       	// $pointdordres = array();
 		
-       	$reunions = [];
-		foreach ($pointdordres as $pointdordre) {
-			$reunions[$pointdordre->getId()] = $pointdordre->getReunion();
-		}
+       	// $reunions = [];
+		// foreach ($pointdordres as $pointdordre) {
+		// 	$reunions[$pointdordre->getId()] = $pointdordre->getReunion();
+		// }
 
-		$vue->set("reunions", $reunions);
-		$vue->set("pointdordres", $pointdordres);
-        $vue->set("dossier", $dossier);
+		// $vue->set("reunions", $reunions);
+		// $vue->set("pointdordres", $pointdordres);
+        // $vue->set("dossier", $dossier);
 
 		$vue->afficher();
 
