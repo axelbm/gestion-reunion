@@ -38,7 +38,15 @@ class Utilisateur extends Modele {
      * @return boolean
      */
     public function validerMotDePasse (string $pass) : bool {
-        return $pass == $this->motdepasse;
+        // Hash automatiquement le mot de passe et le sauvegarde
+        $info = password_get_info ($this->motdepasse);
+        if ($info['algoName'] == 'unknown') {
+            $this->setMotDePasse($this->motdepasse);
+            $this->sauvegarder();
+        }
+
+        // verification du mdp
+        return password_verify($pass, $this->motdepasse);
     }
 
     /**
@@ -59,11 +67,8 @@ class Utilisateur extends Modele {
         }
     }
 
-    public function onSetNom($old, $new) {
-        \var_dump($old);
-        \var_dump($new);
-
-        return $new;
+    public function onSetMotDePasse($old, $new) {
+        return password_hash($new, PASSWORD_DEFAULT);
     }
 
     public function estAdministrateur() : bool {
