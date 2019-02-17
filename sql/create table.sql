@@ -24,6 +24,7 @@ CREATE TABLE REUNIONS(
     reunionid INT(8) NOT NULL AUTO_INCREMENT,
     date DATETIME NOT NULL,
     createur VARCHAR(64) NOT NULL,
+    statut TINYINT(1) NOT NULL,
     
     PRIMARY KEY(reunionid)
 );
