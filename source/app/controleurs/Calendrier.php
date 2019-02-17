@@ -38,6 +38,8 @@ class Calendrier extends \core\Controleur {
 
 		$estadmin = $this->utilisateur->estAdministrateur();
 		
+		var_dump($reunions);
+		$vue->set("page", $page);
 		$vue->set("reunions", $reunions);
 		$vue->set("participations", $participations);
 		$vue->set("nombredepage", $nombredepage);

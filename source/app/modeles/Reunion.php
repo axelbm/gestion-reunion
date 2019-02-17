@@ -42,6 +42,6 @@ class Reunion extends Modele {
     }
 
     public function estCreateur(Utilisateur $utilisateur) : bool {
-        return $this->createur == $utilisateur->courriel;
+        return $this->createur == $utilisateur->getCourriel();
     }
 }

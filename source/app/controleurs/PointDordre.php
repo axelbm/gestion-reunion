@@ -34,6 +34,7 @@ class PointDordres extends \core\Controleur {
 			
 		$nombredepage = DAO::Reunion()->getPageParUtilisateur($this->utilisateur, $nombre);
 
+		$vue->set("page", $page);
 		$vue->set("pointdordres", $pointdordres);
 		$vue->set("nombredepage", $nombredepage);
 

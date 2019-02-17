@@ -1,5 +1,8 @@
 <?php
 
+date_default_timezone_set('Europe/Paris');
+setlocale(LC_TIME, 'fr_FR.utf8','fra');
+
 require "config_systeme.php";
 require "config_site.php";
 

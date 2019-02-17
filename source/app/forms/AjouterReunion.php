@@ -6,16 +6,26 @@ use app\modeles;
 
 class AjouterReunion extends \core\Form {
     protected $date;
-    protected $createur;
+    protected $heure;
+    private $createur;
     
     public function valider () {
         if ($this->date == "") {
             $this->ajouterErreur("date", "Date obligatoire");
         }
+        if ($this->heure == "") {
+            $this->ajouterErreur("heure", "Heure obligatoire");
+        }
+        $this->createur = \app\outils\Session::getUtilisateur()->getCourriel();
     }
 
     public function action() {
-        $reunion = new modeles\Reunion($this->date, $this->createur);
+        $datetime = $this->date." ".$this->heure;
+
+        var_dump($datetime);
+        var_dump(new \DateTime($datetime));
+        var_dump($this->createur);
+        $reunion = new modeles\Reunion(new \DateTime($datetime), $this->createur);
         $reunion->sauvegarder();
 
         \core\MainControleur::rediriger("accueil");

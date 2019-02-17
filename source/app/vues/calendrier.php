@@ -5,13 +5,22 @@
 	<?php if ($estadmin):?> 
 		<h6 align="right"> * Administrateur </h6>
 		<a href="reunionCreee" button type="button" class="btn btn-dark float-right">Mes Réunions</a><br>
-		<div class="pagination">
-  <a href="#">&laquo;</a>
+		<?php if ($nombredepage > 1){ ?>
+	<div class="pagination">
+  <!--<a href="#">&laquo;</a>
   <a href="#">1</a>
   <a class="active" href="#">2</a>
   <a href="#">3</a>
-  <a href="#">&raquo;</a>
+	<a href="#">&raquo;</a>-->
+	
+	<a href="<?=WEBROOT."calendrier"?>">&laquo;</a>
+	<?php for ( $i = max(0, $page - 4); $i < min($nombredepage, $page + 4); $i++ ) :?>
+			<a href="<?=WEBROOT."calendrier/$i"?>"><?=$i?></a>
+	<?php endfor ?>
+	<a href="<?=WEBROOT."calendrier/$nombredepage"?>">&raquo;</a>
+
 </div><br>
+	<?php } ?>
 
 	<?php endif?>
 	<br>
@@ -24,6 +33,18 @@
 			<br><span class="badge badge-success">Présent</span>
 		</div>
 	</div>
+
+
+	<?php foreach ($reunions as $reunion) :?>
+  <div class="card border-dark mb-3" style="max-width: 19rem;">
+    <div class="card-body">
+      <h4 class="card-title"><?= strftime($reunion->getDate()->format('Y-M-d H:i')) ?></h4>
+      <p class="card-text">#<?= $reunion->getId() ?> - Créée par (<?= $reunion->getCreateur() ?>)<br>(0) invités</p>
+      <span class="badge badge-success">Présent</span><br>
+      <a href="detailsReunion?&reunion=<?= $reunion->getId() ?>" class="card-link">Modifier</a>
+    </div>
+  </div>
+  <?php endforeach ?>
 	<br>
 </div>
 

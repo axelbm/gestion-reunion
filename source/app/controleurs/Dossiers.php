@@ -41,6 +41,7 @@ class Dossiers extends \core\Controleur {
 			
 		$nombredepage = DAO::Reunion()->getPageParUtilisateur($this->utilisateur, $nombre);
 
+		$vue->set("page", $page);
 		$vue->set("dossiers", $dossiers);
 		$vue->set("nombredepage", $nombredepage);
 
