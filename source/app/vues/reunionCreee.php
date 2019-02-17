@@ -33,7 +33,7 @@
 
   <?php if(!empty($reunions)){
    foreach ($reunions as $reunion) :?>
-  <div class="card border-dark mb-3" style="max-width: 19rem;">
+  <div class="card border-dark mb-3" style="max-width: 26rem;">
     <div class="card-body">
       <h4 class="card-title"><?= $reunion->getDate()->format('Y-F-d H:i') ?></h4>
       <p class="card-text">#<?= $reunion->getId() ?> - Créée par (<?= $reunion->getCreateur() ?>)<br>(0) invités</p>
