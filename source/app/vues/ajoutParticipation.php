@@ -4,13 +4,14 @@
     <h2 class="text-center mt-2"><?= $reunion->getDate()->format('Y-F-d H:i') ?></h2><br>
 
     <?php $f = new \core\FormView("AjouterParticipation"); ?>
-    <form action="" method="post" role="form" class="p-2" id="register-frm">
-    <input type="hidden" name="formid" value="<?= $f->id ?>">
+    <div class="container1">
+    <input type="hidden"  name="formid" value="<?= $f->id ?>">
     <?php foreach ($utilisateurs as $utilisateur) { ?>
-      <input type="checkbox" name="courriels[]" value="<?= $utilisateur->getCourriel() ?>"> <?= $utilisateur->getCourriel() ?><br>
+      <input type="checkbox" class="checkedAll" name="courriels[]" value="<?= $utilisateur->getCourriel() ?>"> <?= $utilisateur->getCourriel() ?><br>
     <?php } ?><br><br>
-  <input type="submit" value="Inviter" class="btn btn-dark btn-block"> 
-
-</div>
+</div><br>
+<input type="submit" value="Inviter" class="btn btn-dark btn-block"> 
 </form>
 </div>
+
+
