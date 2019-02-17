@@ -30,4 +30,26 @@ class Participation extends Modele {
     }
 
     //methode badge
+    public function badge (){
+        switch($this->statusid){
+            case "EnAt":
+                echo "<span class=\"badge badge-info\">En attente</span>";
+                break;
+            case "Hes":
+                echo "<span class=\"badge badge-warning\">Hésitant</span>";
+                break;
+            case "Abs":
+                echo "<span class=\"badge badge-danger\">Absent</span>";
+                break;
+            case "Ann":
+                echo "<span class=\"badge badge-dark\">Annuler</span>";
+                break;
+            case "Part":
+                echo "<span class=\"badge badge-success\">Présent</span>";
+                break;
+            case "Term":
+                echo "<span class=\badge badge-dark\">Terminée</span>";
+                break;
+        }
+    }
 }

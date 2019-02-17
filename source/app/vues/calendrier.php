@@ -67,7 +67,7 @@
 			<input type="hidden" name="reunionid" value="<?= $reunion->getId() ?>">
 			<div class="form-group">
 <button type="button" class="btn btn-dark">Confirmer</button><br>
-			<br><span class="badge badge-success">Présent</span>
+			<br><?php $participations[$reunion->getId()]->badge() ?>
 			<a href="detailsReunion?&reunion=<?= $reunion->getId() ?>" class="card-link">Consulter</a>
 			</div>
     </div>
@@ -79,9 +79,5 @@
 	<br>
 </div>
 
-<br><span class="badge badge-warning">Hésitant</span>
-<br><span class="badge badge-danger">Absent</span>
-<br><span class="badge badge-dark">Terminée</span>
-<br><span class="badge badge-info">En attente</span>
 
 
