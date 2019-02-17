@@ -14,7 +14,7 @@ class Participation extends Modele {
     protected $courriel;
     
     /** @var string */
-    protected $statusid;
+    protected $statutid;
 
     public function accepter (){
         throw(new \Exception("Pas implementé"));
@@ -27,12 +27,12 @@ class Participation extends Modele {
     public function __construct(int $reunionid=0, string $courriel="", string $statusid="") {
         $this->reunionid = $reunionid;
         $this->courriel = $courriel;
-        $this->statusid = $statusid;
+        $this->statutid = $statutid;
     }
 
     //methode badge
     public function badge (){
-        switch($this->statusid){
+        switch($this->statutid){
             case "EnAt":
                 echo "<span class=\"badge badge-info\">En attente</span>";
                 break;

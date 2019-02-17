@@ -10,7 +10,7 @@ class Participation extends DAO {
     protected $proprietes = array(
         "ReunionID" => "reunionid:int:PK",
         "Courriel" => "courriel:string:PK",
-        "StatusID" => "statusid:string",
+        "StatutID" => "statutid:string",
 
         "Utilisateur" => "Courriel:Utilisateur:FK,S:courriel",
         "Reunion" => "ReunionID:Reunion:FK,S:reunionid"
