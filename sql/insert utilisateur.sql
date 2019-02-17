@@ -1,5 +1,7 @@
 INSERT INTO utilisateurs VALUES
-	('lflorence@live.com', 'Larouche', 'Florence', 'lflorence', 0),
+	('axelbmichaud@gmail.com', 'Michaud', 'Axel', 'password', 2),
+	('hugues@hotmail.com', 'Roman', 'Hugues', 'rhugues', 2),
+	('lflorence@live.com', 'Larouche', 'Florence', 'lflorence', 1),
 	('laudrey@yahoo.com', 'Landry', 'Audrey', 'laudrey', 0),
 	('jcamille@live.com', 'Jean', 'Camille', 'jcamille', 0),
 	('pmaika@yahoo.com', 'Proulx', 'Maika', 'pmaika', 0),
@@ -98,5 +100,4 @@ INSERT INTO utilisateurs VALUES
 	('cjonathan@live.com', 'Caron', 'Jonathan', 'cjonathan', 0),
 	('bjustin@hotmail.com', 'Beaudoin', 'Justin', 'bjustin', 0),
 	('gemy@gmail.com', 'Gosselin', 'Emy', 'gemy', 0),
-	('lnathan@outlook.com', 'Leclerc', 'Nathan', 'lnathan', 0),
-	('hugues@hotmail.com', 'Roman', 'Hugues', 'rhugues', 1);
+	('lnathan@outlook.com', 'Leclerc', 'Nathan', 'lnathan', 0);

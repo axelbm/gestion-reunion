@@ -101,7 +101,7 @@ abstract class Database {
 		switch ($type) {
 			case 'boolean':
 				return $var == 1;
-			case 'datetime':
+			case 'DateTime':
 				return new \DateTime($var);
 			
 			default:
@@ -120,7 +120,7 @@ abstract class Database {
 		switch ($type) {
 			case 'boolean':
 				return $var ? 1 : 0;
-			case 'datetime':
+			case 'DateTime':
 				return $var->format('Y-m-d H:i:s');
 			
 			default:

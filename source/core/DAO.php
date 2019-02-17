@@ -283,6 +283,15 @@ abstract class DAO {
         return $objs;
     }
 
+    public function selectFirst(?string $requete="", ...$input) : ?Modele {
+        $result = $this->select($requete, ...$input);
+
+        if (isset($result[0]))
+            return $result[0];
+            
+        return null;
+    }
+
     /**
      * Récupère les objets étrangères d'un objet
      *

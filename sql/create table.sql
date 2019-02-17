@@ -4,9 +4,18 @@ CREATE TABLE UTILISATEURS(
     courriel VARCHAR(64) NOT NULL,
     nom VARCHAR(64) NOT NULL,
     prenom VARCHAR(64) NOT NULL,
-    motdepasse VARCHAR(64) NOT NULL,
+    motdepasse VARCHAR(256) NOT NULL,
     administrateur TINYINT(2) NOT NULL,
     
+    PRIMARY KEY(courriel)
+);
+
+
+CREATE TABLE CONNEXIONS(
+    courriel VARCHAR(64) NOT NULL,
+    date DATETIME NOT NULL,
+    cle VARCHAR(64),
+
     PRIMARY KEY(courriel)
 );
 
@@ -95,4 +104,6 @@ ALTER TABLE
 ALTER TABLE
     MESSAGES ADD CONSTRAINT FK_messages__destinataire FOREIGN KEY(destinataire) REFERENCES UTILISATEURS(courriel);
 ALTER TABLE
-    REUNIONS ADD CONSTRAINT FK_messages__createur FOREIGN KEY(createur) REFERENCES UTILISATEURS(courriel);
+    REUNIONS ADD CONSTRAINT FK_reunions__createur FOREIGN KEY(createur) REFERENCES UTILISATEURS(courriel);
+ALTER TABLE
+    CONNEXIONS ADD CONSTRAINT FK_connexions__courriel FOREIGN KEY(courriel) REFERENCES UTILISATEURS(courriel);
