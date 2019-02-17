@@ -17,7 +17,7 @@ class Invitation extends \core\Form {
     }
 
     public function action() {
-        $cle = "PlaceHolder";
+        $cle = \core\Util::randomKey();
         $invitation = new modeles\Invitation($this->courriel, $cle);
         $invitation->sauvegarder();
 
