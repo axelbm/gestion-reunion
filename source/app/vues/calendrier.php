@@ -29,7 +29,10 @@
 			<h4 class="card-title">15 Février 2019 - 11:00</h4>
 			<p class="card-text">#36 - Par (créateur de la réunion)</p>
 			<a href="#" class="card-link">Consulter</a>
-			<a href="#" class="card-link">Modifier ma participation</a>
+			<form action="" method="post" role="form" class="p-2" id="register-frm">
+    <form action="/action_page.php">
+  <input type="checkbox" name="participation" value=""> Je participe<br><br>
+  <input type="submit" value="Confirmer" class="btn btn-dark btn-block disabled"> 
 			<br><span class="badge badge-success">Présent</span>
 		</div>
 	</div>

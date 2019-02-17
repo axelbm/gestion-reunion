@@ -11,8 +11,8 @@
       <p class="card-text">#<?= $reunion->getId() ?> - Créée par (<?= $reunion->getCreateur() ?>)<br>(0) invités</p>
       <span class="badge badge-success">Présent</span><br><br>
       <a href="ajoutParticipation?&reunion<?= $reunion->getId() ?>" class="card-link">Inviter des participants </a>
-      <a href="#" class="card-link">Supprimer une invitation</a><br>
-      <a href="#" class="card-link">Ajouter un point d'ordre</a>
+      <a href="detailsPoints" class="card-link">Ajouter point d'ordre</a><br>
+      <a href="#" class="card-link">Modifier point d'ordre</a>
       <a href="#" class="card-link">Annuler la réunion</a>
     </div>
   </div><br>
