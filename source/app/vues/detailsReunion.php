@@ -38,18 +38,30 @@
   <div class="column" style="background-color:#bbb;">
     <h5>Point(s) d'ordre relié(s)</h5>
     <ol class="list-group">
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-  Présentations
+  <li class="list-group-item d-flex justify-content-between align-items-center">Présentations <span> 
+    <button type="button" class="btn btn-outline-secondary btn-sm">Détails</button> 
+   <button type="button" class="btn btn-dark btn-sm">Supprimer</button>
+  </span></span>
   </li>
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-   Ajustements nécéssaires au dossier <strong>#Dossier</strong>
-  </li><li class="list-group-item d-flex justify-content-between align-items-center">
-   Remerciements
-  </li><li class="list-group-item d-flex justify-content-between align-items-center">
-   Prochains points d'ordre
+  <li class="list-group-item d-flex justify-content-between align-items-center">Ajustements nécéssaires au dossier <strong>#Dossier</strong> <span> 
+    <button type="button" class="btn btn-outline-secondary btn-sm">Détails</button> 
+   <button type="button" class="btn btn-dark btn-sm">Supprimer</button>
+  </span></span>
   </li>
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-   Conclusion
+  <li class="list-group-item d-flex justify-content-between align-items-center">Remerciements <span> 
+    <button type="button" class="btn btn-outline-secondary btn-sm">Détails</button> 
+   <button type="button" class="btn btn-dark btn-sm">Supprimer</button>
+  </span></span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center">Prochains points d'ordre <span> 
+    <button type="button" class="btn btn-outline-secondary btn-sm">Détails</button> 
+   <button type="button" class="btn btn-dark btn-sm">Supprimer</button>
+  </span></span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center">Conclusion <span> 
+    <button type="button" class="btn btn-outline-secondary btn-sm">Détails</button> 
+   <button type="button" class="btn btn-dark btn-sm">Supprimer</button>
+  </span></span>
   </li>
 </ol>
   </div>

@@ -18,7 +18,7 @@
       </select>
 </div>
 <div class="form-group">
-            <input type="submit" name="ajout" id="ajout" value="Ajouter" class="btn btn-dark btn-block">
+            <input type="submit" name="ajout" id="ajout" value="Ajouter" class="btn btn-dark btn-block ">
 </div>
 </form>
 </div>
