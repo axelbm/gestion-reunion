@@ -74,7 +74,7 @@
   </div>
   <?php endforeach; 
   }else{ 
-    echo "<div>Vous n'avez pas été invité à une réunion.</div>";
+    echo "<div>Vous n'avez aucune invitation.</div>";
   }  ?>
 	<br>
 </div>
