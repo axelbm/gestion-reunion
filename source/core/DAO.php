@@ -265,12 +265,13 @@ abstract class DAO {
      * @param array|null $input
      * @return array
      */
-    public function select(?string $requete="", ?array $input=[]) : array {
+    public function select(?string $requete="", ...$input) : array {
         $requete = "SELECT * FROM $this->table $requete";
 
         // var_dump($requete);
-        $stmt = Database::prepare($requete);
-        $stmt->execute($input);
+        $stmt = Database::prepare($requete, ...$input);
+
+        $stmt->execute();
 
         $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 

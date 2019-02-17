@@ -28,7 +28,7 @@ class Utilisateur extends DAO {
     }
 
     public function recherche(string $nom) : array{
-        return $this->select("WHERE CONTAINS((nom + ' ' + prenom, prenom + ' ' + nom, courriel), '$nom')");
+        return $this->select("WHERE CONTAINS((nom + ' ' + prenom, prenom + ' ' + nom, courriel), ?)", $nom);
     }
 
     public function listeInvitation(modeles\Reunion $reunion) : array{
