@@ -7,8 +7,8 @@
 <div class="card border-dark mb-3" style="max-width: 26rem;">
 
     <div class="card-body">
-      <h4 class="card-title">15 Février 2019 - 11:00</h4>
-      <p class="card-text">Réunion #36 - Créée par (utilisateur)<br>(0) invité(s)</p>
+      <h4 class="card-title"><?= $reunion->getDate()->format('Y-F-d H:i') ?></h4>
+      <p class="card-text">#<?= $reunion->getId() ?> - Créée par (<?= $reunion->getCreateur() ?>)<br>(0) invités</p>
       <span class="badge badge-success">Présent</span><br><br>
       <a href="#" class="card-link">Inviter des participants </a>
       <a href="#" class="card-link">  Supprimer une invitation</a><br>

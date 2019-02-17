@@ -14,7 +14,11 @@
 				<li class="nav-item">
 					<a class="nav-link text-light" href="<?=WEBROOT?>dossiers">Dossiers</a>
 				</li>
-			<?php endif ?>
+			<?php if ($utilisateur->estAdministrateur()){ ?>
+				<li class="nav-item">
+					<a class="nav-link text-light" href="<?=WEBROOT?>invitation">Inviter</a>
+				</li>
+			<?php } endif ?>
 			
 			<li class="nav-item">
 				<a class="nav-link text-light" href="<?=WEBROOT?>nouscontacter">Nous contacter</a>

@@ -1,5 +1,3 @@
-<?php echo "Date du jour : ", strftime("%A %d %B %Y"); ?>
-
 <div class="container">
 	<h1 align="center"> - Mes Réunions - </h1> 
 	<br>
@@ -33,15 +31,19 @@
     </div>
   </div>-->
 
-  <?php foreach ($reunions as $reunion) :?>
+  <?php if(empty($reunions)){
+   foreach ($reunions as $reunion) :?>
   <div class="card border-dark mb-3" style="max-width: 19rem;">
     <div class="card-body">
-      <h4 class="card-title"><?= $reunion->getDate()->format('Y-M-d H:i') ?></h4>
+      <h4 class="card-title"><?= $reunion->getDate()->format('Y-F-d H:i') ?></h4>
       <p class="card-text">#<?= $reunion->getId() ?> - Créée par (<?= $reunion->getCreateur() ?>)<br>(0) invités</p>
       <span class="badge badge-success">Présent</span><br>
       <a href="detailsReunion?&reunion=<?= $reunion->getId() ?>" class="card-link">Modifier</a>
     </div>
   </div>
-  <?php endforeach ?>
+  <?php endforeach;
+  }else{ 
+    echo "<div>Vous n'avez pas crée de réunion.</div>";
+  }  ?>
 
 </div>
