@@ -43,7 +43,7 @@
   </div>
   <?php endforeach;
   }else{ 
-    echo "<div>Vous n'avez pas crée de réunion.</div>";
+    echo "<div>Vous n'avez pas créé de réunion.</div>";
   }  ?>
 
 </div>
