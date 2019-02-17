@@ -10,7 +10,7 @@
       <h4 class="card-title"><?= $reunion->getDate()->format('Y-F-d H:i') ?></h4>
       <p class="card-text">#<?= $reunion->getId() ?> - Créée par (<?= $reunion->getCreateur() ?>)<br>(0) invités</p>
       <span class="badge badge-success">Présent</span><br><br>
-      <a href="ajoutParticipation?&reunion<?= $reunion->getId() ?>" class="card-link">Inviter des participants </a>
+      <a href="ajoutParticipation?&reunion=<?= $reunion->getId() ?>" class="card-link">Inviter des participants </a>
       <a href="formPoints" class="card-link">Ajouter point d'ordre</a><br>
       <a href="#" class="card-link">Modifier point d'ordre</a>
       <a href="#" class="card-link">Annuler la réunion</a>

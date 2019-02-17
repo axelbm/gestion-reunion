@@ -9,7 +9,7 @@
         
         <?php $e = $f->erreur("courriel") ?>
         <div class="form-group">
-            <input type="text" name="email" class="form-control <?=$e?'is-invalid':""?>" placeholder="Courrier électronique" value="<?= $f->get("courriel") ?>" required>
+            <input type="text" name="courriel" class="form-control <?=$e?'is-invalid':""?>" placeholder="Courrier électronique" value="<?= $f->get("courriel") ?>" required>
             <?php if ($e): ?>
                 <div class="invalid-feedback"><?=$e?></div>
             <?php endif ?>

@@ -33,6 +33,6 @@ class Utilisateur extends DAO {
 
     public function listeInvitation(modeles\Reunion $reunion) : array{
         $utilisateur = \app\outils\Session::getUtilisateur();
-        return $this->select("WHERE courriel not in (select courriel in participation where reunionid = ?) and courriel not ?", $reunion->getId(), $utilisateur->getCourriel());
+        return $this->select("WHERE courriel not in (select courriel from participations where reunionid = ?) and not courriel = ?", $reunion->getId(), $utilisateur->getCourriel());
     }
 }
