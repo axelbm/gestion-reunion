@@ -15,9 +15,9 @@ class ChangementStatut extends \core\Form {
     }
 
     public function action() {
-        $dossier = new modeles\Dossier($this->nom, $this->description);
-        $dossier->sauvegarder();
-
-        \core\MainControleur::rediriger("dossier");
+        $participation = \core\DAO::Participation()->find($this->reunionid, \app\outils\Session::getUtilisateur()->getCourriel());
+        $participation->setStatutID($this->statut);
+        $participation->sauvegarder();
+        \core\MainControleur::rediriger("calendrier");
     }
 }
