@@ -31,7 +31,7 @@ class Calendrier extends \core\Controleur {
 		
 		$participations = [];
 		foreach ($reunions as $reunion) {
-			$participations[$reunion->getId()] = DAO::Participations()->find($reunion->getId(), $this->utilisateur()->getCourriel());
+			$participations[$reunion->getId()] = DAO::Participation()->find($reunion->getId(), $this->utilisateur->getCourriel());
 		}
 
 		$nombredepage = DAO::Reunion()->getPageParUtilisateur($this->utilisateur, $nombre);

@@ -26,7 +26,7 @@
 
 	<br>
 
-	<div class="card border-dark mb-3" style="max-width: 25rem;">
+	<!--<div class="card border-dark mb-3" style="max-width: 25rem;">
 		<div class="card-body">
 			<h4 class="card-title">15 Février 2019 - 11:00</h4>
 			<p class="card-text">#36 - Par (créateur de la réunion)</p>
@@ -44,12 +44,12 @@
 			<a href="#" class="card-link">Consulter</a>
 </div>
 		</div>
-	</div>
+	</div>-->
 
 
 	<?php  if(!empty($reunions)){
    foreach ($reunions as $reunion) :?>
-  <div class="card border-dark mb-3" style="max-width: 19rem;">
+  <div class="card border-dark mb-3" style="max-width: 25rem;">
     <div class="card-body">
       <h4 class="card-title"><?= strftime($reunion->getDate()->format('Y-M-d H:i')) ?></h4>
 			<p class="card-text">#<?= $reunion->getId() ?> - Créée par (<?= $reunion->getCreateur() ?>)<br>(0) invités</p>
