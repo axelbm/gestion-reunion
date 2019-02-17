@@ -74,14 +74,14 @@ abstract class Database {
 				if (is_array($args[0])) {
 					foreach ($args[0] as $key => $value) {
 						$key = is_int($key) ? $key + 1 : $key;
-						$type = is_int($value) ? \PDO::PARAM_INT : is_bool($value) ? \PDO::PARAM_BOOL : \PDO::PARAM_STR;
-						$stmt->bindParam($key, $value, $type);
+						$type = is_int($value) ? \PDO::PARAM_INT : \PDO::PARAM_STR;
+						$stmt->bindValue($key, $value, $type);
 					}
 				}
 				else {
 					foreach ($args as $i => $value) {
-						$type = is_int($value) ? \PDO::PARAM_INT : is_bool($value) ? \PDO::PARAM_BOOL : \PDO::PARAM_STR;
-						$stmt->bindParam($i + 1, $value, $type);
+						$type = is_int($value) ? \PDO::PARAM_INT : \PDO::PARAM_STR;
+						$stmt->bindValue($i + 1, $value, $type);
 					}
 				}
 			}
