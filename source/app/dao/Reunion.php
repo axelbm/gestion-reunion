@@ -15,6 +15,7 @@ class Reunion extends DAO {
         "Id" => "reunionid:int:PK,AI",
         "Date" => "date:DateTime",
         "Createur" => "createur:string",
+        "Statut" => "statut:bool",
 
         "PointDordres" => "Id:PointDordre:FK:reunionid",
         "Participations" => "Id:Participation:FK:reunionid"

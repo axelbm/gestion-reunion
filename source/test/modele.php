@@ -6,7 +6,7 @@ use app\modeles;
 $part = modeles\Participation::toObject([
     "reunionid" => 123,
     "courriel" => "axel@gmail.com",
-    "statusid" => "idk"
+    "statutid" => "idk"
 ]);
 
 var_dump($part->getProprietes());
