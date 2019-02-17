@@ -9,13 +9,20 @@ use \core\DAO;
 // $reunions = new \app\modeles\Reunion(new \DateTime(), "aalexia@gmail.com");
 // $reunions->sauvegarder();
 
-var_dump(DAO::Reunion()->find(1));
+// var_dump(DAO::Reunion()->find(1));
+
+
 
 // var_dump(DAO::Utilisateur());
 
 
-//$u = DAO::Utilisateur()->find("axel@gmail.com");
+$u = DAO::Utilisateur()->find("axel@gmail.com");
 
+var_dump($u->getMotDePasse());
+var_dump($u->validerMotDePasse('password'));
+$u->setMotDePasse("password");
+var_dump($u->getMotDePasse());
+var_dump($u->validerMotDePasse('asd'));
 
 //DAO::Reunion()->getPageParUtilisateur($u);
 
