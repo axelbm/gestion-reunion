@@ -28,12 +28,19 @@
 		<div class="card-body">
 			<h4 class="card-title">15 Février 2019 - 11:00</h4>
 			<p class="card-text">#36 - Par (créateur de la réunion)</p>
-			<a href="#" class="card-link">Consulter</a>
 			<form action="" method="post" role="form" class="p-2" id="register-frm">
     <form action="/action_page.php">
-  <input type="checkbox" name="participation" value=""> Je participe<br><br>
-  <input type="submit" value="Confirmer" class="btn btn-dark btn-block disabled"> 
+		<label for="sel1"><strong>Confirmer ma participation</strong></label>
+     <div class="form-group"><select class="form-control" id="sel1" name="sellist1">
+        <option>Je participe</option>
+        <option>Hésitant</option>
+        <option>Absent</option>
+			</select></div>
+			<div class="form-group">
+<button type="button" class="btn btn-dark">Confirmer</button><br>
 			<br><span class="badge badge-success">Présent</span>
+			<a href="#" class="card-link">Consulter</a>
+</div>
 		</div>
 	</div>
 
@@ -43,8 +50,19 @@
     <div class="card-body">
       <h4 class="card-title"><?= strftime($reunion->getDate()->format('Y-M-d H:i')) ?></h4>
       <p class="card-text">#<?= $reunion->getId() ?> - Créée par (<?= $reunion->getCreateur() ?>)<br>(0) invités</p>
-      <span class="badge badge-success">Présent</span><br>
-      <a href="detailsReunion?&reunion=<?= $reunion->getId() ?>" class="card-link">Modifier</a>
+			<form action="" method="post" role="form" class="p-2" id="register-frm">
+    <form action="/action_page.php">
+		<label for="sel1"><strong>Confirmer ma participation</strong></label>
+     <div class="form-group"><select class="form-control" id="sel1" name="sellist1">
+        <option>Je participe</option>
+        <option>Hésitant</option>
+        <option>Absent</option>
+			</select></div>
+			<div class="form-group">
+<button type="button" class="btn btn-dark">Confirmer</button><br>
+			<br><span class="badge badge-success">Présent</span>
+			<a href="detailsReunion?&reunion=<?= $reunion->getId() ?>" class="card-link">Consulter</a>
+			</div>
     </div>
   </div>
   <?php endforeach ?>
