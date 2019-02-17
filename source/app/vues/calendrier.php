@@ -58,13 +58,13 @@
 		<input type="hidden" name="formid" value="<?= $f->id ?>">
 		<label for="sel1"><strong>Confirmer ma participation</strong></label>
      <div class="form-group">
-			 <select class="form-control" id="sel1" name="sellist1">
+			 <select class="form-control" id="sel1" name="statut">
         <option value="Part">Je participe</option>
         <option value="Hes">Hésitant</option>
         <option value="Abs">Absent</option>
 			</select>
 		</div>
-			<input type="hidden" name="reunionid" value="<?= $reunion->getId() ?><?= $f->get("reunionid") ?>">
+			<input type="hidden" name="reunionid" value="<?= $reunion->getId() ?>">
 			<div class="form-group">
 <button type="button" class="btn btn-dark">Confirmer</button><br>
 			<br><span class="badge badge-success">Présent</span>

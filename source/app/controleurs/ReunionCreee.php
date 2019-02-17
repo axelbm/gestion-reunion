@@ -36,7 +36,6 @@ class ReunionCreee extends \core\Controleur {
 
 		$nombredepage = DAO::Reunion()->getPageParUtilisateur($this->utilisateur, $nombre);
 
-		var_dump($reunions);
 		$vue->set("page", $page);
 		$vue->set("reunions", $reunions);
 		$vue->set("nombredepage", $nombredepage);
