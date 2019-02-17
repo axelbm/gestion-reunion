@@ -9,19 +9,16 @@ class AjouterParticipation extends \core\Form {
     protected $courriels;
     
     public function valider () {
-        var_dump($this->courriels);
-        if ($this->courriels == "") {
+        if (empty($this->courriels)) {
             $this->ajouterErreur("courriel", "Courriel obligatoire");
-        }
-        if ($this->reunionid == "") {
-            $this->ajouterErreur("reunionid", "Réunion obligatoire");
         }
     }
 
     public function action() {
-        $participation = new modeles\Participation($this->reunionid, $this->courriel, "EnAtente");
-        $participation->sauvegarder();
-
+        foreach($this->courriels as $courriel){
+            $participation = new modeles\Participation($this->reunionid, $courriel, "EnAt");
+            $participation->sauvegarder();
+        }
         \core\MainControleur::rediriger("accueil");
     }
 }
