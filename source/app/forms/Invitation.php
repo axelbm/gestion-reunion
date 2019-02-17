@@ -21,6 +21,6 @@ class Invitation extends \core\Form {
         $invitation = new modeles\Invitation($this->courriel, $cle);
         $invitation->sauvegarder();
 
-        \core\MainControleur::rediriger("accueil");
+        \core\MainControleur::rediriger("invitation");
     }
 }

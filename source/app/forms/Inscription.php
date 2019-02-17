@@ -37,6 +37,6 @@ class Inscription extends \core\Form {
         $user = new modeles\Utilisateur($this->courriel, $this->nom, $this->prenom, $this->motDePasse);
         $user->sauvegarder();
 
-        \core\MainControleur::rediriger("accueil");
+        \core\MainControleur::rediriger("connexion");
     }
 }

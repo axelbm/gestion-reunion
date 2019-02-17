@@ -22,12 +22,9 @@ class AjouterReunion extends \core\Form {
     public function action() {
         $datetime = $this->date." ".$this->heure;
 
-        var_dump($datetime);
-        var_dump(new \DateTime($datetime));
-        var_dump($this->createur);
         $reunion = new modeles\Reunion(new \DateTime($datetime), $this->createur);
         $reunion->sauvegarder();
 
-        \core\MainControleur::rediriger("accueil");
+        \core\MainControleur::rediriger("reunionCreee");
     }
 }
