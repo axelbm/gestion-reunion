@@ -19,28 +19,19 @@ class DetailsReunion extends \core\Controleur {
 
         $reunion = DAO::Reunion()->find($args[0]);
        	if (!$reunion) {
-           	return new \Exception("erreur 404", 404);
-       	}
-       	$participations = array();
-       	$pointdordres = array();
-		
-		$utilisateurs = [];
-		foreach ($participations as $participation) {
-			$utilisateurs[$participation->getId()] = $participation->getUtilisateur();
-       	}
-       
-       	$dossiers = [];
-		foreach ($pointdordres as $pointdordre) {
-			$dossiers[$pointdordre->getId()] = $pointdordre->getDossier();
+			return new \Exception("erreur 404", 404);
 		}
+		   
+       	$participations = $reunion->getParticipations();
+		$pointdordres = $reunion->getPointDordres();
+		
+       
 
 		$estcreateur = $reunion->estCreateur($this->utilisateur);
 		
 		$vue->set("reunion", $reunion);
 		$vue->set("participations", $participations);
 		$vue->set("pointdordres", $pointdordres);
-        $vue->set("utilisateurs", $utilisateurs);
-        $vue->set("dossiers", $dossiers);
         $vue->set("estcreateur", $estcreateur);
 
 		$vue->afficher();
