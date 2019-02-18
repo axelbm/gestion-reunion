@@ -38,7 +38,7 @@
   <div class="card border-dark mb-3" style="max-width: 15rem;">
     <div class="card-body">
       <h4 class="card-title"><?= $dossier->getNom() ?></h4>
-      <a href="detailsDossier?&dossier=<?= $dossier->getId() ?>" class="card-link">Consulter</a>
+      <a href="<?= WEBROOT."detailsDossier/".$dossier->getId() ?>" class="card-link">Consulter</a>
     </div>
   </div>
   <?php endforeach;

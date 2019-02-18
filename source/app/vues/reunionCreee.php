@@ -38,7 +38,7 @@
       <h4 class="card-title"><?= $reunion->getDate()->format('Y-F-d H:i') ?></h4>
       <p class="card-text">#<?= $reunion->getId() ?> - Créée par (<?= $reunion->getCreateur() ?>)<br>(<?= $reunion->nbInvite() ?>) invités</p>
       <span class="badge badge-success">Présent</span><br>
-      <a href="detailsReunion/<?= $reunion->getId() ?>" class="card-link">Modifier</a>
+      <a href="<?= WEBROOT."detailsReunion/".$reunion->getId() ?>" class="card-link">Modifier</a>
     </div>
   </div>
   <?php endforeach;
