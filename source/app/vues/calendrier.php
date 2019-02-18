@@ -16,7 +16,7 @@
 	
 	<a href="<?=WEBROOT."calendrier"?>">&laquo;</a>
 	<?php for ( $i = max(0, $page - 4); $i < min($nombredepage, $page + 4); $i++ ) :?>
-			<a href="<?=WEBROOT."calendrier/$i"?>"><?=$i?></a>
+			<a href="<?=WEBROOT."calendrier/$i"?>"><?=$i+1?></a>
 	<?php endfor ?>
 	<a href="<?=WEBROOT."calendrier/$nombredepage"?>">&raquo;</a>
 

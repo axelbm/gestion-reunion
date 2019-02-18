@@ -7,7 +7,7 @@ class ReunionCreee extends \core\Controleur {
 	use atraits\Utilisateur;
 
 	public function action(array $args) : ?\Exception {
-		if (count($args) > 0)
+		if (count($args) > 1)
 			return new \Exception("erreur 404", 404);
 
 		$vue = $this->genererVue("reunionCreee");
@@ -34,7 +34,7 @@ class ReunionCreee extends \core\Controleur {
             \core\MainControleur::rediriger();
         }
 
-		$nombredepage = DAO::Reunion()->getPageParUtilisateur($this->utilisateur, $nombre);
+		$nombredepage = DAO::Reunion()->getPageParCreateur($this->utilisateur, $nombre);
 
 		$vue->set("page", $page);
 		$vue->set("reunions", $reunions);

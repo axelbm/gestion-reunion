@@ -27,19 +27,18 @@ class Dossiers extends \core\Controleur {
 			return new \Exception("Parametre de recherche invalide", 404);
 		}
 
-		if (isset($_GET["reunion"])) {
-			$reunion = DAO::Reunion()->find($_GET["reunion"]);
-			if (!$reunion){
-				return new \Exception("Parametre de recherche invalide", 404);
-			}
-			$dossiers = DAO::Dossier()->getListeParReunion(min(DAO::Dossier()->getPageParReunion($reunion, $nombre), $page), $reunion, $nombre);
-		}elseif(isset($_GET["nom"])){
-			$dossiers = DAO::Dossier()->getListeParNom(min(DAO::Dossier()->getPageParNom($_GET["nom"], $nombre), $page), $_GET["nom"], $nombre);
-		}else{
-			$dossiers = DAO::Dossier()->getListe(min(DAO::Dossier()->getPage(), $page), $nombre);
-		}
-			
-		$nombredepage = DAO::Reunion()->getPageParUtilisateur($this->utilisateur, $nombre);
+		// if (isset($_GET["reunion"])) {
+		// 	$reunion = DAO::Reunion()->find($_GET["reunion"]);
+		// 	if (!$reunion){
+		// 		return new \Exception("Parametre de recherche invalide", 404);
+		// 	}
+		// 	$dossiers = DAO::Dossier()->getListeParReunion(min(DAO::Dossier()->getPageParReunion($reunion, $nombre), $page), $reunion, $nombre);
+		// }elseif(isset($_GET["nom"])){
+		// 	$dossiers = DAO::Dossier()->getListeParNom(min(DAO::Dossier()->getPageParNom($_GET["nom"], $nombre), $page), $_GET["nom"], $nombre);
+		// }else{
+			$dossiers = DAO::Dossier()->getListe(min(DAO::Dossier($nombre)->getPage(), $page), $nombre);
+			$nombredepage = DAO::Dossier()->getPage($nombre);
+		//}
 
 		$vue->set("page", $page);
 		$vue->set("dossiers", $dossiers);

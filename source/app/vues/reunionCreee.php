@@ -15,7 +15,7 @@
 	
 	<a href="<?=WEBROOT."reunionCreee"?>">&laquo;</a>
 	<?php for ( $i = max(0, $page - 4); $i < min($nombredepage, $page + 4); $i++ ) :?>
-			<a href="<?=WEBROOT."reunionCreee/$i"?>"><?=$i?></a>
+			<a href="<?=WEBROOT."reunionCreee/$i"?>"><?=$i+1?></a>
 	<?php endfor ?>
 	<a href="<?=WEBROOT."reunionCreee/$nombredepage"?>">&raquo;</a>
 

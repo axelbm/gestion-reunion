@@ -12,17 +12,17 @@
 	
 	<a href="<?=WEBROOT."dossiers"?>">&laquo;</a>
 	<?php for ( $i = max(0, $page - 4); $i < min($nombredepage, $page + 4); $i++ ) :?>
-			<a href="<?=WEBROOT."dossiers/$i"?>"><?=$i?></a>
+			<a href="<?=WEBROOT."dossiers/$i"?>"><?=$i+1?></a>
 	<?php endfor ?>
 	<a href="<?=WEBROOT."dossiers/$nombredepage"?>">&raquo;</a>
 
 </div><br>
 	<?php } ?>
 
-<form action="/action_page.php" align="center">
+<!--<form action="/action_page.php" align="center">
   Recherche par Titre <input type="search" name="titre">
   <input type="submit"><br><br><br>
-</form>
+</form>-->
 	<!--<div class="card border-dark mb-3" style="max-width: 15rem;">
 		<div class="card-body">
 			<h4 class="card-title">Titre</h4>

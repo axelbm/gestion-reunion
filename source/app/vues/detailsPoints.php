@@ -11,8 +11,7 @@
 </h4>
 
 
-<a href="#">Détails</a>
-    | <a href="#">Modifier</a> | <a href="#">Supprimer</a>
+ <a href="#">Modifier</a> | <a href="#">Supprimer</a>
 <hr>
 
 <p><?= $pointdordre->getDescription() ?></p>
