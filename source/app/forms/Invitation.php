@@ -5,7 +5,7 @@ namespace app\forms;
 use app\modeles;
 
 class Invitation extends \core\Form {
-    protected $courriel;
+    public $courriel;
     
     public function valider () {
         if ($this->courriel == "") {

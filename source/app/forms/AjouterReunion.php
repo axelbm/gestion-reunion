@@ -5,8 +5,8 @@ namespace app\forms;
 use app\modeles;
 
 class AjouterReunion extends \core\Form {
-    protected $date;
-    protected $heure;
+    public $date;
+    public $heure;
     private $createur;
     
     public function valider () {

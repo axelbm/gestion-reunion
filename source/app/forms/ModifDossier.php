@@ -5,8 +5,8 @@ namespace app\forms;
 use app\modeles;
 
 class ModifDossier extends \core\Form {
-    protected $description;
-    protected $id;
+    public $description;
+    public $id;
     
     public function valider () {
         

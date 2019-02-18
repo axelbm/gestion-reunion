@@ -2,7 +2,7 @@
     <h2 class="text-center mt-2">Inviter un membre</h2>
     <h6 class="text-center mt-2">à rejoindre AFH</h6><br><br><br>
 
-    <?php $f = new \core\FormView("Invitation"); ?>
+    <?php $f = $vue->newForm("Invitation"); ?>
     <form action="" method="post" role="form" class="p-2" id="register-frm">
 
         <input type="hidden" name="formid" value="<?= $f->id ?>">

@@ -5,10 +5,10 @@ namespace app\forms;
 use app\modeles;
 
 class AjouterPointDordre extends \core\Form {
-    protected $reunionid;
-    protected $titre;
-    protected $description;
-    protected $dossierid;
+    public $reunionid;
+    public $titre;
+    public $description;
+    public $dossierid;
     
     public function valider () {
         if ($this->reunionid == "") {

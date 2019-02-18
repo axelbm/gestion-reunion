@@ -5,8 +5,8 @@ namespace app\forms;
 use app\modeles;
 
 class AjouterDossier extends \core\Form {
-    protected $nom;
-    protected $description;
+    public $nom;
+    public $description;
     
     public function valider () {
         if ($this->nom == "") {
