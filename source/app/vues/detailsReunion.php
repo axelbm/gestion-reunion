@@ -8,7 +8,7 @@
             
             <?php if ($estcreateur): ?>
                 <hr>
-                <a href="<?= WEBROOT."formPoints/".$reunion->getId() ?>">Ajouter point d'ordre</a> | 
+                <a href="<?= WEBROOT."formpoints/".$reunion->getId() ?>">Ajouter point d'ordre</a> | 
                 <a href="#">Annuler la réunion</a> | 
                 <a href="<?= WEBROOT."ajoutParticipation/".$reunion->getId() ?>" class="card-link">Inviter des participants </a>
             <?php endif ?>
@@ -25,16 +25,16 @@
                     <?= $pointdordre->getTitre() ?>
                 <?php if ($dossier = $pointdordre->getDossier()):?>
                     <small>
-                        - <a href="#"><?= $dossier->getNom() ?></a>
+                        - <a href="<?=WEBROOT.'detailsdossier/'.$pointdordre->getId()?>"><?= $dossier->getNom() ?></a>
                     </small>
                 <?php endif ?>
                 </h4>
 
                 
-                <a href="#">Détails</a>
-                <?php if ($estcreateur): ?>
+                <a href="<?=WEBROOT.'detailspoints/'.$pointdordre->getId()?>">Détails</a>
+                <!-- <?php if ($estcreateur): ?>
                     | <a href="<?= WEBROOT."detailsPoint/".$pointdordre->getId() ?>">Modifier</a> | <a href="#">Annuler</a>
-                <?php endif ?>
+                <?php endif ?> -->
                 <hr>
 
                 <p><?= $pointdordre->getDescription() ?></p>
