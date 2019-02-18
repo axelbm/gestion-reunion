@@ -26,7 +26,7 @@ class Utilisateur extends Modele {
         $this->courriel = $courriel;
         $this->nom = $nom;
         $this->prenom = $prenom;
-        $this->motdepasse = $motdepasse;
+        $this->setMotDePasse($motdepasse);
         $this->administrateur = $administrateur;
     }
 

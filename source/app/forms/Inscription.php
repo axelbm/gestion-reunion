@@ -27,13 +27,12 @@ class Inscription extends \core\Form {
         
         $invitation = DAO::Invitation()->find($this->courriel);
 
-        if ($invitation->validerCle($this->cleInvitation)){
+        if (!$invitation->validerCle($this->cleInvitation)){
             $this->ajouterErreur("cleInvitation", "Clé d'invitation incorrecte");
         }
     }
 
     public function action() {
-        var_dump($this->courriel);
         $user = new modeles\Utilisateur($this->courriel, $this->nom, $this->prenom, $this->motDePasse);
         $user->sauvegarder();
 
