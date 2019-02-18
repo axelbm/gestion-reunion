@@ -47,6 +47,6 @@ class Reunion extends Modele {
     }
 
     public function nbInvite() : int {
-        return $this->getParticipations()->count();
+        return count($this->getParticipations());
     }
 }
