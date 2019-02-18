@@ -11,9 +11,17 @@ class Deconnexion extends \core\Controleur {
 
 		$this->verifierUtilisateur();
 
-		if ($this->estConnecter())
-            \app\outils\Session::deconnexion();
-        
+		if ($this->estConnecter()) {
+			\app\outils\Session::deconnexion();
+			
+			\app\outils\Notification::ajouterPopup("Déconnexion", 
+				"Vous avez bien été déconnecté.
+				<br>
+				<br>
+				<i>Bonne journée!</i>",
+				["tail"=>"sm"]);
+		}
+		
         \core\MainControleur::rediriger();
 		return null;
 	}

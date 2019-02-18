@@ -32,6 +32,11 @@
 	</head>
 
 	<body>
+		<?php $notification = \app\outils\Notification::getPopupInfo(); ?>
+		<?php if (isset($notification)): ?>
+			<?php require "morceaux/popup.php"; ?>
+		<?php endif ?>
+
 		<div id="container">
 			<?php require "morceaux/header.php"; ?>
 			<?php require "morceaux/navbar.php"; ?>
