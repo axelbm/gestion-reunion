@@ -8,8 +8,8 @@
     <div class="container1">
     <input type="hidden"  name="formid" value="<?= $f->id ?>">
     <input type="hidden"  name="reunionid" value="<?= $reunion->getId() ?>">
-    <?php foreach ($utilisateurs as $utilisateur) { ?>
-      <input type="checkbox" class="checkedAll" name="courriels[]" value="<?= $utilisateur->getCourriel() ?>"> <?= $utilisateur->getCourriel() ?><br>
+    <?php foreach ($utilisateurs as $user) { ?>
+      <input type="checkbox" class="checkedAll" name="courriels[]" value="<?= $user->getCourriel() ?>"> <?= $user->getCourriel() ?><br>
     <?php } ?><br><br>
     </div><br>
     <input type="submit" value="Inviter" class="btn btn-dark btn-block"> 

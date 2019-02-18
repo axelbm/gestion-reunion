@@ -19,6 +19,7 @@ class Reunion extends Modele {
     public function __construct(\DateTime $date=null, string $createur=null) {
         $this->date = $date;
         $this->createur = $createur;
+        $this->statut = true;
     }
 
     /**
@@ -43,5 +44,9 @@ class Reunion extends Modele {
 
     public function estCreateur(Utilisateur $utilisateur) : bool {
         return $this->createur == $utilisateur->getCourriel();
+    }
+
+    public function nbInvite() : int {
+        return count($this->getParticipations());
     }
 }

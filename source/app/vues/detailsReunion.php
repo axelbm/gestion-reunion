@@ -8,10 +8,10 @@
 
     <div class="card-body">
       <h4 class="card-title"><?= $reunion->getDate()->format('Y-F-d H:i') ?></h4>
-      <p class="card-text">#<?= $reunion->getId() ?> - Créée par (<?= $reunion->getCreateur() ?>)<br>(0) invités</p>
+      <p class="card-text">#<?= $reunion->getId() ?> - Créée par (<?= $reunion->getCreateur() ?>)<br>(<?= $reunion->nbInvite() ?>) invités</p>
       <span class="badge badge-success">Présent</span><br><br>
       <a href="ajoutParticipation?&reunion=<?= $reunion->getId() ?>" class="card-link">Inviter des participants </a>
-      <a href="formPoints" class="card-link">Ajouter point d'ordre</a><br>
+      <a href="formPoints?&reunion=<?= $reunion->getId() ?>" class="card-link">Ajouter point d'ordre</a><br>
       <a href="#" class="card-link">Modifier point d'ordre</a>
       <a href="#" class="card-link">Annuler la réunion</a>
     </div>
@@ -38,18 +38,30 @@
   <div class="column" style="background-color:#bbb;">
     <h5>Point(s) d'ordre relié(s)</h5>
     <ol class="list-group">
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-  Présentations
+  <li class="list-group-item d-flex justify-content-between align-items-center">Présentations <span> 
+    <button type="button" class="btn btn-outline-secondary btn-sm">Détails</button> 
+   <button type="button" class="btn btn-dark btn-sm">Supprimer</button>
+  </span></span>
   </li>
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-   Ajustements nécéssaires au dossier <strong>#Dossier</strong>
-  </li><li class="list-group-item d-flex justify-content-between align-items-center">
-   Remerciements
-  </li><li class="list-group-item d-flex justify-content-between align-items-center">
-   Prochains points d'ordre
+  <li class="list-group-item d-flex justify-content-between align-items-center">Ajustements nécéssaires au dossier <strong>#Dossier</strong> <span> 
+    <button type="button" class="btn btn-outline-secondary btn-sm">Détails</button> 
+   <button type="button" class="btn btn-dark btn-sm">Supprimer</button>
+  </span></span>
   </li>
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-   Conclusion
+  <li class="list-group-item d-flex justify-content-between align-items-center">Remerciements <span> 
+    <button type="button" class="btn btn-outline-secondary btn-sm">Détails</button> 
+   <button type="button" class="btn btn-dark btn-sm">Supprimer</button>
+  </span></span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center">Prochains points d'ordre <span> 
+    <button type="button" class="btn btn-outline-secondary btn-sm">Détails</button> 
+   <button type="button" class="btn btn-dark btn-sm">Supprimer</button>
+  </span></span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center">Conclusion <span> 
+    <button type="button" class="btn btn-outline-secondary btn-sm">Détails</button> 
+   <button type="button" class="btn btn-dark btn-sm">Supprimer</button>
+  </span></span>
   </li>
 </ol>
   </div>
