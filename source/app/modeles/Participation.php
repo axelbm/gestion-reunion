@@ -53,4 +53,9 @@ class Participation extends Modele {
                 break;
         }
     }
+
+    public function annulerParticipation() {
+        $this->statutid = "Ann";
+        $this->sauvegarder();
+    }
 }

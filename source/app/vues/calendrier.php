@@ -50,6 +50,7 @@
     <div class="card-body">
       <h4 class="card-title"><?= strftime($reunion->getDate()->format('Y-M-d H:i')) ?></h4>
 			<p class="card-text">#<?= $reunion->getId() ?> - Créée par (<?= $reunion->getCreateur() ?>)<br>(<?= $reunion->nbInvite() ?>) invités</p>
+			<?php if($participations[$reunion->getId()]->getStatutID() != "Ann") { ?>
 			<?php $f = new \core\FormView("ChangementStatut"); ?>
 			<form action="" method="post" role="form" class="p-2" id="statut-frm">
 				<input type="hidden" name="formid" value="<?= $f->id ?>">
@@ -66,6 +67,7 @@
 				<input type="submit" value="Confirmer" class="btn btn-dark">
 				</div>
 			</form>
+			<?php } ?>
 			<br>
 			<?php $participations[$reunion->getId()]->badge() ?>
 			<a href="<?= WEBROOT."detailsReunion/".$reunion->getId() ?>" class="card-link">Consulter</a>

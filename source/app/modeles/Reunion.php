@@ -49,4 +49,13 @@ class Reunion extends Modele {
     public function nbInvite() : int {
         return count($this->getParticipations());
     }
+
+    public function annulerReunion() {
+        $participations = $this->getParticipations();
+        foreach ($participations as $participation){
+            $participation->annulerParticipation();
+        }
+        $this->statut = false;
+        $this->sauvegarder();
+    }
 }
