@@ -45,4 +45,8 @@ class Reunion extends Modele {
     public function estCreateur(Utilisateur $utilisateur) : bool {
         return $this->createur == $utilisateur->getCourriel();
     }
+
+    public function nbInvite() : int {
+        return $this->getParticipations()->count();
+    }
 }

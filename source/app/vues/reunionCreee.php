@@ -36,7 +36,7 @@
   <div class="card border-dark mb-3" style="max-width: 26rem;">
     <div class="card-body">
       <h4 class="card-title"><?= $reunion->getDate()->format('Y-F-d H:i') ?></h4>
-      <p class="card-text">#<?= $reunion->getId() ?> - Créée par (<?= $reunion->getCreateur() ?>)<br>(0) invités</p>
+      <p class="card-text">#<?= $reunion->getId() ?> - Créée par (<?= $reunion->getCreateur() ?>)<br>(<?= $reunion->nbInvite() ?>) invités</p>
       <span class="badge badge-success">Présent</span><br>
       <a href="detailsReunion?&reunion=<?= $reunion->getId() ?>" class="card-link">Modifier</a>
     </div>

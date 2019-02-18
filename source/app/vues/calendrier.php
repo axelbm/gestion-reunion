@@ -52,7 +52,7 @@
   <div class="card border-dark mb-3" style="max-width: 25rem;">
     <div class="card-body">
       <h4 class="card-title"><?= strftime($reunion->getDate()->format('Y-M-d H:i')) ?></h4>
-			<p class="card-text">#<?= $reunion->getId() ?> - Créée par (<?= $reunion->getCreateur() ?>)<br>(0) invités</p>
+			<p class="card-text">#<?= $reunion->getId() ?> - Créée par (<?= $reunion->getCreateur() ?>)<br>(<?= $reunion->nbInvite() ?>) invités</p>
 			<?php $f = new \core\FormView("ChangementStatut"); ?>
 			<form action="" method="post" role="form" class="p-2" id="statut-frm">
 				<input type="hidden" name="formid" value="<?= $f->id ?>">
