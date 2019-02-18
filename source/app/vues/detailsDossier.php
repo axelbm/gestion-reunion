@@ -9,7 +9,7 @@
     <div class="card-body">
       <h4 class="card-title"><?= $dossier->getTitre() ?></h4>
       <p class="card-text">Description</p><br>
-      <a href="#" class="card-link">Modifier </a>
+      <a href="modifDossier/<?= $dossier->getId() ?>" class="card-link">Modifier </a>
       <a href="#" class="card-link">Supprimer</a><br>
     </div>
   </div><br>
