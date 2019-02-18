@@ -25,7 +25,7 @@ class PointDordre extends Modele {
     /** @var string */
     protected $compterendu;
 
-    public function __construct(int $reunionid=0, string $titre="", string $description="", int $dossierid=0, string $compterendu="") {
+    public function __construct(?int $reunionid=0, ?string $titre="", ?string $description="", ?int $dossierid=null, ?string $compterendu="") {
         $this->reunionid = $reunionid;
         $this->titre = $titre;
         $this->description = $description;

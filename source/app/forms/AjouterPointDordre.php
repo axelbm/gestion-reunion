@@ -17,15 +17,18 @@ class AjouterPointDordre extends \core\Form {
         if ($this->titre == "") {
             $this->ajouterErreur("titre", "Titre obligatoire");
         }
-        if ($this->dossierid == "") {
-            $this->ajouterErreur("dossierid", "Dossier obligatoire");
-        }
+        
+        $this->dossierid = intval($this->dossierid);
+        $this->dossierid = $this->dossierid == 0 ? null : $this->dossierid;
+        // if ($this->dossierid == "") {
+        //     $this->ajouterErreur("dossierid", "Dossier obligatoire");
+        // }
     }
 
     public function action() {
         $pointdordre = new modeles\PointDordre($this->reunionid, $this->titre, $this->description, $this->dossierid, "");
         $pointdordre->sauvegarder();
 
-        //\core\MainControleur::rediriger("accueil");
+        \core\MainControleur::rediriger("detailsreunion/".$this->reunionid);
     }
 }

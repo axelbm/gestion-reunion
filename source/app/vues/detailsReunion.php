@@ -8,11 +8,49 @@
             
             <?php if ($estcreateur): ?>
                 <hr>
-                <a href="<?= WEBROOT."formpoints/".$reunion->getId() ?>">Ajouter point d'ordre</a> | 
-                <a href="#">Annuler la réunion</a> | 
-                <a href="<?= WEBROOT."ajoutparticipation/".$reunion->getId() ?>" class="card-link">Inviter des participants </a>
+                <?php if ($ajouterPointDordre): ?>
+                    <a href="<?= WEBROOT."detailsreunion/".$reunion->getId() ?>">Retour</a> 
+                <?php else: ?>
+                    <a href="<?= WEBROOT."detailsreunion/".$reunion->getId().'/ajouterpointdordre' ?>">Ajouter point d'ordre</a> | 
+                    <a href="#">Annuler la réunion</a> | 
+                    <a href="<?= WEBROOT."ajoutparticipation/".$reunion->getId() ?>" class="card-link">Inviter des participants </a>
+                <?php endif ?>
             <?php endif ?>
         </div>
+
+        <!-- Section du formulaire d'ajout de point d'ordre -->
+        <?php if ($ajouterPointDordre): ?>
+            <hr>
+
+            <?php $f = $vue->newForm("AjouterPointDordre"); ?>
+            <form method="post">
+                <input type="hidden" name="formid" value="<?= $f->id ?>">
+                <input type="hidden" name="reunionid" value="<?= $reunion->getId() ?>">
+            
+                <div class="form-group">
+                    <input type="text" name="titre" class="form-control" value="<?=$f->get('titre')?>" placeholder="Nouveau Point d'ordre">
+                </div>
+
+                <div class="form-group">
+                    <input id="description" value="<?=$f->get('description')?>" type="hidden" name="description">
+                    <trix-editor input="description" style="min-height:200px"></trix-editor>
+                </div>
+
+                <div class="form-group">
+                    <select class="form-control" id="sel1" name="dossierid">
+                        <option selected>Choisissez un dossier...</option>
+                        <?php foreach ($dossiers as $dossier) :?>
+                            <option value="<?= $dossier->getId() ?>"><?= $dossier->getNom() ?></option>
+                        <?php endforeach;?>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" name="Sauvegarder"  class="btn btn-dark"><br><br>
+                </div>
+            </form>
+        <?php endif ?>
+
 
         <!-- Section des point d'ordres -->
         <div>
@@ -25,7 +63,7 @@
                     <?= $pointdordre->getTitre() ?>
                 <?php if ($dossier = $pointdordre->getDossier()):?>
                     <small>
-                        - <a href="<?=WEBROOT.'detailsdossier/'.$pointdordre->getId()?>"><?= $dossier->getNom() ?></a>
+                        - <a href="<?=WEBROOT.'detailsdossier/'.$dossier->getId()?>"><?= $dossier->getNom() ?></a>
                     </small>
                 <?php endif ?>
                 </h4>
