@@ -14,20 +14,28 @@
 				<li class="nav-item">
 					<a class="nav-link text-light" href="<?=WEBROOT?>dossiers">Dossiers</a>
 				</li>
-			<?php if ($utilisateur->estAdministrateur()){ ?>
-				<li class="nav-item">
-					<a class="nav-link text-light" href="<?=WEBROOT?>invitation">Inviter</a>
-				</li>
-			<?php if ($utilisateur->estSuperAdministrateur()){ ?>
-				<li class="nav-item">
-					<a class="nav-link text-light" href="<?=WEBROOT?>superAdmin">Super Admin</a>
-				</li>
-			<?php	}
-			}endif ?>
+			<?php endif ?>
+			
 			
 			<li class="nav-item">
 				<a class="nav-link text-light" href="<?=WEBROOT?>nouscontacter">Nous contacter</a>
 			</li>
+
+			<?php if (isset($utilisateur) && $utilisateur->estAdministrateur()): ?>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle text-light" href="#" id="navbardrop" data-toggle="dropdown">
+						Administration
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="<?=WEBROOT?>invitation">Inviter</a>
+						
+						<?php if ($utilisateur->estSuperAdministrateur()): ?>
+							<a class="dropdown-item" href="<?=WEBROOT?>superAdmin">Super Admin</a>
+						<?php endif ?>
+					</div>
+				</li>
+				
+			<?php endif ?>
 		</ul>
 
 		<?php if (!isset($erreur)): ?>
