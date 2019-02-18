@@ -1,7 +1,7 @@
 
 <div class="container">
 	<h1 align="center"> - Réunion(s) - </h1> 
-	<h6 align="center"> (Auxquelles j'ai été invité) </h6> 
+	<h6 align="center"> (Auxquelles vous êtes invité) </h6> 
 	<br>
 	<?php if ($estadmin):?> 
 		<h6 align="right"> * Administrateur </h6>
