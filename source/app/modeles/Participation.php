@@ -45,7 +45,7 @@ class Participation extends Modele {
             case "Ann":
                 echo "<span class=\"badge badge-dark\">Annuler</span>";
                 break;
-            case "Part":
+            case "Pres":
                 echo "<span class=\"badge badge-success\">Présent</span>";
                 break;
             case "Term":
