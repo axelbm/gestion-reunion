@@ -13,6 +13,9 @@
 
 		<link href="/open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
 		
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.0.0/trix.css">
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.0.0/trix-core.js"></script>
+		
 		<?php foreach($vue->getScripts() as $fichier): ?>
 			<script src="<?=$fichier?>"></script>
 		<?php endforeach; ?>
