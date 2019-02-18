@@ -99,7 +99,9 @@ abstract class Modele {
         $prop = $this->dao()->getPropriete($key);
 
         $get = "get$key";
-        $prop["value"] = $this->$get();
+        
+        if (!isset($prop["fkColonne"]))
+            $prop["value"] = $this->$get();
 
         return $prop;
     }
@@ -114,7 +116,7 @@ abstract class Modele {
         $props = [];
         
         foreach ($this->dao()->getProprietes() as $key => $prop) {
-            if (!isset($prop["fkColonne"]) && !in_array("AI", $prop["options"])) {
+            if (!isset($prop["fkColonne"])) {
                 $get = "get$key";
                 $prop["value"] = $this->$get();
             }
