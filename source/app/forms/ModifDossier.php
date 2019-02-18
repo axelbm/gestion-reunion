@@ -4,19 +4,19 @@ namespace app\forms;
 
 use app\modeles;
 
-class AjouterDossier extends \core\Form {
+class ModifDossier extends \core\Form {
     protected $description;
-    protected $dossierid;
+    protected $id;
     
     public function valider () {
         
     }
 
     public function action() {
-        $dossier = \core\DAO::Dossier()->find($this->dossierid);
+        $dossier = \core\DAO::Dossier()->find($this->id);
         $dossier->setDescription($this->description);
         $dossier->sauvegarder();
         
-        \core\MainControleur::rediriger("dossier");
+        \core\MainControleur::rediriger("detailsDossier/$this->id");
     }
 }

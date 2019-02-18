@@ -11,7 +11,7 @@
             </div>
             <div class="form-group">
                  <input id="x" type="hidden" name="description">
-            <trix-editor input="x"></trix-editor><br>
+                <trix-editor input="x"></trix-editor><br>
             <input type="submit" name="ajouter" id="ajouter" value="Ajouter" class="btn btn-dark float-right"><br><br>
             </div>
         </div>
