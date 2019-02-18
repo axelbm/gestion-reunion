@@ -1,46 +1,60 @@
-<div class="container">
-    <h1 align="center"> - Modifications - </h1> 
-    <br>
-    <h6 align="right"> * Administrateur </h6>
+<h1>
+    <?= $dossier->getNom() ?>
+</h1>
 
-    <a href="calendrier" button type="button" class="btn btn-outline-dark float-right ">Revenir à mes invitations</a> <br><br>
-<div class="card border-dark mb-3" style="max-width: 26rem;">
+<?php if ($utilisateur->estAdministrateur()): ?>
+    <?php if ($editer): ?>
+        <a href="<?=WEBROOT.'detailsdossier/'.$dossier->getId()?>">Annuler</a>
+    <?php else: ?>
+        <a href="<?=WEBROOT.'detailsdossier/'.$dossier->getId().'/editer'?>">Modifier</a>
+    <?php endif ?>
+<?php endif ?>
 
-    <div class="card-body">
-      <h4 class="card-title"><?= $dossier->getNom() ?></h4>
-      <p class="card-text"><?= $dossier->getDescription() ?></p><br>
-      <a href="<?= WEBROOT."modifDossier/".$dossier->getId() ?>" class="card-link">Modifier </a>
-      <a href="#" class="card-link">Supprimer</a><br>
-    </div>
-  </div><br>
+<hr>
+
+<?php if ($editer): ?>
+    <?php $f = $vue->newForm("ModifDossier"); ?>
+    <form method="post">
+        <input type="hidden" name="formid" value="<?= $f->id ?>">
+        <input type="hidden" name="id" value="<?= $dossier->getId() ?>">
+
+        <div class="form-group">
+            <input id="description" value="<?=$dossier->getDescription()?>" type="hidden" name="description">
+            <trix-editor input="description" style="min-height:200px"></trix-editor>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" name="Sauvegarder"  class="btn btn-dark"><br><br>
+        </div>
+    </form>
+<?php else: ?>
+    <?=$dossier->getDescription()?>
+<?php endif ?>
 
 
-  <div class="column" style="background-color:#aaa;">
-    <h5>Point(s) d'ordre relié(s)</h5>
-    <div>
+<div>
     <?php foreach ($pointdordres as $pointdordre): ?>
+        <?php $reunion = $pointdordre->getReunion(); ?>
         <hr>
         <h4>
             <?php if ($pointdordre->getCompteRendu() != ""): ?>
                 <span class="badge badge-info">Terminé</span>
             <?php endif ?>
             <?= $pointdordre->getTitre() ?>
-        <?php if ($dossier = $pointdordre->getDossier()):?>
-            <small>
-                - <a href="#"><?= $dossier->getNom() ?></a>
-            </small>
-        <?php endif ?>
         </h4>
 
+
+        <h6>
+            Pour la réunion du <a href="<?=WEBROOT.'detailsreunion/'.$reunion->getId()?>"><?= $reunion->getDate()->format('d F Y - H\hi')?></a>
+            <br>
+            <a href="<?=WEBROOT.'detailspoints/'.$pointdordre->getId()?>">Détails</a>
+        </h6>
         
-        <a href="#">Détails</a>
-        <?php if ($estcreateur): ?>
-            | <a href="#">Modifier</a> | <a href="#">Annuler</a>
-        <?php endif ?>
+        <!-- <?php if ($estcreateur): ?>
+            | <a href="<?= WEBROOT."detailsPoint/".$pointdordre->getId() ?>">Modifier</a> | <a href="#">Annuler</a>
+        <?php endif ?> -->
         <hr>
 
         <p><?= $pointdordre->getDescription() ?></p>
     <?php endforeach ?>
-    </div>
-  </div>
 </div>

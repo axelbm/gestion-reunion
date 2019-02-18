@@ -10,7 +10,7 @@
                 <hr>
                 <a href="<?= WEBROOT."formpoints/".$reunion->getId() ?>">Ajouter point d'ordre</a> | 
                 <a href="#">Annuler la réunion</a> | 
-                <a href="<?= WEBROOT."ajoutParticipation/".$reunion->getId() ?>" class="card-link">Inviter des participants </a>
+                <a href="<?= WEBROOT."ajoutparticipation/".$reunion->getId() ?>" class="card-link">Inviter des participants </a>
             <?php endif ?>
         </div>
 
