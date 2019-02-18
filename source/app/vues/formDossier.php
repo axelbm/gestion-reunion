@@ -7,11 +7,12 @@
         <input type="hidden" name="formid" value="<?= $f->id ?>">
         <div class="form-group">
         <div class="form-group">
-        <input type="text" name="pass" class="form-control" placeholder="Titre" required>
+        <input type="text" name="nom" class="form-control" placeholder="Titre" required>
         </div>
         <div class="form-group">
-       <input type="file" name="myFile">
-       </div>
+        <input id="x" value="" type="hidden" name="description">
+        <trix-editor input="x"></trix-editor>
+        </div>
         <input type="submit" name="ajouter" id="ajouter" value="Ajouter" class="btn btn-dark btn-block"><br><br>
         </div>
     </form>

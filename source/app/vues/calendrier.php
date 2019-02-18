@@ -67,10 +67,11 @@
 				<input type="hidden" name="reunionid" value="<?= $reunion->getId() ?>">
 					<div class="form-group">
 				<input type="submit" value="Confirmer" class="btn btn-dark">
-				</div> <br>
+				</div>
 			</form>
-			<br><?php $participations[$reunion->getId()]->badge() ?>
-			<a href="detailsReunion/<?= $reunion->getId() ?>" class="card-link">Consulter</a>
+			<br>
+			<?php $participations[$reunion->getId()]->badge() ?>
+			<a href="detailsReunion?&reunion=<?= $reunion->getId() ?>" class="card-link">Consulter</a>
     </div>
   </div>
   <?php endforeach; 
