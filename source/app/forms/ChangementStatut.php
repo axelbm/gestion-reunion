@@ -5,8 +5,8 @@ namespace app\forms;
 use app\modeles;
 
 class ChangementStatut extends \core\Form {
-    protected $statut;
-    protected $reunionid;
+    public $statut;
+    public $reunionid;
     
     public function valider () {
         if ($this->reunionid == "") {

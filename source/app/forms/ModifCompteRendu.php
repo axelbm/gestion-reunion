@@ -5,8 +5,8 @@ namespace app\forms;
 use app\modeles;
 
 class ModifCompteRendu extends \core\Form {
-    protected $compterendu;
-    protected $id;
+    public $compterendu;
+    public $id;
     
     public function valider () {
         

@@ -6,12 +6,12 @@ use \core\DAO;
 use \app\modeles;
 
 class Inscription extends \core\Form {
-    protected $courriel;
-    protected $motDePasse;
-    protected $confirmMotDePasse;
-    protected $nom;
-    protected $prenom;
-    protected $cleInvitation;
+    public $courriel;
+    public $motDePasse;
+    public $confirmMotDePasse;
+    public $nom;
+    public $prenom;
+    public $cleInvitation;
 
     public function valider () {
         if ($this->courriel == "") {

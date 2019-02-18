@@ -5,8 +5,8 @@ namespace app\forms;
 use app\modeles;
 
 class AjouterParticipation extends \core\Form {
-    protected $reunionid;
-    protected $courriels;
+    public $reunionid;
+    public $courriels;
     
     public function valider () {
         if (empty($this->courriels)) {
