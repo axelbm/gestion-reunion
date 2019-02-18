@@ -10,7 +10,8 @@
         <input type="text" name="pass" class="form-control" placeholder="Titre" required>
         </div>
         <div class="form-group">
-       <input type="file" name="myFile">
+        <input id="x" value="Editor content goes here" type="hidden" name="content">
+        <trix-editor input="x"></trix-editor>
        </div>
         <input type="submit" name="ajouter" id="ajouter" value="Ajouter" class="btn btn-dark btn-block"><br><br>
         </div>
