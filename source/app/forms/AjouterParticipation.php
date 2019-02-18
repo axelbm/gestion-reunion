@@ -20,6 +20,6 @@ class AjouterParticipation extends \core\Form {
             $participation = new modeles\Participation($this->reunionid, $courriel, "EnAt");
             $participation->sauvegarder();
         }
-        \core\MainControleur::rediriger("ajouterParticipation");
+        \core\MainControleur::rediriger("ajouterParticipation?&reunionid=$this->reunionid");
     }
 }
