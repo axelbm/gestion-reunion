@@ -69,6 +69,7 @@
 				<input type="submit" value="Confirmer" class="btn btn-dark">
 				</div>
 			</form>
+			<br>
 			<?php $participations[$reunion->getId()]->badge() ?>
 			<a href="detailsReunion?&reunion=<?= $reunion->getId() ?>" class="card-link">Consulter</a>
     </div>
