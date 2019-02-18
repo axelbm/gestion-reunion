@@ -8,7 +8,9 @@
             
             <?php if ($estcreateur): ?>
                 <hr>
-                <a href="#">Ajouter point d'ordre</a> | <a href="#">Annuler la réunion</a>
+                <a href="formPoints?&reunion=<?= $reunion->getId() ?>">Ajouter point d'ordre</a> | 
+                <a href="#">Annuler la réunion</a> | 
+                <a href="ajoutParticipation?&reunion=<?= $reunion->getId() ?>" class="card-link">Inviter des participants </a>
             <?php endif ?>
         </div>
 
