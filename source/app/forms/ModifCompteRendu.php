@@ -17,5 +17,6 @@ class ModifCompteRendu extends \core\Form {
         $pointdordre->setCompteRendu($this->compterendu);
         $pointdordre->sauvegarder();
         
+        \core\MainControleur::rediriger("detailspoints/".$pointdordre->getId());
     }
 }
