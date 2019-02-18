@@ -7,7 +7,7 @@ class DetailsReunion extends \core\Controleur {
 	use atraits\Utilisateur;
 
 	public function action(array $args) : ?\Exception {
-		if (count($args) > 0)
+		if (count($args) != 1)
 			return new \Exception("erreur 404", 404);
 
 		$vue = $this->genererVue("detailsReunion");
@@ -17,7 +17,7 @@ class DetailsReunion extends \core\Controleur {
 		if (!$this->estConnecter())
 			\core\MainControleur::rediriger("connexion");
 
-        $reunion = DAO::Reunion()->find($_GET["reunion"]);
+        $reunion = DAO::Reunion()->find($args[0]);
        	if (!$reunion) {
            	return new \Exception("erreur 404", 404);
        	}

@@ -70,7 +70,7 @@
 				</div> <br>
 			</form>
 			<br><?php $participations[$reunion->getId()]->badge() ?>
-			<a href="detailsReunion?&reunion=<?= $reunion->getId() ?>" class="card-link">Consulter</a>
+			<a href="detailsReunion/<?= $reunion->getId() ?>" class="card-link">Consulter</a>
     </div>
   </div>
   <?php endforeach; 
