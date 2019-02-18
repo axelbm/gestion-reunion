@@ -1,4 +1,3 @@
-
 <div class="container">
 	<h1 align="center"> - Réunion(s) - </h1> 
 	<h6 align="center"> (Auxquelles vous êtes invité) </h6> 
@@ -6,25 +5,23 @@
 	<?php if ($estadmin):?> 
 		<h6 align="right"> * Administrateur </h6>
 		<a href="reunionCreee" button type="button" class="btn btn-dark float-right">Mes Réunions</a><br>
-		<?php if ($nombredepage > 1){ ?>
-	<div class="pagination">
-  <!--<a href="#">&laquo;</a>
-  <a href="#">1</a>
-  <a class="active" href="#">2</a>
-  <a href="#">3</a>
-	<a href="#">&raquo;</a>-->
-	
-	<a href="<?=WEBROOT."calendrier"?>">&laquo;</a>
-	<?php for ( $i = max(0, $page - 4); $i < min($nombredepage, $page + 4); $i++ ) :?>
-			<a href="<?=WEBROOT."calendrier/$i"?>"><?=$i+1?></a>
-	<?php endfor ?>
-	<a href="<?=WEBROOT."calendrier/$nombredepage"?>">&raquo;</a>
-
-	</div><br>
-	<?php } 
-	endif?>
-
+	<?php	endif ?>
 	<br>
+	<?php if ($nombredepage > 1){ ?>
+			<div class="pagination">
+			<!--<a href="#">&laquo;</a>
+			<a href="#">1</a>
+			<a class="active" href="#">2</a>
+			<a href="#">3</a>
+			<a href="#">&raquo;</a>-->
+			<a href="<?=WEBROOT."calendrier"?>">&laquo;</a>
+			<?php for ( $i = max(0, $page - 4); $i < min($nombredepage, $page + 4); $i++ ) :?>
+					<a href="<?=WEBROOT."calendrier/$i"?>"><?=$i+1?></a>
+			<?php endfor ?>
+			<a href="<?=WEBROOT."calendrier/$nombredepage"?>">&raquo;</a>
+
+			</div><br>
+		<?php } ?>
 
 	<!--<div class="card border-dark mb-3" style="max-width: 25rem;">
 		<div class="card-body">

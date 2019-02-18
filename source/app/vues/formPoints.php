@@ -1,4 +1,4 @@
-<a href="detailsReunion" button type="button" class="btn btn-outline-dark float-right ">Retour<br>modifications</a>
+<a href="<?= WEBROOT."detailsReunion/".$reunion->getId() ?>" button type="button" class="btn btn-outline-dark float-right ">Retour<br>modifications</a>
 <div class="col-lg-4 offset-lg-4 bg-light rounded" id="register-box">
       <h2 class="text-center mt-2">AJOUTER</h2>
     <h6 class="text-center mt-2">- un point d'ordre -</h6>
