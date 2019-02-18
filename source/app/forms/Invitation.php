@@ -11,7 +11,7 @@ class Invitation extends \core\Form {
         if ($this->courriel == "") {
             $this->ajouterErreur("courriel", "Courriel obligatoire");
         }
-        elseif(\app\dao\Invitation::find($this->courriel)){
+        elseif(\core\DAO::Invitation()->find($this->courriel)){
             $this->ajouterErreur("courriel", "Ce courriel a déjà reçu une invitation");
         }
     }
@@ -21,6 +21,6 @@ class Invitation extends \core\Form {
         $invitation = new modeles\Invitation($this->courriel, $cle);
         $invitation->sauvegarder();
 
-        \core\MainControleur::rediriger("invitation");
+        //\core\MainControleur::rediriger("invitation");
     }
 }

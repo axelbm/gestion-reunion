@@ -25,7 +25,6 @@ class Inscription extends \core\Form {
             $this->ajouterErreur("motDePasse", "Les deux mot de passe doivent être identique");
         }
         
-
         $invitation = DAO::Invitation()->find($this->courriel);
 
         if ($invitation->validerCle($this->cleInvitation)){
@@ -34,6 +33,7 @@ class Inscription extends \core\Form {
     }
 
     public function action() {
+        var_dump($this->courriel);
         $user = new modeles\Utilisateur($this->courriel, $this->nom, $this->prenom, $this->motDePasse);
         $user->sauvegarder();
 

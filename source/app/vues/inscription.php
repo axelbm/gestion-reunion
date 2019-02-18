@@ -25,15 +25,15 @@
 
         <?php $e = $f->erreur("courriel") ?>
         <div class="form-group">
-        <input type="text" name="email" class="form-control <?=$e?'is-invalid':""?>" placeholder="Courrier électronique" value="<?= $f->get("courriel") ?>" required>
+        <input type="text" name="courriel" class="form-control <?=$e?'is-invalid':""?>" placeholder="Courrier électronique" value="<?= $f->get("courriel") ?>" required>
             <?php if ($e): ?>
                 <div class="invalid-feedback"><?=$e?></div>
             <?php endif ?>    
         </div>
 
-        <?php $e = $f->erreur("notDePasse") ?>
+        <?php $e = $f->erreur("motDePasse") ?>
         <div class="form-group">
-        <input type="password" name="pass" class="form-control <?=$e?'is-invalid':""?>" placeholder="Mot de passe" value="<?= $f->get("notDePasse") ?>" required>
+        <input type="password" name="motDePasse" class="form-control <?=$e?'is-invalid':""?>" placeholder="Mot de passe" value="<?= $f->get("notDePasse") ?>" required>
             <?php if ($e): ?>
                 <div class="invalid-feedback"><?=$e?></div>
             <?php endif ?>    
@@ -41,7 +41,7 @@
 
         <?php $e = $f->erreur("confirmMotDePasse") ?>
         <div class="form-group">
-        <input type="password" name="cpass" class="form-control <?=$e?'is-invalid':""?>" placeholder="Veuillez confirmer votre mot de passe" value="<?= $f->get("confirmMotDePasse") ?>" required>
+        <input type="password" name="confirmMotDePasse" class="form-control <?=$e?'is-invalid':""?>" placeholder="Veuillez confirmer votre mot de passe" value="<?= $f->get("confirmMotDePasse") ?>" required>
             <?php if ($e): ?>
                 <div class="invalid-feedback"><?=$e?></div>
             <?php endif ?>    
@@ -49,7 +49,7 @@
 
         <?php $e = $f->erreur("cleInvitation") ?>
         <div class="form-group">
-        <input type="text" name="cle" class="form-control <?=$e?'is-invalid':""?>" placeholder="*No. d'Invitation" value="<?= $f->get("cleInvitation") ?>" required>
+        <input type="text" name="cleInvitation" class="form-control <?=$e?'is-invalid':""?>" placeholder="*No. d'Invitation" value="<?= $f->get("cleInvitation") ?>" required>
             <?php if ($e): ?>
                 <div class="invalid-feedback"><?=$e?></div>
             <?php endif ?>    
