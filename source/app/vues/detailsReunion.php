@@ -49,8 +49,9 @@
 
         <?php foreach ($participations as $i => $participation) : ?>
             <?= $i != 0 ? "<hr>" : ""?>
-            <span><?= $participation->getUtilisateur()->getNomComplet() ?></span>
-                <a class="float-right" href="#">Annuler l'invitation</a>
+            <?php $participant = $participation->getUtilisateur() ?>
+            <span><?= $participant->getNomComplet() ?></span>
+                <a class="float-right" href="?annulerParticipation=<?=$participant->getCourriel()?>">Annuler l'invitation</a>
             <p><?php $participation->badge() ?></p>
         <?php endforeach ?>
     </div>
