@@ -304,13 +304,19 @@ abstract class DAO {
         $prop = $this->getPropriete($colonne);
 
         $fkDAO = $prop["type"];
+        
+        $result = self::$fkDAO()->select("WHERE ".$prop["fkColonne"]." = ?", $valeur);
 
-        $result = self::$fkDAO()->select("WHERE ".$prop["fkColonne"]." = '$valeur'");
-
-        if (in_array("S", $prop["options"]))
-            return $result[0];
-        else
+        if (in_array("S", $prop["options"])) {
+            if (isset($result[0])) {
+                return $result[0];
+            }
+        }
+        else {
             return $result;
+        }
+
+        return null;
     }
 
     /**

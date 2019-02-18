@@ -103,6 +103,8 @@ abstract class Database {
 				return $var == 1;
 			case 'DateTime':
 				return new \DateTime($var);
+			case 'int':
+				return intval($var);
 			
 			default:
 				return $var;
