@@ -7,7 +7,7 @@ class DetailsPoints extends \core\Controleur {
 	use atraits\Utilisateur;
 
 	public function action(array $args) : ?\Exception {
-		if (count($args) > 0)
+		if (count($args) != 1)
 			return new \Exception("erreur 404", 404);
 
 		$vue = $this->genererVue("detailsPoints");
@@ -15,27 +15,20 @@ class DetailsPoints extends \core\Controleur {
 		$this->verifierUtilisateur();
 
 		if (!$this->estConnecter())
-			\core\MainControleur::rediriger("connexion");
+            \core\MainControleur::rediriger("connexion");
+            
+        $pointdordre = DAO::PointDordre()->find($args[0]);
+        if (!$pointdordre) {
+            return new \Exception("erreur 404", 404);
+        }
 
-        $dossier = DAO::Dossier()->find($_GET["dossier"]);
-       	if (!$dossier) {
-           	return new \Exception("erreur 404", 404);
-       	}
-       	$pointdordres = array();
-		
-       	$reunions = [];
-		foreach ($pointdordres as $pointdordre) {
-			$reunions[$pointdordre->getId()] = $pointdordre->getReunion();
-		}
+        $vue->set("reunion",$pointdordre->getReunion());
+        $vue->set("dossier",$pointdordre->getDossier());
+        $vue->set("pointdordre",$pointdordre);
 
-		$vue->set("reunions", $reunions);
-		$vue->set("pointdordres", $pointdordres);
-        $vue->set("dossier", $dossier);
-
-		$vue->afficher();
-
-
-		return null;
+        $vue->afficher();
+            
+        return null;
 	}
 
 }
