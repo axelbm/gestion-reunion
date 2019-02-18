@@ -8,9 +8,9 @@
             
             <?php if ($estcreateur): ?>
                 <hr>
-                <a href="formPoints?&reunion=<?= $reunion->getId() ?>">Ajouter point d'ordre</a> | 
+                <a href="<?= WEBROOT."formPoints/".$reunion->getId() ?>">Ajouter point d'ordre</a> | 
                 <a href="#">Annuler la réunion</a> | 
-                <a href="ajoutParticipation?&reunion=<?= $reunion->getId() ?>" class="card-link">Inviter des participants </a>
+                <a href="<?= WEBROOT."ajoutParticipation/".$reunion->getId() ?>" class="card-link">Inviter des participants </a>
             <?php endif ?>
         </div>
 
@@ -33,7 +33,7 @@
                 
                 <a href="#">Détails</a>
                 <?php if ($estcreateur): ?>
-                    | <a href="#">Modifier</a> | <a href="#">Annuler</a>
+                    | <a href="<?= WEBROOT."detailsPoint/".$pointdordre->getId() ?>">Modifier</a> | <a href="#">Annuler</a>
                 <?php endif ?>
                 <hr>
 

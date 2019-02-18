@@ -33,12 +33,12 @@
 		<span class="oi oi-account-login"></span>
 	</div>-->
 
-	<?php if(!empty($reunions)){
-   foreach ($reunions as $reunion) :?>
+	<?php if(!empty($dossiers)){
+   foreach ($dossiers as $dossier) :?>
   <div class="card border-dark mb-3" style="max-width: 15rem;">
     <div class="card-body">
-      <h4 class="card-title"><?= $dossier->getTitre() ?></h4>
-      <a href="detailsDossier?&dossier=<?= $dossier->getId() ?>" class="card-link">Consulter</a>
+      <h4 class="card-title"><?= $dossier->getNom() ?></h4>
+      <a href="<?= WEBROOT."detailsDossier/".$dossier->getId() ?>" class="card-link">Consulter</a>
     </div>
   </div>
   <?php endforeach;

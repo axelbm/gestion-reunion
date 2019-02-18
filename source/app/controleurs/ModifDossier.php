@@ -3,14 +3,14 @@
 namespace app\controleurs;
 use \core\DAO;
 
-class FormDossier extends \core\Controleur {
+class ModifDossier extends \core\Controleur {
 	use atraits\Utilisateur;
 
 	public function action(array $args) : ?\Exception {
-		if (count($args) > 1)
+		if (count($args) != 1)
 			return new \Exception("erreur 404", 404);
 
-		$vue = $this->genererVue("formDossier");
+		$vue = $this->genererVue("modifDossier");
 		
 		$this->verifierUtilisateur();
 
@@ -20,12 +20,10 @@ class FormDossier extends \core\Controleur {
 
         $dossier = null;
 
-        if (isset($args[0])) {
-            $dossier = DAO::Dossier()->find($args[0]);
-            if (!$dossier){
-                return new \Exception("Parametre de recherche invalide", 404);
-            }
-        }
+		$dossier = DAO::Dossier()->find($args[0]);
+		if (!$dossier){
+			return new \Exception("Parametre de recherche invalide", 404);
+		}
             
         $vue->set("dossier", $dossier);
 

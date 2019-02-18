@@ -7,7 +7,7 @@ class DetailsDossier extends \core\Controleur {
 	use atraits\Utilisateur;
 
 	public function action(array $args) : ?\Exception {
-		if (count($args) > 0)
+		if (count($args) != 1)
 			return new \Exception("erreur 404", 404);
 
 		$vue = $this->genererVue("detailsDossier");
@@ -17,7 +17,7 @@ class DetailsDossier extends \core\Controleur {
 		if (!$this->estConnecter())
 			\core\MainControleur::rediriger("connexion");
 
-        $dossier = DAO::Dossier()->find($_GET["dossier"]);
+        $dossier = DAO::Dossier()->find($args[0]);
        	if (!$dossier) {
            	return new \Exception("erreur 404", 404);
        	}
