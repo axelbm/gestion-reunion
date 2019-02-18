@@ -27,6 +27,7 @@ Réunion du
 <?php $f = $vue->newForm("modifCompteRendu"); ?>
 <form method="post">
     <input type="hidden" name="formid" value="<?= $f->id ?>">
+    <input type="hidden" name="id" value="<?= $pointdordre->getId() ?>">
 
     <div class="form-group">
         <input id="compterendu" value="<?=$pointdordre->getCompteRendu()?>" type="hidden" name="compterendu">
