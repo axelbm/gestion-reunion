@@ -6,6 +6,7 @@ abstract class Form {
     protected $action;
     protected $erreurs = [];
     protected $position = 0;
+    protected $ajaxVals = [];
 
     public function __construct(string $action, int $pos) {
         $this->action = $action;
@@ -158,5 +159,13 @@ abstract class Form {
 
     public function getAction() : string {
         return $this->action;
+    }
+
+    public function setAjax(string $key, $value) {
+        $this->ajaxVals[$key] = $value;
+    }
+
+    public function getAjax() : array {
+        return $this->ajaxVals;
     }
 }

@@ -39,6 +39,26 @@ class MainForm {
 		}
 
 		Session::viderFormAction();
+
+		if (isset($_POST["ajax"])) {
+			$form = self::$instance;
+
+			if ($form) {
+				$data = [
+					"valid" => $form->succes(),
+					"erreurs" => $form->getErreurs(),
+					"formid" => $_POST["formid"],
+					"newFormid" => self::nouveauFormId($form->getAction())[0]
+				];
+
+				$data = array_merge($data, $form->getAjax());
+			} else{
+				$data = ["valid" => false];
+			}
+			echo json_encode($data);
+
+			exit;
+		}
 	}
 
 	/**
