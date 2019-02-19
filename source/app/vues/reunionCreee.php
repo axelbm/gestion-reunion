@@ -24,8 +24,6 @@
 				<h4 class="card-title"><?= strftime($reunion->getDate()->format('Y-M-d H:i')) ?></h4>
 			</h4>
 			<div>
-				<span>Organisé par : <a href="#"><?= $reunion->getCreateur() ?></a></span>
-				<br>
 				<a href="<?= WEBROOT."detailsReunion/".$reunion->getId() ?>">Détails</a> |
 				<a href="<?= WEBROOT."ajoutparticipation/".$reunion->getId() ?>">Inviter des participants</a>
 			</div>
