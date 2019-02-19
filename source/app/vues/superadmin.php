@@ -5,6 +5,7 @@
 
     <?php $f = new \core\FormView("SuperAdmin"); ?>
     <form action="" method="post" role="form" class="p-2" id="admin-frm">
+        <input type="hidden" name="formid" value="<?= $f->id ?>">
 
         <?php $e = $f->erreur("courriel") ?>
         <div class="form-group">
