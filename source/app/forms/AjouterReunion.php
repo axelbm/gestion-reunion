@@ -25,6 +25,9 @@ class AjouterReunion extends \core\Form {
         $reunion = new modeles\Reunion(new \DateTime($datetime), $this->createur);
         $reunion->sauvegarder();
 
+        $participation = new modeles\Participation($reunion->getId(), $this->createur, "Org");
+        $participation->sauvegarder();
+
         \core\MainControleur::rediriger("reunionCreee");
     }
 }
