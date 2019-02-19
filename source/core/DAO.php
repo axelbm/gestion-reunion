@@ -135,13 +135,17 @@ abstract class DAO {
         $colonne = [];
         $colonneKey = [];
         $valeurs = [];
+        $estAutoInc = false;
 
         // fait la liste des clés primaires, colonnes et de leurs valeurs 
         foreach ($obj->getProprietes() as $prop) {
-            if (isset($prop["fkColonne"]))
+            if (isset($prop["fkColonne"])) {
                 continue;
-            if (in_array("AI", $prop["options"]))
+            }
+            if (in_array("AI", $prop["options"])) {
+                $estAutoInc = true;
                 continue;
+            }
              
             \array_push($colonne, $prop["key"]);
             \array_push($colonneKey, ":".$prop["key"]);
@@ -155,6 +159,11 @@ abstract class DAO {
 
         $stmt = Database::prepare($stendment);
         $stmt->execute($valeurs);
+
+        if (!is_null($estAutoInc)) {
+            $id = Database::query("SELECT LAST_INSERT_ID();")->fetch()[0];
+            $obj->reload($id);
+        }
     }
 
     /**

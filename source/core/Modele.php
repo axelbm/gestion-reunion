@@ -185,6 +185,23 @@ abstract class Modele {
     }
 
     /**
+     * Undocumented function
+     *
+     * @param int $id
+     * @return void
+     */
+    public function reload(int $id) {
+        $pk = $this->dao()->getPrimaryKey();
+        $prop = $this->dao()->getPropriete($pk);
+
+        if (in_array('AI', $prop)) {
+            $propCle = $prop["key"];
+            $this->$propCle = $id;
+            $this->surBD = true;
+        }
+    }
+
+    /**
      * Créer un objet a l'aide d'un array.
      *
      * @param array $params
