@@ -82,7 +82,7 @@
     
     <!-- Section des invitations -->
     <div class="col-md-4">
-        <h2>Participant<?= count($participations) > 1 ? "s" : ""?></h2>
+        <h2>Participant<?= count($participants) > 1 ? "s" : ""?></h2>
         <hr>
         
         <?php $f = $vue->newForm("SupprimerParticipation"); ?>
@@ -90,18 +90,17 @@
             <input type="hidden" name="formid" value="<?= $f->id ?>">
             <input type="hidden" name="reunionid" value="<?= $reunion->getId() ?>">
            
-            <?php foreach ($participations as $i => $participation) : ?>
-                <?= $i != 0 ? "<hr>" : ""?>
-                <?php $participant = $participation->getUtilisateur() ?>
-
+            <?php foreach ($participants as $i => $participant) : ?>
                 <div>
-                    <span><?= $participant->getNomComplet() ?></span>
+                    <?= $i != 0 ? "<hr>" : ""?>
+
+                    <span><?= $participant["nom"] ?></span>
                     
-                    <?php if ($participation->getStatutID() != "Org" && $estcreateur): ?>
-                        <button type="submit" name="courriel" value="<?=$participant->getCourriel()?>" class="btn btn-link float-right">Annuler l'invitation</button>
+                    <?php if ($participant["statut"] != "Org" && $estcreateur): ?>
+                        <button type="submit" name="courriel" value="<?=$participant["courriel"]?>" class="btn btn-link float-right">Annuler l'invitation</button>
 
                     <?php endif ?>
-                    <p><?php $participation->badge() ?></p>
+                    <p><?php \app\modeles\Participation::badgeStatic($participant["statut"]) ?></p>
                 </div>
                 
                 <?php endforeach ?>

@@ -35,16 +35,14 @@ class DetailsReunion extends \core\Controleur {
 			}
 		}
 		   
-       	$participations = $reunion->getParticipations();
 		$pointdordres = $reunion->getPointDordres();
-		
-       
+		$participants = DAO::Participation()->getParReunion($args[0]);
 
 		$estcreateur = $reunion->estCreateur($this->utilisateur);
 		
 		$vue->set("ajouterPointDordre", isset($args[1]) && $args[1] == "ajouterpointdordre");
 		$vue->set("reunion", $reunion);
-		$vue->set("participations", $participations);
+		$vue->set("participants", $participants);
 		$vue->set("pointdordres", $pointdordres);
         $vue->set("estcreateur", $estcreateur);
 
