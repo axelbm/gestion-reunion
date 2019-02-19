@@ -22,7 +22,7 @@
 <h4>Compte rendu</h4>
 
 <h6>
-    <?php if ($reunion->getCreateur() == $utilisateur->getCourriel()):?>
+    <?php if ($reunion->getCreateur() == $utilisateur->getCourriel() && $reunion->peutModifier()): ?>
         <?php if ($editer): ?>
             <a href="<?=WEBROOT.'detailspoints/'.$pointdordre->getId()?>">Annuler</a>
         <?php else: ?>

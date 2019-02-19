@@ -34,6 +34,8 @@ class DetailsReunion extends \core\Controleur {
 					return new \Exception("erreur 404", 404);
 			}
 		}
+
+		$reunion->mettreAJourStatut();
 		   
 		$pointdordres = $reunion->getPointDordres();
 		$participants = DAO::Participation()->getParReunion($args[0]);
@@ -49,7 +51,7 @@ class DetailsReunion extends \core\Controleur {
 		$vue->set("pointdordres", $pointdordres);
 		$vue->set("estcreateur", $estcreateur);
 		
-		$vue->setJSVar("participation", $participation->getStatutID());
+		$vue->setJSVar("participation", $participation ? $participation->getStatutID() : "");
 
 		$vue->afficher();
 

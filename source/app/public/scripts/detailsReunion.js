@@ -1,7 +1,7 @@
 
 $(document).ready(function(){
 
-    $(".btn-link").click(function(event) {
+    $(".annPar").click(function(event) {
         // Stop the browser from submitting the form.
         
         event.preventDefault();

@@ -60,6 +60,12 @@ class Participation extends Modele {
             case "Org":
                 echo "<span class=\"badge badge-primary\">Organisateur</span>";
                 break;
+            case "Ave":
+                echo "<span class=\"badge badge-info\">À venir</span>";
+                break;
+            case "Ret":
+                echo "<span class=\"badge badge-danger\">En retard</span>";
+                break;
         }
     }
 

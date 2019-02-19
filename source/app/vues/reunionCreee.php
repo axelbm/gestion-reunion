@@ -3,8 +3,8 @@
 	<br>
 
 	<!-- Navigation -->
-    <a href="calendrier"  class="btn btn-primary float-right ">Revenir à mes invitations</a> 
-	<a href="formReunion"  class="btn btn-primary float-right">Ajouter une Réunion</a><br><br>
+	<a href="formReunion"  class="btn btn-primary float-right">Ajouter une Réunion</a>
+    <a href="calendrier"  class="btn btn-primary float-right ">Revenir à mes invitations</a><br><br>
 	
 	<!-- Pagination -->
     <?php if ($nombredepage > 1): ?>
@@ -25,7 +25,8 @@
 		<?php foreach ($reunions as $reunion): ?>
 			<hr>
 			<h4>
-				<h4 class="card-title"><?= strftime($reunion->getDate()->format('Y-M-d H:i')) ?></h4>
+				<?php \app\modeles\Participation::badgeStatic($reunion->getStatutId()) ?>
+				<?= strftime($reunion->getDate()->format('d F Y - H\hi')) ?>
 			</h4>
 			<div>
 				<a href="<?= WEBROOT."detailsReunion/".$reunion->getId() ?>">Détails</a> |

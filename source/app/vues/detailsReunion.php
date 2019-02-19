@@ -37,21 +37,34 @@
     <div class="col-md-8">
         <!-- Section de la réunion -->
         <div>
-            <h1><?= $reunion->getDate()->format('d F Y - H\hi') ?></h1>
+            <h1>
+                <?php \app\modeles\Participation::badgeStatic($reunion->getStatutId()) ?>
+                <?= $reunion->getDate()->format('d F Y - H\hi') ?>
+            </h1>
             <p>Organisé par : <a href="#"><?= $reunion->getCreateur() ?></a></p>
             <p class="mt-n2">
             
-                <?php if ($estcreateur): ?>
-                    <?php if ($ajouterPointDordre): ?>
-                        <a href="<?= WEBROOT."detailsreunion/".$reunion->getId() ?>">Retour</a> 
+                <?php if ($reunion->peutAjouter()): ?>
+                    <?php if ($estcreateur): ?>
+                        <?php if ($ajouterPointDordre): ?>
+                            <a href="<?= WEBROOT."detailsreunion/".$reunion->getId() ?>">Retour</a> 
+                        <?php else: ?>
+                        
+                            <?php $f = $vue->newForm("AnnulerReunion"); ?>
+                            <form method="post">
+                                <input type="hidden" name="formid" value="<?= $f->id ?>">
+                                <input type="hidden" name="reunionid" value="<?= $reunion->getId() ?>">
+                                
+                                
+                                <a href="<?= WEBROOT."detailsreunion/".$reunion->getId().'/ajouterpointdordre' ?>">Ajouter point d'ordre</a> | 
+                                <input type="submit" value="Annuler la réunion" class="btn btn-link" style="margin-top: -3px;"> |
+                                <a href="<?= WEBROOT."ajoutparticipation/".$reunion->getId() ?>" class="card-link">Inviter des participants </a>
+                            </form>
+                        <?php endif ?>
                     <?php else: ?>
-                        <a href="<?= WEBROOT."detailsreunion/".$reunion->getId().'/ajouterpointdordre' ?>">Ajouter point d'ordre</a> | 
-                        <a href="#">Annuler la réunion</a> | 
-                        <a href="<?= WEBROOT."ajoutparticipation/".$reunion->getId() ?>" class="card-link">Inviter des participants </a>
+                        <?php $participation->badge() ?>
+                        <a href="" class="modifLink" value="<?=$reunion->getId()?>">Modifier ma participation</a>
                     <?php endif ?>
-                <?php else: ?>
-                    <?php $participation->badge() ?>
-                    <a href="" class="modifLink" value="<?=$reunion->getId()?>">Modifier ma participation</a>
                 <?php endif ?>
             </p>
         </div>
@@ -96,7 +109,7 @@
                 <hr>
                 <h4>
                     <?php if ($pointdordre->getCompteRendu() != ""): ?>
-                        <span class="badge badge-info">Terminé</span>
+                        <span class="badge badge-dark">Terminé</span>
                     <?php endif ?>
                     <?= $pointdordre->getTitre() ?>
                 <?php if ($dossier = $pointdordre->getDossier()):?>
@@ -134,8 +147,8 @@
 
                     <span><?= $participant["nom"] ?></span>
                     
-                    <?php if ($participant["statut"] != "Org" && $estcreateur): ?>
-                        <button type="submit" name="courriel" value="<?=$participant["courriel"]?>" class="btn btn-link float-right">Annuler l'invitation</button>
+                    <?php if ($participant["statut"] != "Org" && $estcreateur && $reunion->peutModifier()): ?>
+                        <button type="submit" name="courriel" value="<?=$participant["courriel"]?>" class="btn btn-link float-right annPar">Annuler l'invitation</button>
 
                     <?php endif ?>
                     <p><?php \app\modeles\Participation::badgeStatic($participant["statut"]) ?></p>

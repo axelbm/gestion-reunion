@@ -37,7 +37,8 @@
 	<br>
 
 	<?php if ($estadmin):?>
-		<a href="reunionCreee" class="btn btn-primary float-right">Mes Réunions</a><br>
+		<a href="formReunion"  class="btn btn-primary float-right">Ajouter une Réunion</a>
+		<a href="reunionCreee" class="btn btn-primary float-right">Mes Réunions</a><br><br>
 	<?php endif ?>
 
 	<br>
@@ -55,10 +56,14 @@
 	<?php endif ?>
 
 	<div>
-		<?php foreach ($reunions as $reunion): ?>
+		<?php foreach ($reunions as $reunion): 
+			$reunion->mettreAJourStatut();?>
 			<hr>
 
-			<h4 class="card-title"><?= strftime($reunion->getDate()->format('Y-M-d H:i')) ?></h4>
+			<h4 class="card-title">
+				<?php \app\modeles\Participation::badgeStatic($reunion->getStatutId()) ?>
+				<?= strftime($reunion->getDate()->format('d F Y - H\hi')) ?>
+			</h4>
 
 			<div>
 				<span>Organisé par : <a href="#"><?= $reunion->getCreateur() ?></a></span>
@@ -66,7 +71,7 @@
 				<?php \app\modeles\Participation::badgeStatic($participations[$reunion->getId()])?>
 				<a href="<?= WEBROOT."detailsReunion/".$reunion->getId() ?>">Détails</a>
 
-				<?php if ($participations[$reunion->getId()] != "Org"): ?>
+				<?php if ($participations[$reunion->getId()] != "Org" && $reunion->peutModifier()): ?>
 					| <a href="" class="modifLink" value="<?=$reunion->getId()?>">Modifier ma participation</a>
 				<?php endif ?>
 			</div>

@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set ("America/New_York");
+
 require "config_systeme.php";
 require "config_site.php";
 
