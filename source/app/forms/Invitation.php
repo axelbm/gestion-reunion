@@ -8,19 +8,24 @@ class Invitation extends \core\Form {
     public $courriel;
     
     public function valider () {
-        if ($this->courriel == "") {
-            $this->ajouterErreur("courriel", "Courriel obligatoire");
+        if (!$this->validerChamp("Courriel", $this->courriel)) {
+            $this->ajouterErreur("courriel", "Courriel obligatoire.");
+        }
+        elseif(\core\DAO::Utilisateur()->find($this->courriel)){
+            $this->ajouterErreur("courriel", "Ce courriel a déjà été inscrit.");
         }
         elseif(\core\DAO::Invitation()->find($this->courriel)){
-            $this->ajouterErreur("courriel", "Ce courriel a déjà reçu une invitation");
+            $this->ajouterErreur("courriel", "Ce courriel a déjà reçu une invitation.");
         }
     }
 
     public function action() {
-        $cle = \core\Util::randomKey();
-        $invitation = new modeles\Invitation($this->courriel, $cle);
+        $invitation = new modeles\Invitation($this->courriel);
+        $invitation->genererCle();
         $invitation->sauvegarder();
 
-        //\core\MainControleur::rediriger("invitation");
+        \app\outils\Notification::ajouterPopup("Succes", "Une invitation a bien été envoyé à $this->courriel.", ["tail"=>"sm"]);
+
+        \core\MainControleur::rediriger();
     }
 }

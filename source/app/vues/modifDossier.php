@@ -14,7 +14,7 @@
         <input id="x" type="hidden" name="description" value="<?= $dossier->getDescription() ?>">
         <trix-editor input="x"></trix-editor>
        </div>
-        <input type="submit" name="ajouter" id="ajouter" value="Ajouter" class="btn btn-dark float-right"><br><br>
+        <input type="submit" name="ajouter" id="ajouter" value="Ajouter" class="btn btn-primary float-right"><br><br>
         </div>
     </form>
 </div>

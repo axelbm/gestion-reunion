@@ -13,12 +13,13 @@ class Inscription extends \core\Controleur {
 		
 		$this->verifierUtilisateur();
 
-		if ($this->estConnecter())
+		if ($this->estConnecter()) {
 			\core\MainControleur::rediriger();
+		}
 
+		$this->vue->set("cle", isset($_GET["cle"]) ? $_GET["cle"] : "");
 
 		$vue->afficher();
-
 
 		return null;
 	}

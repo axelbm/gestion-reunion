@@ -4,7 +4,7 @@
 	<br>
 	<?php if ($estadmin):?> 
 		<h6 align="right"> * Administrateur </h6>
-		<a href="reunionCreee" button type="button" class="btn btn-dark float-right">Mes Réunions</a><br>
+		<a href="reunionCreee" button type="button" class="btn btn-primary float-right">Mes Réunions</a><br>
 	<?php	endif ?>
 	<br>
 	<?php if ($nombredepage > 1){ ?>

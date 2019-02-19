@@ -1,6 +1,11 @@
-<div class="col-lg-4 offset-lg-4 bg-light rounded" id="register-box">
-    <h2 class="text-center mt-2">Inviter un membre</h2>
-    <h6 class="text-center mt-2">à rejoindre AFH</h6><br><br><br>
+<div class="bg-light col-lg-4 mx-auto mt-5 py-4 rounded shadow-lg" id="register-box">
+    <h2 class="mt-2 text-center">Invitation de member</h2>
+
+    <hr>
+
+    <p class="mx-4 text-center">Vous allez envoyez une clé d'invitation au courriel entré pour qu'il puisse ensuite s'inscrire.</p>
+
+    <hr>
 
     <?php $f = $vue->newForm("Invitation"); ?>
     <form action="" method="post" role="form" class="p-2" id="register-frm">
@@ -14,8 +19,8 @@
                 <div class="invalid-feedback"><?=$e?></div>
             <?php endif ?>
         </div>
-        <div class="form-group">
-            <input type="submit" name="login" id="login" value="Inviter" class="btn btn-dark btn-block">
+        <div class="form-group mb-0">
+            <input type="submit" name="login" id="login" value="Inviter" class="btn btn-primary btn-block">
         </div>
     </form>
 </div>

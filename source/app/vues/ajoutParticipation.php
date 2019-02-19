@@ -23,6 +23,6 @@
 				</div>
 			<?php }?>
 		</div><br>
-		<input type="submit" value="Inviter" class="btn btn-dark btn-block"> 
+		<input type="submit" value="Inviter" class="btn btn-primary btn-block"> 
     </form>
 </div>

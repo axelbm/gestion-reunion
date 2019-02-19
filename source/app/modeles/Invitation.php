@@ -21,4 +21,9 @@ class Invitation extends Modele {
         $this->courriel = $courriel;
         $this->cle = $cle;
     }
+
+    public function genererCle() : string {
+        $this->cle = \core\Util::randomKey(32);
+        return $this->cle;
+    }
 }

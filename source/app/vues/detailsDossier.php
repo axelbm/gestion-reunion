@@ -24,7 +24,7 @@
         </div>
 
         <div class="form-group">
-            <input type="submit" name="Sauvegarder"  class="btn btn-dark"><br><br>
+            <input type="submit" name="Sauvegarder"  class="btn btn-primary"><br><br>
         </div>
     </form>
 <?php else: ?>

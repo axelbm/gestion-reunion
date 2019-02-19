@@ -23,7 +23,7 @@
         </div>
 
         <div class="form-group">
-            <input type="submit" name="ajouter" id="ajouter" value="Ajouter" class="btn btn-dark btn-block"><br><br>
+            <input type="submit" name="ajouter" id="ajouter" value="Ajouter" class="btn btn-primary btn-block"><br><br>
         </div>
     </form>
 </div>

@@ -40,6 +40,6 @@ class Connexion extends \core\Form {
     public function action() {
         \app\outils\Session::connexion($this->utilisateur, $this->resterConnecter == 'on');
 
-        // \core\MainControleur::rediriger("accueil");
+        \core\MainControleur::rediriger();
     }
 }
