@@ -30,11 +30,12 @@ abstract class MainControleur {
 			if (!is_null($err)) {
 				self::executerErreur($err);
 			}
+
 		} else {
 			self::executerErreur(new \Exception("Page introuvable", 404));
 		}
 
-		exit();
+		exit;
 	}
 
 	/**
@@ -67,5 +68,6 @@ abstract class MainControleur {
 
 	static function rediriger(?string $action="", ?array $params=[]) {
 		header('Location: '. WEBROOT .$action . ($params ? "/".implode("/", $params) : ""));
+		exit;
 	}
 }
