@@ -1,10 +1,13 @@
+<p class="text-center">
+    <img src="<?=PUBLICROOT.'images/logo blanc lg.png'?>"  alt="Logo AFH">
 
-<div class="col-lg-4 offset-lg-4 bg-light rounded" id="login-box">
-    <h2 class="text-center mt-2">Se connecter</h2>
+</p>
 
-   
+<div class="bg-light col-lg-4 mx-auto mt-5 py-4 rounded shadow-lg" id="login-box">
+    <h2 class="text-center">Se connecter</h2>
 
-    
+    <hr>
+
     <?php $f = new \core\FormView("Connexion"); ?>
     <form action="" method="post" role="form" class="p-2" id="login-frm">
 
@@ -20,10 +23,11 @@
 
         <?php $e = $f->erreur("motDePasse") ?>
         <div class="form-group">
-            <input type="password" name="motDePasse" class="form-control <?=$e?'is-invalid':""?>" placeholder="Mot de passe" value="<?= $f->get("motDePasse") ?>" required>
+            <input type="password" name="motDePasse" class="form-control <?=$e?'is-invalid':""?>" placeholder="Mot de passe" value="<?= $f->get("motDePasse") ?>" required aria-describedby="passwordForgotten">
             <?php if ($e): ?>
                 <div class="invalid-feedback"><?=$e?></div>
             <?php endif ?>
+            <small id="passwordForgotten" class="form-text ml-0"><a href="#" id="forgot-btn">Mot de passe oublié ?</a></small>
         </div>
 
         <div class="form-group">	
@@ -37,11 +41,9 @@
             <input type="submit" name="login" id="login" value="Se connecter" class="btn btn-dark btn-block">
         </div>
 
-        <div class="form-group">
-            <p class="text-center">
+        <div class="form-group mb-0">
+            <p class="text-center mb-0">
                 Première fois ? <a href="inscription" id="register-btn">S'inscrire ici</a>
-                <br>
-                <a href="#" id="forgot-btn">Mot de passe oublié ?</a>
             </p>
         </div>
     </form>
