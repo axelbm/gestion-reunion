@@ -49,7 +49,10 @@ class Participation extends Modele {
                 echo "<span class=\"badge badge-success\">Présent</span>";
                 break;
             case "Term":
-                echo "<span class=\badge badge-dark\">Terminée</span>";
+                echo "<span class=\"badge badge-dark\">Terminée</span>";
+                break;
+            case "Org":
+                echo "<span class=\"badge badge-primary\">Organisateur</span>";
                 break;
         }
     }
