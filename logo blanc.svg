@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="448"
+   height="128"
+   viewBox="0 0 118.53333 33.866668"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="logo blanc.svg"
+   inkscape:export-filename="C:\Users\AxelB\OneDrive\Documents\École\2018 - Hiver\Web Back-End\gestion-reunion\source\app\public\images\logo blanc.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
+  <title
+     id="title6647">AFH Blanc</title>
+  <defs
+     id="defs2">
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Drop Shadow"
+       id="filter5881">
+      <feFlood
+         flood-opacity="0.658824"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood5871" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite5873" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="0.6"
+         result="blur"
+         id="feGaussianBlur5875" />
+      <feOffset
+         dx="0.4"
+         dy="0.4"
+         result="offset"
+         id="feOffset5877" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="composite2"
+         id="feComposite5879" />
+    </filter>
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Drop Shadow"
+       id="filter6645">
+      <feFlood
+         flood-opacity="0.109804"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood6635" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="out"
+         result="composite1"
+         id="feComposite6637" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="2.1"
+         result="blur"
+         id="feGaussianBlur6639" />
+      <feOffset
+         dx="0.4"
+         dy="0.4"
+         result="offset"
+         id="feOffset6641" />
+      <feComposite
+         in="offset"
+         in2="SourceGraphic"
+         operator="atop"
+         result="composite2"
+         id="feComposite6643" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="213.17653"
+     inkscape:cy="81.155366"
+     inkscape:document-units="mm"
+     inkscape:current-layer="g6670"
+     showgrid="false"
+     inkscape:snap-bbox="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:bbox-nodes="true"
+     inkscape:bbox-paths="true"
+     inkscape:window-width="1600"
+     inkscape:window-height="877"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:snap-global="true"
+     units="px"
+     inkscape:pagecheckerboard="false"
+     showborder="true"
+     borderlayer="false"
+     inkscape:showpageshadow="false"
+     inkscape:snap-page="true" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>AFH Blanc</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-263.13332)">
+    <g
+       id="g5449"
+       style="filter:url(#filter5881)"
+       transform="matrix(1.5377586,0,0,1.5377568,-143.86052,-61.239062)">
+      <g
+         id="g6670"
+         transform="matrix(1.125386,0,0,1.125386,-17.251704,-27.829486)">
+        <path
+           sodipodi:nodetypes="sccccssccssccccssccccccc"
+           inkscape:connector-curvature="0"
+           id="path5431"
+           d="m 110.05614,213.79637 c -0.10614,0 -0.17294,0.0311 -0.19947,0.0935 l -0.90641,2.95641 8.16023,0.72812 -1.08417,-3.68453 c -0.0265,-0.0625 -0.0928,-0.0935 -0.19896,-0.0935 z m -2.92075,8.97052 -2.21382,7.22023 c 0,0.0781 0.053,0.1173 0.15916,0.1173 h 4.41782 c 0.10614,0 0.17242,-0.0392 0.19895,-0.1173 l 0.43822,-1.71049 h 5.41259 l 0.43821,1.71049 c 0.0265,0.0781 0.0928,0.1173 0.19896,0.1173 h 4.41782 c 0.13267,0 0.18569,-0.0392 0.15916,-0.1173 l -1.81436,-6.16655 -4.78472,-0.42685 0.58911,2.37608 h -3.82095 l 0.70796,-2.60139 z"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1.25;font-family:Staatliches;-inkscape-font-specification:Staatliches;letter-spacing:2.64583325px;word-spacing:0px;opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.76346046;filter:url(#filter6645)" />
+        <path
+           sodipodi:nodetypes="sccccsssssccssscc"
+           inkscape:connector-curvature="0"
+           id="path5433"
+           d="m 126.4572,213.79637 c -0.10613,0 -0.15916,0.0311 -0.15916,0.0935 l -0.0222,4.54907 4.79816,0.4284 v -2.23604 h 8.15971 c 0.10613,0 0.15916,-0.0311 0.15916,-0.0935 v -2.6479 c 0,-0.0625 -0.0663,-0.0935 -0.19895,-0.0935 z m -0.21187,10.72234 -0.0269,5.4684 c 0,0.0781 0.0663,0.11731 0.19895,0.11731 h 4.45761 c 0.13267,0 0.19896,-0.0392 0.19896,-0.11731 v -5.03742 z"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1.25;font-family:Staatliches;-inkscape-font-specification:Staatliches;letter-spacing:2.64583325px;word-spacing:0px;opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.76346046;filter:url(#filter6645)" />
+        <path
+           sodipodi:nodetypes="sccccssscccssccssscccsssccc"
+           inkscape:connector-curvature="0"
+           id="path5435"
+           d="m 145.0882,213.79637 c -0.13267,0 -0.19895,0.0311 -0.19895,0.0935 l -0.016,6.38669 15.57682,1.38958 -0.0382,-7.77627 c 0,-0.0625 -0.0663,-0.0935 -0.19895,-0.0935 h -4.41782 c -0.10613,0 -0.15917,0.0311 -0.15917,0.0935 v 6.37325 h -5.97017 l 0.0398,-6.37325 c 0,-0.0625 -0.0663,-0.0935 -0.19895,-0.0935 z m -0.22996,12.56099 -0.009,3.62976 c 0,0.0781 0.053,0.1173 0.15917,0.1173 h 4.49791 c 0.10614,0 0.15917,-0.0392 0.15917,-0.1173 v -3.20084 z m 10.77763,0.9617 v 2.66806 c 0,0.0781 0.0663,0.1173 0.19896,0.1173 h 4.45761 c 0.13267,0 0.19895,-0.0392 0.19895,-0.1173 l -0.0108,-2.23553 z"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1.25;font-family:Staatliches;-inkscape-font-specification:Staatliches;letter-spacing:2.64583325px;word-spacing:0px;opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.76346046;filter:url(#filter6645)" />
+      </g>
+      <g
+         id="g6665"
+         style="fill:#ff9131;fill-opacity:1"
+         transform="matrix(1.125386,0,0,1.125386,-22.757634,-27.829486)">
+        <path
+           sodipodi:nodetypes="cccccccccc"
+           inkscape:connector-curvature="0"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1.25;font-family:Staatliches;-inkscape-font-specification:Staatliches;letter-spacing:2.64583325px;word-spacing:0px;opacity:1;fill:#ff9131;fill-opacity:1;stroke:none;stroke-width:0.76346046;filter:url(#filter6645)"
+           d="m 113.19162,218.97074 -0.58704,1.91564 4.44055,0.39584 0.52245,-1.92081 z m 4.87619,0.43511 0.49868,2.01228 4.69067,0.41858 -0.5948,-2.02106 z"
+           id="path5437" />
+        <path
+           sodipodi:nodetypes="cccsccc"
+           inkscape:connector-curvature="0"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1.25;font-family:Staatliches;-inkscape-font-specification:Staatliches;letter-spacing:2.64583325px;word-spacing:0px;opacity:1;fill:#ff9131;fill-opacity:1;stroke:none;stroke-width:0.76346046;filter:url(#filter6645)"
+           d="m 131.15745,220.62076 -0.01,1.9668 5.9893,0.53434 h 6.98923 c 0.13267,0 0.19896,-0.0311 0.19896,-0.0935 l -0.0186,-1.23455 z"
+           id="path5439" />
+        <path
+           sodipodi:nodetypes="ccccccccccc"
+           inkscape:connector-curvature="0"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1.25;font-family:Staatliches;-inkscape-font-specification:Staatliches;letter-spacing:2.64583325px;word-spacing:0px;opacity:1;fill:#ff9131;fill-opacity:1;stroke:none;stroke-width:0.76346046;filter:url(#filter6645)"
+           d="m 149.76054,222.45838 -0.005,1.96732 4.80229,0.4284 v -1.75545 h 2.37764 z m 10.76781,0.96066 v 1.96784 l 4.83485,0.43098 -0.01,-1.96835 z"
+           id="path5441" />
+      </g>
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Calque 2"
+     style="display:none"
+     transform="translate(0,-263.13332)">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:28.53873825px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.71346849"
+       x="37.693851"
+       y="164.39847"
+       id="text996"><tspan
+         sodipodi:role="line"
+         id="tspan994"
+         x="37.693851"
+         y="164.39847"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:'Arial Bold';stroke-width:0.71346849">[</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:28.53873825px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.71346855"
+       x="-120.08823"
+       y="164.39847"
+       id="text996-4"
+       transform="scale(-1,1)"><tspan
+         sodipodi:role="line"
+         id="tspan994-8"
+         x="-120.08823"
+         y="164.39847"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:'Arial Bold';stroke-width:0.71346855">[</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Calque 3"
+     transform="translate(0,-263.13332)" />
+</svg>
