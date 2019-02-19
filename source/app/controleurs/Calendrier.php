@@ -31,7 +31,7 @@ class Calendrier extends \core\Controleur {
 		
 		$participations = [];
 		foreach ($reunions as $reunion) {
-			$participations[$reunion->getId()] = DAO::Participation()->find($reunion->getId(), $this->utilisateur->getCourriel());
+			$participations[$reunion->getId()] = DAO::Participation()->find($reunion->getId(), $this->utilisateur->getCourriel())->getStatutID();
 		}
 
 		$nombredepage = DAO::Reunion()->getPageParUtilisateur($this->utilisateur, $nombre);
@@ -43,6 +43,9 @@ class Calendrier extends \core\Controleur {
 		$vue->set("participations", $participations);
 		$vue->set("nombredepage", $nombredepage);
 		$vue->set("estadmin", $estadmin);
+
+		
+		$vue->setJSVar("participations", $participations);
 
 		$vue->afficher();
 

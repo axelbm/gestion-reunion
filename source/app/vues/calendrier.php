@@ -1,3 +1,37 @@
+
+<div class="modal fade" id="myModal">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<h4 class="modal-title">Modifier ma participation</h4>
+			</div>
+
+			<?php $f = $vue->newForm("ChangementStatut"); ?>
+			<form method="post">
+				<input type="hidden" name="formid" value="<?= $f->id ?>">
+				<input id="reunionid" type="hidden" name="reunionid" value="">
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<select id="statut" class="form-control" id="sel1" name="statut">
+						<option value="Pres">Je participe</option>
+						<option value="Hes">Hésitant</option>
+						<option value="Abs">Absent</option>
+					</select>
+				</div>
+
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<input type="submit" value="Confirmer" class="btn btn-primary btn-block">
+				</div>
+			</form>
+
+		</div>
+	</div>
+</div>
+
+
 <div class="container">
 	<h1 align="center"> - Réunion(s) - </h1> 
 	<h6 align="center"> (Auxquelles vous êtes invité) </h6> 
@@ -27,9 +61,9 @@
 			<div>
 				<span>Organisé par : <a href="#"><?= $reunion->getCreateur() ?></a></span>
 				<br>
-				<?=$participations [$reunion->getId()]->badge()?>
+				<?php \app\modeles\Participation::badgeStatic($participations[$reunion->getId()])?>
 				<a href="<?= WEBROOT."detailsReunion/".$reunion->getId() ?>">Détails</a> |
-				<a href="#">Modifier ma participation</a>
+				<a href="" class="modifLink" value="<?=$reunion->getId()?>">Modifier ma participation</a>
 			</div>
 			<p>
 				<?php $count=$reunion->nbInvite();
@@ -40,7 +74,7 @@
 				<?php endif ?>
 			</p>
 			
-			<?php $pointdordres=$reunion->getPointDordres();
+			<?php $pointdordres = $reunion->getPointDordres();
 			if (count($pointdordres)): ?>
 				<h5>Points d'ordre</h5>
 				<ul>
