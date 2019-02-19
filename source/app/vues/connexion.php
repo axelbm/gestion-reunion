@@ -38,7 +38,7 @@
         </div>
 
         <div class="form-group">
-            <input type="submit" name="login" id="login" value="Se connecter" class="btn btn-dark btn-block">
+            <input type="submit" name="login" id="login" value="Se connecter" class="btn btn-primary btn-block">
         </div>
 
         <div class="form-group mb-0">

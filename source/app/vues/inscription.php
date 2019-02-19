@@ -55,7 +55,7 @@
             <?php endif ?>    
         </div>
         <div class="form-group">
-            <input type="submit" name="register" id="register" value="S'inscrire" class="btn btn-dark btn-block">
+            <input type="submit" name="register" id="register" value="S'inscrire" class="btn btn-primary btn-block">
         </div>
         <div class="form-group">
             <p class="text-center">Déjà inscrit ? <a href="connexion" id="login-btn">Se connecter ici</a></p>

@@ -4,7 +4,7 @@
 	<h6 align="right"> * Administrateur </h6>
 
     <a href="calendrier" button type="button" class="btn btn-outline-dark float-right ">Revenir à mes invitations</a> 
-    <a href="formReunion" button type="button" class="btn btn-dark float-right">Ajouter une Réunion</a><br><br>
+    <a href="formReunion" button type="button" class="btn btn-primary float-right">Ajouter une Réunion</a><br><br>
     <?php if ($nombredepage > 1){ ?>
 	<div class="pagination">
   <!--<a href="#">&laquo;</a>

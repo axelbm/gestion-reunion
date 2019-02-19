@@ -15,7 +15,7 @@
             <?php endif ?>
         </div>
         <div class="form-group">
-            <input type="submit" name="login" id="login" value="Inviter" class="btn btn-dark btn-block">
+            <input type="submit" name="login" id="login" value="Inviter" class="btn btn-primary btn-block">
         </div>
     </form>
 </div>
