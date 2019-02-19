@@ -86,7 +86,7 @@
         <hr>
         
         <?php $f = $vue->newForm("SupprimerParticipation"); ?>
-        <form method="post">
+        <form method="post" id="suppressionParticipant">
             <input type="hidden" name="formid" value="<?= $f->id ?>">
             <input type="hidden" name="reunionid" value="<?= $reunion->getId() ?>">
            

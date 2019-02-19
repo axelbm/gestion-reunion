@@ -52,6 +52,8 @@ class SupprimerParticipation extends \core\Form {
     }
 
     public function action() {
+        $this->setAjax("nom", $this->participation->getUtilisateur()->getNomComplet());
+        
         $this->participation->supprimer();
     }
 }
