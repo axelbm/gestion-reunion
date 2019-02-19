@@ -18,6 +18,6 @@ class AjouterDossier extends \core\Form {
         $dossier = new modeles\Dossier($this->nom, $this->description);
         $dossier->sauvegarder();
 
-        //\core\MainControleur::rediriger("dossier");
+        \core\MainControleur::rediriger("detailsdossier", [$dossier->getId()]);
     }
 }

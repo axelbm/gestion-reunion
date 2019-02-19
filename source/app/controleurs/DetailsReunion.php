@@ -38,13 +38,18 @@ class DetailsReunion extends \core\Controleur {
 		$pointdordres = $reunion->getPointDordres();
 		$participants = DAO::Participation()->getParReunion($args[0]);
 
+		$participation = DAO::Participation()->find($reunion->getId(), $this->utilisateur->getCourriel());
+
 		$estcreateur = $reunion->estCreateur($this->utilisateur);
 		
 		$vue->set("ajouterPointDordre", isset($args[1]) && $args[1] == "ajouterpointdordre");
 		$vue->set("reunion", $reunion);
 		$vue->set("participants", $participants);
+		$vue->set("participation", $participation);
 		$vue->set("pointdordres", $pointdordres);
-        $vue->set("estcreateur", $estcreateur);
+		$vue->set("estcreateur", $estcreateur);
+		
+		$vue->setJSVar("participation", $participation->getStatutID());
 
 		$vue->afficher();
 

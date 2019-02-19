@@ -1,4 +1,3 @@
-
 <div class="modal fade" id="myModal">
 	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
@@ -36,35 +35,42 @@
 	<h1 align="center"> - Réunion(s) - </h1> 
 	<h6 align="center"> (Auxquelles vous êtes invité) </h6> 
 	<br>
-	<?php if ($estadmin):?> 
-		<h6 align="right"> * Administrateur </h6>
-		<a href="reunionCreee" button type="button" class="btn btn-primary float-right">Mes Réunions</a><br>
-	<?php	endif ?>
+
+	<?php if ($estadmin):?>
+		<a href="reunionCreee" class="btn btn-primary float-right">Mes Réunions</a><br>
+	<?php endif ?>
+
 	<br>
-	<?php if ($nombredepage > 1){ ?>
+
+	<?php if ($nombredepage > 1): ?>
 		<div class="pagination">
 			<a href="<?=WEBROOT."calendrier"?>">&laquo;</a>
+
 			<?php for ( $i = max(0, $page - 4); $i < min($nombredepage, $page + 4); $i++ ) :?>
 				<a href="<?=WEBROOT."calendrier/$i"?>"><?=$i+1?></a>
 			<?php endfor ?>
-			<a href="<?=WEBROOT."calendrier/$nombredepage"?>">&raquo;</a>
 
+			<a href="<?=WEBROOT."calendrier/$nombredepage"?>">&raquo;</a>
 		</div><br>
-	<?php } ?>
+	<?php endif ?>
 
 	<div>
 		<?php foreach ($reunions as $reunion): ?>
 			<hr>
-			<h4>
-				<h4 class="card-title"><?= strftime($reunion->getDate()->format('Y-M-d H:i')) ?></h4>
-			</h4>
+
+			<h4 class="card-title"><?= strftime($reunion->getDate()->format('Y-M-d H:i')) ?></h4>
+
 			<div>
 				<span>Organisé par : <a href="#"><?= $reunion->getCreateur() ?></a></span>
 				<br>
 				<?php \app\modeles\Participation::badgeStatic($participations[$reunion->getId()])?>
-				<a href="<?= WEBROOT."detailsReunion/".$reunion->getId() ?>">Détails</a> |
-				<a href="" class="modifLink" value="<?=$reunion->getId()?>">Modifier ma participation</a>
+				<a href="<?= WEBROOT."detailsReunion/".$reunion->getId() ?>">Détails</a>
+
+				<?php if ($participations[$reunion->getId()] != "Org"): ?>
+					| <a href="" class="modifLink" value="<?=$reunion->getId()?>">Modifier ma participation</a>
+				<?php endif ?>
 			</div>
+
 			<p>
 				<?php $count=$reunion->nbInvite();
 				if ($count > 1):?>

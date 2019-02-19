@@ -18,6 +18,5 @@ class ChangementStatut extends \core\Form {
         $participation = \core\DAO::Participation()->find($this->reunionid, \app\outils\Session::getUtilisateur()->getCourriel());
         $participation->setStatutID($this->statut);
         $participation->sauvegarder();
-        \core\MainControleur::rediriger("calendrier");
     }
 }

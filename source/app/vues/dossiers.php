@@ -1,6 +1,6 @@
 <div class="container">
 	<h1 align="center"> - Les dossiers - </h1><br><br>
-	<a href="formDossier" button type="button" class="btn btn-primary float-right">Nouveau Dossier</a><br><br>
+	<a href="formDossier" class="btn btn-primary float-right">Nouveau Dossier</a><br><br>
 
 	<?php if ($nombredepage > 1){ ?>
 	<div class="pagination">
