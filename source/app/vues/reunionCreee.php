@@ -7,11 +7,6 @@
     <a href="formReunion" button type="button" class="btn btn-dark float-right">Ajouter une Réunion</a><br><br>
     <?php if ($nombredepage > 1){ ?>
 	<div class="pagination">
-  <!--<a href="#">&laquo;</a>
-  <a href="#">1</a>
-  <a class="active" href="#">2</a>
-  <a href="#">3</a>
-	<a href="#">&raquo;</a>-->
 	
 	<a href="<?=WEBROOT."reunionCreee"?>">&laquo;</a>
 	<?php for ( $i = max(0, $page - 4); $i < min($nombredepage, $page + 4); $i++ ) :?>
@@ -21,29 +16,38 @@
 
 </div><br>
   <?php } ?>
-  <!--
-  <div class="card border-dark mb-3" style="max-width: 19rem;">
-    <div class="card-body">
-      <h4 class="card-title">15 Février 2019 - 11:00</h4>
-      <p class="card-text">#36 - Créée par (utilisateur)<br>(0) invités</p>
-      <span class="badge badge-success">Présent</span><br>
-      <a href="detailsReunion?&reunion=1" class="card-link">Modifier</a>
-    </div>
-  </div>-->
 
-  <?php if(!empty($reunions)){
-   foreach ($reunions as $reunion) :?>
-  <div class="card border-dark mb-3" style="max-width: 26rem;">
-    <div class="card-body">
-      <h4 class="card-title"><?= $reunion->getDate()->format('Y-F-d H:i') ?></h4>
-      <p class="card-text">#<?= $reunion->getId() ?> - Créée par (<?= $reunion->getCreateur() ?>)<br>(<?= $reunion->nbInvite() ?>) invités</p>
-      <span class="badge badge-success">Présent</span><br>
-      <a href="<?= WEBROOT."detailsReunion/".$reunion->getId() ?>" class="card-link">Modifier</a>
-    </div>
-  </div>
-  <?php endforeach;
-  }else{ 
-    echo "<div>Vous n'avez pas créé de réunion.</div>";
-  }  ?>
+  <div>
+		<?php foreach ($reunions as $reunion): ?>
+			<hr>
+			<h4>
+				<h4 class="card-title"><?= strftime($reunion->getDate()->format('Y-M-d H:i')) ?></h4>
+			</h4>
+			<div>
+				<span>Organisé par : <a href="#"><?= $reunion->getCreateur() ?></a></span>
+				<br>
+				<a href="<?= WEBROOT."detailsReunion/".$reunion->getId() ?>">Détails</a> |
+				<a href="<?= WEBROOT."ajoutparticipation/".$reunion->getId() ?>">Inviter des participants</a>
+			</div>
+			<p>
+				<?php $count=$reunion->nbInvite();
+				if ($count > 1):?>
+					<?= $count ?> personnes ont été invitées.
+				<?php else: ?>
+					<?= $count ?> personne invitée.
+				<?php endif ?>
+			</p>
+			
+			<?php $pointdordres=$reunion->getPointDordres();
+			if (count($pointdordres)): ?>
+				<h5>Points d'ordre</h5>
+				<ul>
+					<?php foreach ($pointdordres as $pointdordre): ?>
+						<li><?= $pointdordre->getTitre()?></li>
+					<?php endforeach ?>
+				</ul>
+			<?php endif ?>
+		<?php endforeach ?>
+	</div>
 
 </div>
