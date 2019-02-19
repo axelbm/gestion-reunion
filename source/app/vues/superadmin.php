@@ -3,7 +3,7 @@
     <h6 class="text-center mt-2">du super Admin !</h6><br><br><br>
 
 
-    <?php $f = new \core\FormView("ModifDossier"); ?>
+    <?php $f = new \core\FormView("SuperAdmin"); ?>
     <form action="" method="post" role="form" class="p-2" id="admin-frm">
 
         <?php $e = $f->erreur("courriel") ?>
