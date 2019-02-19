@@ -32,14 +32,17 @@ class Utilisateur extends DAO {
     }
 
     public function listeInvitation(modeles\Reunion $reunion) : array{
-        $result = \core\Database::query("SELECT courriel FROM utilisateurs WHERE courriel not in (select courriel from participations where reunionid = ?)", $reunion->getId());
+        $result = \core\Database::query("SELECT courriel, nom, prenom FROM utilisateurs WHERE courriel not in (select courriel from participations where reunionid = ?)", $reunion->getId());
         
-        $courriels = [];
+        $utilisateurs = [];
         while ($row = $result->fetch(\PDO::FETCH_ASSOC)) {
-            array_push($courriels, $row["courriel"]);
+            array_push($utilisateurs, [
+                "courriel" => $row["courriel"],
+                "nom" => $row["prenom"] . " " . $row["nom"]
+            ]);
         }
 
-        return $courriels;
+        return $utilisateurs;
     }
 
     public function getParCleDeConnexion(string $cle) : ?modeles\Utilisateur {

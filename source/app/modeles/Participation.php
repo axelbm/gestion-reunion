@@ -31,8 +31,14 @@ class Participation extends Modele {
     }
 
     //methode badge
+
+    
     public function badge (){
-        switch($this->statutid){
+        return self::badgeStatic($this->statutid);
+    }
+
+    static public function badgeStatic ($statutid){
+        switch($statutid){
             case "EnAt":
                 echo "<span class=\"badge badge-info\">En attente</span>";
                 break;
