@@ -27,7 +27,7 @@ class Inscription extends \core\Form {
         
         $invitation = DAO::Invitation()->find($this->courriel);
 
-        if (!$invitation->validerCle($this->cleInvitation)){
+        if (!$invitation || !$invitation->validerCle($this->cleInvitation)){
             $this->ajouterErreur("cleInvitation", "Clé d'invitation incorrecte");
         }
     }
