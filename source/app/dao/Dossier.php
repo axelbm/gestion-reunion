@@ -12,7 +12,7 @@ class Dossier extends DAO {
     protected $table = "dossiers";
 
     protected $proprietes = array(
-        "Id" => "dossierid:int:PK,AI",
+        "Id" => "dossierid:integer:PK,AI",
         "Nom" => "nom:string",
         "Description" => "description:string",
 

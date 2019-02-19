@@ -13,7 +13,7 @@ class Utilisateur extends DAO {
         "Nom" => "nom:string",
         "Prenom" => "prenom:string",
         "MotDePasse" => "motdepasse:string",
-        "Administrateur" => "administrateur:int",
+        "Administrateur" => "administrateur:integer",
         
         "Participations" => "Courriel:Participation:FK:courriel"
     );
