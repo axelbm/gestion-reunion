@@ -1,5 +1,5 @@
 <p class="text-center">
-    <img src="<?=PUBLICROOT.'images/logo blanc lg.png'?>"  alt="Logo AFH">
+    <img src="<?=PUBLICROOT.'images/logo.png'?>"  alt="Logo AFH">
 
 </p>
 
