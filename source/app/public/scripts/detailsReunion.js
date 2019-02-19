@@ -31,7 +31,7 @@ $(document).ready(function(){
 
                     $("input[value='"+data.formid+"']").val(data.newFormid)
                     
-                    alert(data.nom + " à bien été retiré des participations.")
+                    alert(" L'invitation de " + data.nom + " a été retiré.")
                 }
             }
         })
