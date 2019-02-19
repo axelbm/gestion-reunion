@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="submit" name="Sauvegarder"  class="btn btn-dark"><br><br>
+                    <input type="submit" name="Sauvegarder" class="btn btn-dark"><br><br>
                 </div>
             </form>
         <?php endif ?>
@@ -84,13 +84,27 @@
     <div class="col-md-4">
         <h2>Participant<?= count($participations) > 1 ? "s" : ""?></h2>
         <hr>
+        
+        <?php $f = $vue->newForm("SupprimerParticipation"); ?>
+        <form method="post">
+            <input type="hidden" name="formid" value="<?= $f->id ?>">
+            <input type="hidden" name="reunionid" value="<?= $reunion->getId() ?>">
+           
+            <?php foreach ($participations as $i => $participation) : ?>
+                <?= $i != 0 ? "<hr>" : ""?>
+                <?php $participant = $participation->getUtilisateur() ?>
 
-        <?php foreach ($participations as $i => $participation) : ?>
-            <?= $i != 0 ? "<hr>" : ""?>
-            <?php $participant = $participation->getUtilisateur() ?>
-            <span><?= $participant->getNomComplet() ?></span>
-                <a class="float-right" href="?annulerParticipation=<?=$participant->getCourriel()?>">Annuler l'invitation</a>
-            <p><?php $participation->badge() ?></p>
-        <?php endforeach ?>
+                <div>
+                    <span><?= $participant->getNomComplet() ?></span>
+                    
+                    <?php if ($participation->getStatutID() != "Org" && $estcreateur): ?>
+                        <button type="submit" name="courriel" value="<?=$participant->getCourriel()?>" class="btn btn-link float-right">Annuler l'invitation</button>
+
+                    <?php endif ?>
+                    <p><?php $participation->badge() ?></p>
+                </div>
+                
+                <?php endforeach ?>
+        </form>
     </div>
 </div>
