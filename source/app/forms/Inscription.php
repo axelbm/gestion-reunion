@@ -44,6 +44,8 @@ class Inscription extends \core\Form {
         $invitation = DAO::Invitation()->find($this->courriel);
         $invitation->supprimer();
 
+        \app\outils\Notification::ajouterPopup("Succes", "Vous avec été inscrit!", ["tail" => "sm"]);
+
         \core\MainControleur::rediriger("connexion");
     }
 }

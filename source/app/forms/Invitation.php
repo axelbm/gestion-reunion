@@ -24,7 +24,8 @@ class Invitation extends \core\Form {
         $invitation->genererCle();
         $invitation->sauvegarder();
 
-        \app\outils\Notification::ajouterPopup("Succes", "Une invitation a bien été envoyé à $this->courriel.", ["tail"=>"sm"]);
+        \app\outils\Notification::ajouterPopup("Succes", "Une invitation a bien été envoyé à $this->courriel.<br>
+            <a href=\"".WEBROOT."inscription?cle=".$invitation->getCle()."\">S'inscrire</a>", ["tail"=>"sm"]);
 
         \core\MainControleur::rediriger();
     }
