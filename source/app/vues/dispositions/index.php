@@ -38,7 +38,7 @@
 		<?php endif ?>
 
 		<div id="container">
-			<?php require "morceaux/header.php"; ?>
+			<?php//require "morceaux/header.php"; ?>
 			<?php require "morceaux/navbar.php"; ?>
 			
 			<div id="content" class="container">
