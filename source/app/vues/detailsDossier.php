@@ -20,7 +20,7 @@
 
         <div class="form-group">
             <input id="description" value="<?=$dossier->getDescription()?>" type="hidden" name="description">
-            <trix-editor input="description" style="min-height:200px"></trix-editor>
+            <trix-editor input="description" style="min-height:300px"></trix-editor>
         </div>
 
         <div class="form-group">

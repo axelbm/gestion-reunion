@@ -28,6 +28,6 @@ class AjouterReunion extends \core\Form {
         $participation = new modeles\Participation($reunion->getId(), $this->createur, "Org");
         $participation->sauvegarder();
 
-        \core\MainControleur::rediriger("reunionCreee");
+        \core\MainControleur::rediriger("detailsReunion", [$reunion->getId()]);
     }
 }

@@ -4,7 +4,7 @@ $(document).ready(function(){
     $(".btn-link").click(function(event) {
         // Stop the browser from submitting the form.
         
-    event.preventDefault();
+        event.preventDefault();
         var formData = $("#suppressionParticipant").serializeArray();
         
         data = {
@@ -37,4 +37,19 @@ $(document).ready(function(){
         })
         
     });
+
+    
+
+    $(".modifLink").click(function(event) {
+        // Stop the browser from submitting the form.
+        
+        event.preventDefault();
+
+        $("#reunionid").val($(this).attr('value'));
+
+        $("#statut").val(participation);
+
+        $("#myModal").modal("show");
+
+    })
 });

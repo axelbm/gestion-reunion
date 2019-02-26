@@ -116,7 +116,8 @@ abstract class Modele {
         $props = [];
         
         foreach ($this->dao()->getProprietes() as $key => $prop) {
-            if (!isset($prop["fkColonne"])) {
+
+            if (!isset($prop["fkColonne"]) && !(in_array("AI", $prop["options"]) && !$this->surBD)) {
                 $get = "get$key";
                 $prop["value"] = $this->$get();
             }

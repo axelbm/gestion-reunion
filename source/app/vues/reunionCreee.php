@@ -1,23 +1,27 @@
 <div class="container">
 	<h1 align="center"> - Mes Réunions - </h1> 
 	<br>
-	<h6 align="right"> * Administrateur </h6>
 
-    <a href="calendrier" button type="button" class="btn btn-outline-dark float-right ">Revenir à mes invitations</a> 
-    <a href="formReunion" button type="button" class="btn btn-primary float-right">Ajouter une Réunion</a><br><br>
-    <?php if ($nombredepage > 1){ ?>
-	<div class="pagination">
+	<!-- Navigation -->
+    <a href="calendrier"  class="btn btn-primary float-right ">Revenir à mes invitations</a> 
+	<a href="formReunion"  class="btn btn-primary float-right">Ajouter une Réunion</a><br><br>
 	
-	<a href="<?=WEBROOT."reunionCreee"?>">&laquo;</a>
-	<?php for ( $i = max(0, $page - 4); $i < min($nombredepage, $page + 4); $i++ ) :?>
-			<a href="<?=WEBROOT."reunionCreee/$i"?>"><?=$i+1?></a>
-	<?php endfor ?>
-	<a href="<?=WEBROOT."reunionCreee/$nombredepage"?>">&raquo;</a>
+	<!-- Pagination -->
+    <?php if ($nombredepage > 1): ?>
+		<div class="pagination">
+			<a href="<?=WEBROOT."reunionCreee"?>">&laquo;</a>
 
-</div><br>
-  <?php } ?>
+			<?php for ( $i = max(0, $page - 4); $i < min($nombredepage, $page + 4); $i++ ) :?>
+					<a href="<?=WEBROOT."reunionCreee/$i"?>"><?=$i+1?></a>
+			<?php endfor ?>
 
-  <div>
+			<a href="<?=WEBROOT."reunionCreee/$nombredepage"?>">&raquo;</a>
+		</div>
+		<br>
+  	<?php endif ?>
+
+	<!-- Liste des réunions -->
+	<div>
 		<?php foreach ($reunions as $reunion): ?>
 			<hr>
 			<h4>
