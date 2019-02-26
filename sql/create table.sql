@@ -24,7 +24,7 @@ CREATE TABLE REUNIONS(
     reunionid INT(8) NOT NULL AUTO_INCREMENT,
     date DATETIME NOT NULL,
     createur VARCHAR(64) NOT NULL,
-    statut TINYINT(1) NOT NULL,
+    statut VARCHAR(8) NOT NULL,
     
     PRIMARY KEY(reunionid)
 );
@@ -63,7 +63,8 @@ CREATE TABLE PARTICIPATIONS(
 CREATE TABLE PARTICIPATIONSTATUT(
     statutid VARCHAR(8) NOT NULL,
     nom VARCHAR(64) NOT NULL,
-    description VARCHAR(512) NOT NULL,  
+    description VARCHAR(512) NOT NULL,
+    ordre INT NOT NULL,  
     
     PRIMARY KEY(statutid)
 );

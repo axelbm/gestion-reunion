@@ -1,5 +1,5 @@
 <div class="bg-light col-lg-4 mx-auto mt-5 py-4 rounded shadow-lg" id="register-box">
-    <h2 class="mt-2 text-center">Invitation de member</h2>
+    <h2 class="mt-2 text-center">Invitation de membre</h2>
 
     <hr>
 

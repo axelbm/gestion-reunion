@@ -16,6 +16,11 @@ class AjouterReunion extends \core\Form {
         if ($this->heure == "") {
             $this->ajouterErreur("heure", "Heure obligatoire");
         }
+
+        $datetime = $this->date." ".$this->heure;
+        if (new \DateTime($datetime) < new \DateTime()) {
+            $this->ajouterErreur("date", "La date ne peut être dépassée.");
+        }
         $this->createur = \app\outils\Session::getUtilisateur()->getCourriel();
     }
 

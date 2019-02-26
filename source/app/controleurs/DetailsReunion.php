@@ -34,6 +34,8 @@ class DetailsReunion extends \core\Controleur {
 					return new \Exception("erreur 404", 404);
 			}
 		}
+
+		$reunion->mettreAJourStatut();
 		   
 		$pointdordres = $reunion->getPointDordres();
 		$participants = DAO::Participation()->getParReunion($args[0]);

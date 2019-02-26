@@ -37,7 +37,10 @@
     <div class="col-md-8">
         <!-- Section de la réunion -->
         <div>
-            <h1><?= $reunion->getDate()->format('d F Y - H\hi') ?></h1>
+            <h1>
+                <?php \app\modeles\Participation::badgeStatic($reunion->getStatutId()) ?>
+                <?= $reunion->getDate()->format('d F Y - H\hi') ?>
+            </h1>
             <p>Organisé par : <a href="#"><?= $reunion->getCreateur() ?></a></p>
             <p class="mt-n2">
             
@@ -96,7 +99,7 @@
                 <hr>
                 <h4>
                     <?php if ($pointdordre->getCompteRendu() != ""): ?>
-                        <span class="badge badge-info">Terminé</span>
+                        <span class="badge badge-dark">Terminé</span>
                     <?php endif ?>
                     <?= $pointdordre->getTitre() ?>
                 <?php if ($dossier = $pointdordre->getDossier()):?>
@@ -134,8 +137,8 @@
 
                     <span><?= $participant["nom"] ?></span>
                     
-                    <?php if ($participant["statut"] != "Org" && $estcreateur): ?>
-                        <button type="submit" name="courriel" value="<?=$participant["courriel"]?>" class="btn btn-link float-right">Annuler l'invitation</button>
+                    <?php if ($participant["statut"] != "Org" && $estcreateur && $reunion->peutModifier()): ?>
+                        <button type="submit" name="courriel" value="<?=$participant["courriel"]?>" class="btn btn-link float-right annPar">Annuler l'invitation</button>
 
                     <?php endif ?>
                     <p><?php \app\modeles\Participation::badgeStatic($participant["statut"]) ?></p>

@@ -15,7 +15,7 @@ class Reunion extends DAO {
         "Id" => "reunionid:integer:PK,AI",
         "Date" => "date:DateTime",
         "Createur" => "createur:string",
-        "Statut" => "statut:bool",
+        "StatutId" => "statut:string",
 
         "PointDordres" => "Id:PointDordre:FK:reunionid",
         "Participations" => "Id:Participation:FK:reunionid"
@@ -103,8 +103,13 @@ class Reunion extends DAO {
         if (is_null($npp))
             $npp = self::$nppDefaut;
 
+        // $date = Database::convertireVersDB(new \DateTime(), "DateTime");
+
+
         return $this->select("INNER JOIN participations ON reunions.reunionid = participations.reunionid
-                                WHERE participations.courriel = ? ORDER BY date LIMIT ?, ?", $utilisateur->getCourriel(), $page*$npp, $npp);
+            INNER JOIN participationstatut ON reunions.statut = participationstatut.statutid
+            WHERE participations.courriel = ?
+            ORDER BY participationstatut.ordre, date LIMIT ?, ?", $utilisateur->getCourriel(), $page*$npp, $npp);
     }
 
     public function getPageParUtilisateur(modeles\Utilisateur $utilisateur, ?int $npp = null) : int{

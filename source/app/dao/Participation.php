@@ -18,9 +18,10 @@ class Participation extends DAO {
 
 
     public function getParReunion(int $reunionid) {
-        $result = \core\Database::query("SELECT participations.courriel, statutid, nom, prenom FROM participations
+        $result = \core\Database::query("SELECT participations.courriel, participations.statutid, utilisateurs.nom, utilisateurs.prenom FROM participations
             INNER JOIN utilisateurs ON utilisateurs.courriel = participations.courriel
-            WHERE reunionid = ? ORDER BY statutid", $reunionid);
+            INNER JOIN participationstatut ON participations.statutid = participationstatut.statutid
+            WHERE reunionid = ? ORDER BY participationstatut.ordre", $reunionid);
         
         $participants = [];
         while ($row = $result->fetch(\PDO::FETCH_ASSOC)) {

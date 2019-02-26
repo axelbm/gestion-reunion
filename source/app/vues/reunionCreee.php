@@ -25,7 +25,8 @@
 		<?php foreach ($reunions as $reunion): ?>
 			<hr>
 			<h4>
-				<h4 class="card-title"><?= strftime($reunion->getDate()->format('Y-M-d H:i')) ?></h4>
+				<?php \app\modeles\Participation::badgeStatic($reunion->getStatutId()) ?>
+				<?= strftime($reunion->getDate()->format('d F Y - H\hi')) ?>
 			</h4>
 			<div>
 				<a href="<?= WEBROOT."detailsReunion/".$reunion->getId() ?>">Détails</a> |

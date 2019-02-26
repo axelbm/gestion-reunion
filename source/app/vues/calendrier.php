@@ -55,7 +55,8 @@
 	<?php endif ?>
 
 	<div>
-		<?php foreach ($reunions as $reunion): ?>
+		<?php foreach ($reunions as $reunion): 
+			$reunion->mettreAJourStatut();?>
 			<hr>
 
 			<h4 class="card-title"><?= strftime($reunion->getDate()->format('Y-M-d H:i')) ?></h4>
